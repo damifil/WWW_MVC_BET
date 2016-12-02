@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Witamy</title>
+</head>
+<body>
+    <div> 
+       Cześć @Context.User.Identity.Name
+
+        @Html.ActionLink("Wyloguj", "SignOut", "Account")
+    </div>
+</body>
+</html>
