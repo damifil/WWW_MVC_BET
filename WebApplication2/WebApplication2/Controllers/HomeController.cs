@@ -15,7 +15,11 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult statystyki()
+        {
+            return View();
+        }
 
         [Authorize]
         public ActionResult Welcome()

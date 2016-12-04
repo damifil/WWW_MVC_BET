@@ -1,39 +1,49 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>aktualnosci</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+    <link href="~/CSS/tlo.css" rel="stylesheet" />
+    </head>
+
+
+    <body>
+        <div class="head">
+            <form class="form-inline">
+                <div class="input-group">
+                    <span><h1 style="color:green;">Zakłady Online (logo tu bedzie)</h1><span>
+                </div>
+
+                <button type="button" class="btn btn-default">wyloguj sie</button>
+            </form>
+        </div>
+
+        <div class="menu_container">
+            <div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Aktualnosci</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Twoje grupy</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Rankingi</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">przyjaciele</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">ustawienia</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            
-        </footer>
-    </div>
-
-    @RenderSection("scripts", required: false)
-</body>
+        <div>
+            @RenderBody()
+        </div>
+    </body>
 </html>
