@@ -1,0 +1,58 @@
+﻿@model WebApplication2.Models.DB.USER
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>USER</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.e_mail)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.e_mail)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Total_score)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Total_score)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Is_Admin)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Is_Admin)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.User_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

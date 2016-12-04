@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjektModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BETS">
+    <Key>
+      <PropertyRef Name="Bet_ID" />
+    </Key>
+    <Property Name="Bet_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Group_ID" Type="Int32" Nullable="false" />
+    <Property Name="Race_ID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Pos_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Time_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="GROUPS" Relationship="Self.FK_BETS_GROUPS" FromRole="BETS" ToRole="GROUPS" />
+    <NavigationProperty Name="RACES" Relationship="Self.FK_BETS_RACES" FromRole="BETS" ToRole="RACES" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_BETS_USER" FromRole="BETS" ToRole="USER" />
+  </EntityType>
+  <EntityType Name="DRIVERS">
+    <Key>
+      <PropertyRef Name="Driver_ID" />
+    </Key>
+    <Property Name="Driver_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Driver_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PARTICIPANTS" Relationship="Self.FK_PARTICIPANTS_DRIVERS" FromRole="DRIVERS" ToRole="PARTICIPANTS" />
+  </EntityType>
+  <EntityType Name="FRIENDS">
+    <Key>
+      <PropertyRef Name="User_Friend_ID" />
+    </Key>
+    <Property Name="User_Friend_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Friend_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_FRIENDS_USER" FromRole="FRIENDS" ToRole="USER" />
+    <NavigationProperty Name="USER1" Relationship="Self.FK_FRIENDS_USER1" FromRole="FRIENDS" ToRole="USER" />
+  </EntityType>
+  <EntityType Name="GROUPS">
+    <Key>
+      <PropertyRef Name="Groups_ID" />
+    </Key>
+    <Property Name="Groups_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Group_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BETS" Relationship="Self.FK_BETS_GROUPS" FromRole="GROUPS" ToRole="BETS" />
+    <NavigationProperty Name="MEMBERSHIPS" Relationship="Self.FK_MEMBERSHIPS_GROUPS" FromRole="GROUPS" ToRole="MEMBERSHIPS" />
+  </EntityType>
+  <EntityType Name="INVITATIONS">
+    <Key>
+      <PropertyRef Name="Invitation_ID" />
+    </Key>
+    <Property Name="Invitation_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="From_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="To_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Accept" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_INVITATIONS_USER" FromRole="INVITATIONS" ToRole="USER" />
+    <NavigationProperty Name="USER1" Relationship="Self.FK_INVITATIONS_USER1" FromRole="INVITATIONS" ToRole="USER" />
+  </EntityType>
+  <EntityType Name="MEMBERSHIPS">
+    <Key>
+      <PropertyRef Name="Group_ID" />
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="Group_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Score" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="GROUPS" Relationship="Self.FK_MEMBERSHIPS_GROUPS" FromRole="MEMBERSHIPS" ToRole="GROUPS" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_MEMBERSHIPS_USER" FromRole="MEMBERSHIPS" ToRole="USER" />
+  </EntityType>
+  <EntityType Name="PARTICIPANTS">
+    <Key>
+      <PropertyRef Name="Participants_ID" />
+    </Key>
+    <Property Name="Participants_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Season_ID" Type="Int32" Nullable="false" />
+    <Property Name="Driver_ID" Type="Int32" Nullable="false" />
+    <Property Name="Team_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DRIVERS" Relationship="Self.FK_PARTICIPANTS_DRIVERS" FromRole="PARTICIPANTS" ToRole="DRIVERS" />
+    <NavigationProperty Name="SEASONS" Relationship="Self.FK_PARTICIPANTS_SEASONS" FromRole="PARTICIPANTS" ToRole="SEASONS" />
+    <NavigationProperty Name="TEAMS" Relationship="Self.FK_PARTICIPANTS_TEAMS" FromRole="PARTICIPANTS" ToRole="TEAMS" />
+  </EntityType>
+  <EntityType Name="RACES">
+    <Key>
+      <PropertyRef Name="Race_ID" />
+    </Key>
+    <Property Name="Race_ID" Type="Int32" Nullable="false" />
+    <Property Name="Season_ID" Type="Int32" Nullable="false" />
+    <Property Name="Track" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Pos_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Time_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BETS" Relationship="Self.FK_BETS_RACES" FromRole="RACES" ToRole="BETS" />
+    <NavigationProperty Name="SEASONS" Relationship="Self.FK_RACES_SEASONS" FromRole="RACES" ToRole="SEASONS" />
+  </EntityType>
+  <EntityType Name="SEASONS">
+    <Key>
+      <PropertyRef Name="Season_ID" />
+    </Key>
+    <Property Name="Season_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PARTICIPANTS" Relationship="Self.FK_PARTICIPANTS_SEASONS" FromRole="SEASONS" ToRole="PARTICIPANTS" />
+    <NavigationProperty Name="RACES" Relationship="Self.FK_RACES_SEASONS" FromRole="SEASONS" ToRole="RACES" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TEAMS">
+    <Key>
+      <PropertyRef Name="Team_ID" />
+    </Key>
+    <Property Name="Team_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Team_Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PARTICIPANTS" Relationship="Self.FK_PARTICIPANTS_TEAMS" FromRole="TEAMS" ToRole="PARTICIPANTS" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="e_mail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Total_score" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="Is_Admin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BETS" Relationship="Self.FK_BETS_USER" FromRole="USER" ToRole="BETS" />
+    <NavigationProperty Name="FRIENDS" Relationship="Self.FK_FRIENDS_USER" FromRole="USER" ToRole="FRIENDS" />
+    <NavigationProperty Name="FRIENDS1" Relationship="Self.FK_FRIENDS_USER1" FromRole="USER" ToRole="FRIENDS" />
+    <NavigationProperty Name="INVITATIONS" Relationship="Self.FK_INVITATIONS_USER" FromRole="USER" ToRole="INVITATIONS" />
+    <NavigationProperty Name="INVITATIONS1" Relationship="Self.FK_INVITATIONS_USER1" FromRole="USER" ToRole="INVITATIONS" />
+    <NavigationProperty Name="MEMBERSHIPS" Relationship="Self.FK_MEMBERSHIPS_USER" FromRole="USER" ToRole="MEMBERSHIPS" />
+  </EntityType>
+  <Association Name="FK_BETS_GROUPS">
+    <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="1" />
+    <End Role="BETS" Type="Self.BETS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUPS">
+        <PropertyRef Name="Groups_ID" />
+      </Principal>
+      <Dependent Role="BETS">
+        <PropertyRef Name="Group_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BETS_RACES">
+    <End Role="RACES" Type="Self.RACES" Multiplicity="1" />
+    <End Role="BETS" Type="Self.BETS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RACES">
+        <PropertyRef Name="Race_ID" />
+      </Principal>
+      <Dependent Role="BETS">
+        <PropertyRef Name="Race_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BETS_USER">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="BETS" Type="Self.BETS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="BETS">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PARTICIPANTS_DRIVERS">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="1" />
+    <End Role="PARTICIPANTS" Type="Self.PARTICIPANTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="PARTICIPANTS">
+        <PropertyRef Name="Driver_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FRIENDS_USER">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="FRIENDS" Type="Self.FRIENDS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="FRIENDS">
+        <PropertyRef Name="Friend_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FRIENDS_USER1">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="FRIENDS" Type="Self.FRIENDS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="FRIENDS">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MEMBERSHIPS_GROUPS">
+    <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="1" />
+    <End Role="MEMBERSHIPS" Type="Self.MEMBERSHIPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUPS">
+        <PropertyRef Name="Groups_ID" />
+      </Principal>
+      <Dependent Role="MEMBERSHIPS">
+        <PropertyRef Name="Group_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INVITATIONS_USER">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="INVITATIONS" Type="Self.INVITATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="INVITATIONS">
+        <PropertyRef Name="To_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INVITATIONS_USER1">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="INVITATIONS" Type="Self.INVITATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="INVITATIONS">
+        <PropertyRef Name="From_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MEMBERSHIPS_USER">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="MEMBERSHIPS" Type="Self.MEMBERSHIPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="MEMBERSHIPS">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PARTICIPANTS_SEASONS">
+    <End Role="SEASONS" Type="Self.SEASONS" Multiplicity="1" />
+    <End Role="PARTICIPANTS" Type="Self.PARTICIPANTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEASONS">
+        <PropertyRef Name="Season_ID" />
+      </Principal>
+      <Dependent Role="PARTICIPANTS">
+        <PropertyRef Name="Season_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PARTICIPANTS_TEAMS">
+    <End Role="TEAMS" Type="Self.TEAMS" Multiplicity="1" />
+    <End Role="PARTICIPANTS" Type="Self.PARTICIPANTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEAMS">
+        <PropertyRef Name="Team_ID" />
+      </Principal>
+      <Dependent Role="PARTICIPANTS">
+        <PropertyRef Name="Team_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_SEASONS">
+    <End Role="SEASONS" Type="Self.SEASONS" Multiplicity="1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEASONS">
+        <PropertyRef Name="Season_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Season_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjektEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BETS" EntityType="Self.BETS" />
+    <EntitySet Name="DRIVERS" EntityType="Self.DRIVERS" />
+    <EntitySet Name="FRIENDS" EntityType="Self.FRIENDS" />
+    <EntitySet Name="GROUPS" EntityType="Self.GROUPS" />
+    <EntitySet Name="INVITATIONS" EntityType="Self.INVITATIONS" />
+    <EntitySet Name="MEMBERSHIPS" EntityType="Self.MEMBERSHIPS" />
+    <EntitySet Name="PARTICIPANTS" EntityType="Self.PARTICIPANTS" />
+    <EntitySet Name="RACES" EntityType="Self.RACES" />
+    <EntitySet Name="SEASONS" EntityType="Self.SEASONS" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TEAMS" EntityType="Self.TEAMS" />
+    <EntitySet Name="USER" EntityType="Self.USER" />
+    <AssociationSet Name="FK_BETS_GROUPS" Association="Self.FK_BETS_GROUPS">
+      <End Role="GROUPS" EntitySet="GROUPS" />
+      <End Role="BETS" EntitySet="BETS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BETS_RACES" Association="Self.FK_BETS_RACES">
+      <End Role="RACES" EntitySet="RACES" />
+      <End Role="BETS" EntitySet="BETS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BETS_USER" Association="Self.FK_BETS_USER">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="BETS" EntitySet="BETS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PARTICIPANTS_DRIVERS" Association="Self.FK_PARTICIPANTS_DRIVERS">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="PARTICIPANTS" EntitySet="PARTICIPANTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FRIENDS_USER" Association="Self.FK_FRIENDS_USER">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="FRIENDS" EntitySet="FRIENDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FRIENDS_USER1" Association="Self.FK_FRIENDS_USER1">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="FRIENDS" EntitySet="FRIENDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MEMBERSHIPS_GROUPS" Association="Self.FK_MEMBERSHIPS_GROUPS">
+      <End Role="GROUPS" EntitySet="GROUPS" />
+      <End Role="MEMBERSHIPS" EntitySet="MEMBERSHIPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INVITATIONS_USER" Association="Self.FK_INVITATIONS_USER">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="INVITATIONS" EntitySet="INVITATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INVITATIONS_USER1" Association="Self.FK_INVITATIONS_USER1">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="INVITATIONS" EntitySet="INVITATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MEMBERSHIPS_USER" Association="Self.FK_MEMBERSHIPS_USER">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="MEMBERSHIPS" EntitySet="MEMBERSHIPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PARTICIPANTS_SEASONS" Association="Self.FK_PARTICIPANTS_SEASONS">
+      <End Role="SEASONS" EntitySet="SEASONS" />
+      <End Role="PARTICIPANTS" EntitySet="PARTICIPANTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PARTICIPANTS_TEAMS" Association="Self.FK_PARTICIPANTS_TEAMS">
+      <End Role="TEAMS" EntitySet="TEAMS" />
+      <End Role="PARTICIPANTS" EntitySet="PARTICIPANTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_SEASONS" Association="Self.FK_RACES_SEASONS">
+      <End Role="SEASONS" EntitySet="SEASONS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
