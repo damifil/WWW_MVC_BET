@@ -200,6 +200,8 @@
     <Content Include="Views\USERs\Edit.cshtml" />
     <Content Include="Views\USERs\Index.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Home\statystyki.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
