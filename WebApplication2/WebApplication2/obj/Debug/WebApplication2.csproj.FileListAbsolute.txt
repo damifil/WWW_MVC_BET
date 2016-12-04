@@ -34,3 +34,40 @@ c:\users\dawid_kq\onedrive\dokumenty\visual studio 2015\Projects\WebApplication2
 c:\users\dawid_kq\onedrive\dokumenty\visual studio 2015\Projects\WebApplication2\WebApplication2\bin\System.Web.Mvc.xml
 c:\users\dawid_kq\onedrive\dokumenty\visual studio 2015\Projects\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 c:\users\dawid_kq\onedrive\dokumenty\visual studio 2015\Projects\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\csc.exe
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\System.Collections.Immutable.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\System.Reflection.Metadata.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\vbc.exe
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\VBCSCompiler.exe
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\roslyn\VBCSCompiler.exe.config
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\WebApplication2.dll.config
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\WebApplication2.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\WebApplication2.pdb
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\EntityFramework.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\Microsoft.Web.Infrastructure.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Helpers.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Mvc.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Razor.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Webpages.Deployment.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Webpages.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Webpages.Razor.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\EntityFramework.xml
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.xml
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Razor.xml
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Webpages.xml
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Webpages.Deployment.xml
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Webpages.Razor.xml
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Helpers.xml
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\bin\System.Web.Mvc.xml
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
+D:\GIT\WWW_MVC_BET\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb

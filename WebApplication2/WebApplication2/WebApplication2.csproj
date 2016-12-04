@@ -114,6 +114,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="CSS\tlo.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

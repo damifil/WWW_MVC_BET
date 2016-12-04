@@ -1,0 +1,24 @@
+﻿body {
+    background-color: Black ;
+}
+
+
+h1 {
+    color: white;
+    text-align: left;
+}
+h2 {
+    color: white;
+    text-align: left;
+}
+h3 {
+    color: white;
+    text-align: left;
+}
+
+
+div.head {
+    background-color: DarkRed;
+
+}
+
