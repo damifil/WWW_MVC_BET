@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using WebApplication2.Models.DB;
 using WebApplication2.Models.ViewModel;
@@ -13,9 +15,10 @@ namespace WebApplication2.Models.EntityManager
         {
             using (ProjektEntities db = new ProjektEntities())
             {
+                MD5 md5Hash = MD5.Create();
                 USER user = new USER();
                 user.User_ID = newUser.Login;
-                user.Password = newUser.Password;
+                user.Password = GetMd5Hash(md5Hash, newUser.Password);
                 user.e_mail = newUser.Email;
                 user.Total_score = "0";
                 user.Is_Admin = false;
@@ -49,7 +52,22 @@ namespace WebApplication2.Models.EntityManager
             }
         }
 
+        public static string GetMd5Hash(MD5 md5Hash, string input)
+        {
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            StringBuilder sBuilder = new StringBuilder();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            return sBuilder.ToString();
+        }
+
+
+
 
     }
-   
+
 }

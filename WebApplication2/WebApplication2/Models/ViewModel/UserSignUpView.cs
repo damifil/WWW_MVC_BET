@@ -10,16 +10,17 @@ namespace WebApplication2.Models.ViewModel
     {
         [Key]
         [Required(ErrorMessage = "Podaj login")]
-        [Display(Name = "Login")]
+        [Display(Name = "Login:")]
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Podaj hasło")]
         [DataType(DataType.Password)]
-        [Display(Name = "Hasło")]
+        [Display(Name = "Hasło:")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Podaj e-mail")]
-        [Display(Name = "E-mail")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "E-mail:")]
         public string Email { get; set; }
 
     }

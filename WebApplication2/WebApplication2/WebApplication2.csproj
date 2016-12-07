@@ -119,7 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\USERsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -194,13 +193,11 @@
     </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
-    <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\USERs\Create.cshtml" />
     <Content Include="Views\USERs\Delete.cshtml" />
     <Content Include="Views\USERs\Details.cshtml" />
     <Content Include="Views\USERs\Edit.cshtml" />
     <Content Include="Views\USERs\Index.cshtml" />
-    <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Home\statystyki.cshtml" />
     <None Include="Web.Debug.config">

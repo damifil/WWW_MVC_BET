@@ -9,10 +9,10 @@ namespace WebApplication2.Models.ViewModel
     public class UserLoginView   //model uzywany przy logowaniu
     {
         [Key]
-        [Required(ErrorMessage = "Podaj login.")]
+        [Required(ErrorMessage = "Podaj login")]
         public string Login { get; set;}
 
-        [Required(ErrorMessage = "Podaj hasło.")]
+        [Required(ErrorMessage = "Podaj hasło")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

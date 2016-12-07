@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -87,14 +88,13 @@ namespace WebApplication2.Controllers
             {
                 UserManager userManager = new UserManager();
                 string password = userManager.GetUserPassword(userView.UserLoginView.Login);
-
-       
+                MD5 md5Hash = MD5.Create();
 
                 if (string.IsNullOrEmpty(password))
                     ModelState.AddModelError("", "Login lub hasło jest nieprawidłowe.");
                 else
                 {
-                    if (password.Equals(userView.UserLoginView.Password))
+                    if (password.Equals(UserManager.GetMd5Hash(md5Hash, userView.UserLoginView.Password)))
                     {
                         FormsAuthentication.SetAuthCookie(userView.UserLoginView.Login, false);
                         return RedirectToAction("Welcome", "Home");
