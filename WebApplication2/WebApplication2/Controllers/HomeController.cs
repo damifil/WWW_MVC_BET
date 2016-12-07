@@ -23,7 +23,25 @@ namespace WebApplication2.Controllers
             return View();
         }
 
+        public ActionResult aktualnosci()
+        {
+            return View();
+        }
 
+        public ActionResult przyjaciele()
+        {
+            return View();
+        }
+
+        public ActionResult twoje_grupy()
+        {
+            return View();
+        }
+
+        public ActionResult ustawienia()
+        {
+            return View();
+        }
 
         [Authorize]
         public ActionResult Welcome()

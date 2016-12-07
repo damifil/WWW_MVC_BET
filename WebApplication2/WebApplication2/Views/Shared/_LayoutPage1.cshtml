@@ -23,25 +23,23 @@
             </form>
         </div>
 
-        <div class="menu_container">
-            <div class="btn-group btn-group-justified">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">Aktualnosci</button>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">Twoje grupy</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">Rankingi</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">przyjaciele</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">ustawienia</button>
-                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active">@Html.ActionLink("aktualnosci", "aktualnosci", "home")</li>
+                    <li>@Html.ActionLink("twoje_grupy", "twoje_grupy", "home")</li>
+                    <li>@Html.ActionLink("statystyki", "statystyki", "home")</li>
+                    <li>@Html.ActionLink("przyjaciele", "przyjaciele", "home")</li>
+                    <li>@Html.ActionLink("ustawienia", "ustawienia", "home")</li>
+                </ul>
             </div>
-        </div>
+        </nav>
+
+        
         <div>
             @RenderBody()
         </div>
