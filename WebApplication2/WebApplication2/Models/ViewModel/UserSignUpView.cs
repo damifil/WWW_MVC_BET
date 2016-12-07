@@ -14,6 +14,7 @@ namespace WebApplication2.Models.ViewModel
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Podaj hasło")]
+        [DataType(DataType.Password)]
         [Display(Name = "Hasło")]
         public string Password { get; set; }
 

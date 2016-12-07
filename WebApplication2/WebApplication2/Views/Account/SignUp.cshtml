@@ -1,18 +1,7 @@
 ﻿@model WebApplication2.Models.ViewModel.UserSignUpView
 
-@{
-    
-    Layout = null;
-}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Rejestracja</title>
-</head>
-<h2>Rejestracja</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("SignUp",  "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -57,4 +46,3 @@
     @Html.ActionLink("Wróć do strony głównej", "Index", "Home")
 </div>
 
-</html>

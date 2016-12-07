@@ -1,16 +1,6 @@
 ﻿@model WebApplication2.Models.ViewModel.UserLoginView
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Logowanie</title>
-</head>
-@using (Html.BeginForm())
+@using (Html.BeginForm("LogIn", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -44,4 +34,4 @@
 <div>
     @Html.ActionLink("Wróć do strony głównej", "Index", "Home")
 </div>
-</html>
+
