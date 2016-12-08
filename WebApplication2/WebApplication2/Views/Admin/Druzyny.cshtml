@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApplication2.Models.DB.TEAMS>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Drużyny</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                ID drużyny
+            </th>
+            <th>
+               Nazwa drużyny
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team_Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edytuj_druzyne", new { id = item.Team_ID }) |
+                    @Html.ActionLink("Szczegóły", "Szczegoly_druzyny", new { id = item.Team_ID }) |
+                    @Html.ActionLink("Usuń", "Usun_druzyne", new { id = item.Team_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

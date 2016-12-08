@@ -119,8 +119,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\USERsController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\TEAMSController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -193,13 +195,16 @@
     </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
-    <Content Include="Views\USERs\Create.cshtml" />
-    <Content Include="Views\USERs\Delete.cshtml" />
-    <Content Include="Views\USERs\Details.cshtml" />
-    <Content Include="Views\USERs\Edit.cshtml" />
-    <Content Include="Views\USERs\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Home\statystyki.cshtml" />
+    <Content Include="Views\Admin\Panel.cshtml" />
+    <Content Include="Views\Admin\Aktualnosci.cshtml" />
+    <Content Include="Views\TEAMS\Create.cshtml" />
+    <Content Include="Views\TEAMS\Delete.cshtml" />
+    <Content Include="Views\TEAMS\Details.cshtml" />
+    <Content Include="Views\TEAMS\Edit.cshtml" />
+    <Content Include="Views\TEAMS\Index.cshtml" />
+    <Content Include="Views\Admin\Druzyny.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -207,7 +212,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Profile\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

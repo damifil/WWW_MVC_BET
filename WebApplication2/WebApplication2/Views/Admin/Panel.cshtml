@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Panel administracyjny</title>
+</head>
+<body>
+    <div> 
+        @Html.ActionLink("Edycja zawodników", "Zawodnicy", "Admin")
+        @Html.ActionLink("Edycja wyścigów", "Wyscigi", "Admin")
+        @Html.ActionLink("Edycja sezonów", "Sezony", "Admin")
+        @Html.ActionLink("Edycja drużyn", "Druzyny", "Admin")
+        @Html.ActionLink("Edycja użytkowników", "Uzytkownicy", "Admin")
+        @Html.ActionLink("Edycja aktualności", "Aktualnosci", "Admin")
+    </div>
+</body>
+</html>
