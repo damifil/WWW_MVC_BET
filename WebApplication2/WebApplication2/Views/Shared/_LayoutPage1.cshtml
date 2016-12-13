@@ -16,7 +16,7 @@
         <div class="head">
             <form class="form-inline">
                 <div class="input-group">
-                    <span><h1 style="color:green;">Zakłady Online (logo tu bedzie)</h1><span>
+                    <span><h1 style="color:green;">Zakłady Online (logo tu bedzie)</h1></span>
                 </div>
                 
               <input type="button" value="Wyloguj" onclick="location.href='@Url.Action("SignOut", "Home")'" />
@@ -25,7 +25,7 @@
         </div>
 
 
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse" style="margin-bottom:0px">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">WebSiteName</a>
@@ -40,9 +40,31 @@
             </div>
         </nav>
 
+        <!--   -->
+
         
-        <div>
-            @RenderBody()
-        </div>
-    </body>
+       
+            
+                <div class="row content" style="background-color:blueviolet">
+
+                    <div class="col-sm-10" style="background-color:black" >
+                        <!-- srodek  -->
+
+                        <div class="body">
+                            @RenderBody()
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-2" >
+                        <p>znajomkowie</p>
+                        
+                 
+                        <!-- kolumna po prawo -->
+                    </div>
+                </div>
+                
+         
+
+</body>
 </html>
