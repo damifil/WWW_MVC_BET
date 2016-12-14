@@ -23,20 +23,7 @@
 
 
     <body>
-        <!-- skrypyt -->
-        <script type="text/javascript">
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("main").style.marginRight = "250px";
-            }
-
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-                document.getElementById("main").style.marginRight = "0";
-            }
-        </script>
         <!-- strona pod menu -->
-        <div id="main">
             <div class="head">
                 <form class="form-inline">
                     <div class="input-group">
@@ -53,30 +40,64 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li@(pageName == "aktualnosci" ? "class=active" : "")>
-                            @Html.ActionLink("aktualnosci", "aktualnosci", "home")</li>
-                            <li>@Html.ActionLink("twoje_grupy", "twoje_grupy", "home")</li>
-                            <li@(pageName == "statystyki" ? "class=active" : "")>
-                                @Html.ActionLink("statystyki", "statystyki", "home")</li>
-                            <li>@Html.ActionLink("przyjaciele", "przyjaciele", "home")</li>
-                            <li>@Html.ActionLink("ustawienia", "ustawienia", "home")</li>
-                            <li id="button_czat" class="" @( button_flag == 0 ? "onclick=openNav()" : "onclick=closeNav()")><a href="#">czat</a></li>
-                </ul>
+                            @Html.ActionLink("aktualnosci", "aktualnosci", "aktualnosci")
+                        </li>
+                        <li@(pageName == "grupy" ? "class=active" : "")>
+                                @Html.ActionLink("grupy", "grupy", "grupy")
+                        </li>
+                        <li@(pageName == "profil" ? "class=active" : "")>
+                                @Html.ActionLink("profil", "profil", "profil")
+                        </li>
+                        <li@(pageName == "grupy" ? "class=active" : "")>
+                                @Html.ActionLink("grupy", "grupy", "grupy")
+                         </li>
+                         <li@(pageName == "statystyki" ? "class=active" : "")>
+                                @Html.ActionLink("statystyki", "statystyki", "statystyki")
+                         </li>
+                         <li@(pageName == "wiadomosci" ? "class=active" : "")>
+                                @Html.ActionLink("wiadomosci", "wiadomosci", "wiadomosci")
+                         </li>
+                         <li@(pageName == "znajomi" ? "class=active" : "")>
+                                @Html.ActionLink("znajomi", "znajomi", "znajomi")
+                         </li>
+</ul>
             </div>
         </nav>
+        
 
-        <div class="row content">
-            <div class="col-sm-12" style="background-color:black">
-                <!-- srodek  -->
-                <div class="body">
-                    @RenderBody()
+            <div class="row content">
+                <div class="col-sm-12" style="background-color:black">
+                    <!-- srodek  -->
+                    <div class="body">
+                        @RenderBody()
+                    </div>
                 </div>
             </div>
-                <!-- menu boczne -->
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="">About</a>
+            
+            <!-- menu boczne -->
+            <div id="czat_menu" class="czat">
+                <span class="glyphicon glyphicon-user">Czat</span>
+                <!--- w li powinny byc linki do odpowiedniego usera do wiadomosci-->
+                <!-- lista do wypisania uzytkownikow, trzeba sprawdzici ilu sie miesci-->
+                <div class="row content">
+                    <!--  fragment kodu dotyczacy uzytkownika aktywnego-->
+                    <div class="col-sm-10">
+                        <li>uzytkownik aktywny </li>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
                 </div>
-         </div>
+                <div class="row content">
+
+                    <!--  fragment kodu dotyczacy uzytkownika nieaktywnego-->
+                    <div class="col-sm-10">
+                        <li>uzytkownik nieaktywny </li>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </div>
+                </div>
 
 </body>
 </html>
