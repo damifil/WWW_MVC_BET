@@ -1,0 +1,41 @@
+﻿@model WebApplication2.Models.DB.TEAMS
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Usuń drużynę</title>
+</head>
+<body>
+    <h3>Czy na pewno chcesz usunąć drużynę?</h3>
+    <div>
+        <h4>Drużyny</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Team_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Team_Name)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Usuń" class="btn btn-default" /> |
+                @Html.ActionLink("Wróć do poprzedniej strony", "Druzyny")
+            </div>
+        }
+    </div>
+</body>
+</html>

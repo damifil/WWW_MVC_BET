@@ -54,13 +54,11 @@ namespace WebApplication2.Controllers
             return View(tEAMS);
         }
 
-        // GET: TEAMS/Create
         public ActionResult Stworz_druzyne()
         {
             return View();
         }
-
-        // POST: TEAMS/Create        
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Stworz_druzyne([Bind(Include = "Team_ID,Team_Name")] TEAMS tEAMS)
@@ -75,7 +73,6 @@ namespace WebApplication2.Controllers
             return View(tEAMS);
         }
 
-        // GET: TEAMS/Edit/5
         public ActionResult Edytuj_druzyne(int? id)
         {
             if (id == null)
@@ -89,8 +86,7 @@ namespace WebApplication2.Controllers
             }
             return View(tEAMS);
         }
-
-        // POST: TEAMS/Edit/5        
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edytuj_druzyne([Bind(Include = "Team_ID,Team_Name")] TEAMS tEAMS)
@@ -104,7 +100,6 @@ namespace WebApplication2.Controllers
             return View(tEAMS);
         }
 
-        // GET: TEAMS/Delete/5
         public ActionResult Usun_druzyne(int? id)
         {
             if (id == null)
@@ -119,10 +114,9 @@ namespace WebApplication2.Controllers
             return View(tEAMS);
         }
 
-        // POST: TEAMS/Delete/5
         [HttpPost, ActionName("Usun_druzyne")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult PotwierdzenieUsuniecia(int id)
         {
             TEAMS tEAMS = db.TEAMS.Find(id);
             db.TEAMS.Remove(tEAMS);

@@ -121,8 +121,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\TEAMSController.cs" />
+    <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,18 +198,24 @@
     <Content Include="Views\statystyki\statystyki.cshtml" />
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Admin\Aktualnosci.cshtml" />
-    <Content Include="Views\TEAMS\Create.cshtml" />
-    <Content Include="Views\TEAMS\Delete.cshtml" />
-    <Content Include="Views\TEAMS\Details.cshtml" />
-    <Content Include="Views\TEAMS\Edit.cshtml" />
-    <Content Include="Views\TEAMS\Index.cshtml" />
     <Content Include="Views\Admin\Druzyny.cshtml" />
     <Content Include="Views\znajomi\znajomi.cshtml" />
     <Content Include="Views\wiadomosci\wiadomosci.cshtml" />
-    <Content Include="Views\profil\profil.cshtml" />
     <Content Include="Views\panel sterowania\panel sterowania.cshtml" />
     <Content Include="Views\grupy\grupy.cshtml" />
     <Content Include="Views\Home\statystyki.cshtml" />
+    <Content Include="Views\profil\Aktualnosci.cshtml" />
+    <Content Include="Views\profil\Statystyki.cshtml" />
+    <Content Include="Views\profil\Ustawienia.cshtml" />
+    <Content Include="Views\profil\Znajomi.cshtml" />
+    <Content Include="Views\profil\Wiadomosci.cshtml" />
+    <Content Include="Views\profil\Grupy.cshtml" />
+    <Content Include="Views\profil\profil.cshtml" />
+    <Content Include="Views\profil\Zaklady.cshtml" />
+    <Content Include="Views\Admin\Stworz_druzyne.cshtml" />
+    <Content Include="Views\Admin\Szczegoly_druzyny.cshtml" />
+    <Content Include="Views\Admin\Usun_druzyne.cshtml" />
+    <Content Include="Views\Admin\Edytuj_druzyne.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

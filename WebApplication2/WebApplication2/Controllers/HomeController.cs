@@ -65,7 +65,7 @@ namespace WebApplication2.Controllers
                 {
                     userManager.AddUserAccount(userView.UserSignUpView);
                     FormsAuthentication.SetAuthCookie(userView.UserSignUpView.Login, false);    // ustawienie ciasteczka
-                    return RedirectToAction("Welcome", "Home");    // przekierowanie do metody Welcome w kontrolerze Home
+                    return RedirectToAction("Aktualnosci", "Profil");    // przekierowanie do metody Welcome w kontrolerze Home
                 }
                 else
                 {
@@ -97,7 +97,7 @@ namespace WebApplication2.Controllers
                     if (password.Equals(UserManager.GetMd5Hash(md5Hash, userView.UserLoginView.Password)))
                     {
                         FormsAuthentication.SetAuthCookie(userView.UserLoginView.Login, false);
-                        return RedirectToAction("Welcome", "Home");
+                        return RedirectToAction("Aktualnosci", "Profil");
                     }
                     else
                     {

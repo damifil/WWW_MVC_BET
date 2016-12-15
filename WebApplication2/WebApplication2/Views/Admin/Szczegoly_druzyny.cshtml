@@ -1,0 +1,34 @@
+﻿@model WebApplication2.Models.DB.TEAMS
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Szczegóły drużyny</title>
+</head>
+<body>
+    <div>
+        <h4>Drużyny</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Team_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Team_Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edytuj drużynę", "Edytuj_druzyne", new { id = Model.Team_ID }) |
+        @Html.ActionLink("Wróć do poprzedniej strony", "Druzyny")
+    </p>
+</body>
+</html>
