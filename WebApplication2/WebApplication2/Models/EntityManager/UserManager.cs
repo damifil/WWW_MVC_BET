@@ -64,10 +64,6 @@ namespace WebApplication2.Models.EntityManager
 
             return sBuilder.ToString();
         }
-
-
-
-
     }
 
 }
