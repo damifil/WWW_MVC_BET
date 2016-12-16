@@ -1,0 +1,34 @@
+﻿@model WebApplication2.Models.DB.DRIVERS
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Szczegóły zawodnika</title>
+</head>
+<body>
+    <div>
+        <h4>Kierowca</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Driver_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Driver_Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edytuj", "Edytuj_zawodnika", new { id = Model.Driver_ID }) |
+        @Html.ActionLink("Wroc do poprzedniej strony", "Zawodnicy")
+    </p>
+</body>
+</html>

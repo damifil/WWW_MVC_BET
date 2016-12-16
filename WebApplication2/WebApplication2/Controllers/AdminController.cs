@@ -18,11 +18,7 @@ namespace WebApplication2.Controllers
             return View();
         }
         
-        public ActionResult Zawodnicy()
-        {
-            
-            return View(db.DRIVERS.ToList());
-        }
+        
         public ActionResult Wyscigi()
         {
             return View();
@@ -32,9 +28,100 @@ namespace WebApplication2.Controllers
             return View();
         }
 
+        ///////////////////////////////////Sekcja dotyczaca zawodnikow//////////////////////
+        public ActionResult Zawodnicy()
+        {
+
+            return View(db.DRIVERS.ToList());
+        }
+
+        public ActionResult Szczegoly_zawodnika(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DRIVERS dRIVERS = db.DRIVERS.Find(id);
+            if (dRIVERS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dRIVERS);
+        }
+
+        public ActionResult Stworz_zawodnika()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Stworz_zawodnika([Bind(Include = "Driver_ID,Driver_Name")] DRIVERS dRIVERS)
+        {
+            if (ModelState.IsValid)
+            {
+                db.DRIVERS.Add(dRIVERS);
+                db.SaveChanges();
+                return RedirectToAction("Zawodnicy");
+            }
+
+            return View(dRIVERS);
+        }
+
+        public ActionResult Edytuj_zawodnika(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DRIVERS dRIVERS = db.DRIVERS.Find(id);
+            if (dRIVERS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dRIVERS);
+        }
+
         
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edytuj_zawodnika([Bind(Include = "Driver_ID,Driver_Name")] DRIVERS dRIVERS)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(dRIVERS).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Zawodnicy");
+            }
+            return View(dRIVERS);
+        }
+
+        public ActionResult Usun_zawodnika(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DRIVERS dRIVERS = db.DRIVERS.Find(id);
+            if (dRIVERS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dRIVERS);
+        }
+
+        [HttpPost, ActionName("Usun_zawodnika")]
+        [ValidateAntiForgeryToken]
+        public ActionResult PotwierdzenieUsunieciaZa(int id)
+        {
+            DRIVERS dRIVERS = db.DRIVERS.Find(id);
+            db.DRIVERS.Remove(dRIVERS);
+            db.SaveChanges();
+            return RedirectToAction("Zawodnicy");
+        }
+
         //////////////////////////////////Sekcja dotyczaca tylko druzyn////////////////
-        
+
         public ActionResult Druzyny()
         {
             return View(db.TEAMS.ToList());
@@ -116,7 +203,7 @@ namespace WebApplication2.Controllers
 
         [HttpPost, ActionName("Usun_druzyne")]
         [ValidateAntiForgeryToken]
-        public ActionResult PotwierdzenieUsuniecia(int id)
+        public ActionResult PotwierdzenieUsunieciaDr(int id)
         {
             TEAMS tEAMS = db.TEAMS.Find(id);
             db.TEAMS.Remove(tEAMS);

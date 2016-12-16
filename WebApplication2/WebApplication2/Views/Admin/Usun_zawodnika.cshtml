@@ -1,0 +1,41 @@
+﻿@model WebApplication2.Models.DB.DRIVERS
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Usuń zawodnika</title>
+</head>
+<body>
+    <h3>Jesteś pewny, że chcesz usunąć zawodnika?</h3>
+    <div>
+        <h4>Kierowcy</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Driver_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Driver_Name)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Usuń" class="btn btn-default" /> |
+                @Html.ActionLink("Wróć do poprzedniej strony", "Zawodnicy")
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -23,26 +23,7 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-
-        public ActionResult aktualnosci()
-        {
-            return View();
-        }
-
-        public ActionResult przyjaciele()
-        {
-            return View();
-        }
-
-        public ActionResult twoje_grupy()
-        {
-            return View();
-        }
-
-        public ActionResult ustawienia()
-        {
-            return View();
-        }
+        
 
         [Authorize]
         public ActionResult Welcome()
@@ -65,7 +46,7 @@ namespace WebApplication2.Controllers
                 {
                     userManager.AddUserAccount(userView.UserSignUpView);
                     FormsAuthentication.SetAuthCookie(userView.UserSignUpView.Login, false);    // ustawienie ciasteczka
-                    return RedirectToAction("Aktualnosci", "Profil");    // przekierowanie do metody Welcome w kontrolerze Home
+                    return RedirectToAction("Index", "Aktualnosci");    // przekierowanie do metody Welcome w kontrolerze Home
                 }
                 else
                 {
@@ -97,7 +78,7 @@ namespace WebApplication2.Controllers
                     if (password.Equals(UserManager.GetMd5Hash(md5Hash, userView.UserLoginView.Password)))
                     {
                         FormsAuthentication.SetAuthCookie(userView.UserLoginView.Login, false);
-                        return RedirectToAction("Aktualnosci", "Profil");
+                        return RedirectToAction("Index", "Aktualnosci");
                     }
                     else
                     {

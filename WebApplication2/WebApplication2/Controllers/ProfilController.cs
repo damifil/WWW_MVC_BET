@@ -9,42 +9,7 @@ namespace WebApplication2.Controllers
     public class ProfilController : Controller
     {
         // GET: Profil
-        public ActionResult Aktualnosci()
-        {
-            return View();
-        }
-
-        public ActionResult Statystyki()
-        {
-            return View();
-        }
-
-        public ActionResult Ustawienia()
-        {
-            return View();
-        }
-
-        public ActionResult Znajomi()
-        {
-            return View();
-        }
-
-        public ActionResult Wiadomosci()
-        {
-            return View();
-        }
-
-        public ActionResult Grupy()
-        {
-            return View();
-        }
-
-        public ActionResult profil()
-        {
-            return View();
-        }
-
-        public ActionResult Zaklady()
+        public ActionResult Index()
         {
             return View();
         }

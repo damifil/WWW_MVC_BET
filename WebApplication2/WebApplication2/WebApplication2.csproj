@@ -120,8 +120,15 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AktualnosciController.cs" />
+    <Compile Include="Controllers\GrupyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
+    <Compile Include="Controllers\StatystykiController.cs" />
+    <Compile Include="Controllers\UstawieniaController.cs" />
+    <Compile Include="Controllers\WiadomosciController.cs" />
+    <Compile Include="Controllers\ZakladyController.cs" />
+    <Compile Include="Controllers\ZnajomiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,23 +206,24 @@
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Admin\Aktualnosci.cshtml" />
     <Content Include="Views\Admin\Druzyny.cshtml" />
-    <Content Include="Views\znajomi\znajomi.cshtml" />
-    <Content Include="Views\wiadomosci\wiadomosci.cshtml" />
-    <Content Include="Views\panel sterowania\panel sterowania.cshtml" />
-    <Content Include="Views\grupy\grupy.cshtml" />
     <Content Include="Views\Home\statystyki.cshtml" />
-    <Content Include="Views\profil\Aktualnosci.cshtml" />
-    <Content Include="Views\profil\Statystyki.cshtml" />
-    <Content Include="Views\profil\Ustawienia.cshtml" />
-    <Content Include="Views\profil\Znajomi.cshtml" />
-    <Content Include="Views\profil\Wiadomosci.cshtml" />
-    <Content Include="Views\profil\Grupy.cshtml" />
-    <Content Include="Views\profil\profil.cshtml" />
-    <Content Include="Views\profil\Zaklady.cshtml" />
     <Content Include="Views\Admin\Stworz_druzyne.cshtml" />
     <Content Include="Views\Admin\Szczegoly_druzyny.cshtml" />
     <Content Include="Views\Admin\Usun_druzyne.cshtml" />
     <Content Include="Views\Admin\Edytuj_druzyne.cshtml" />
+    <Content Include="Views\statystyki\Index.cshtml" />
+    <Content Include="Views\Aktualnosci\Index.cshtml" />
+    <Content Include="Views\Ustawienia\Index.cshtml" />
+    <Content Include="Views\grupy\Index.cshtml" />
+    <Content Include="Views\Zaklady\Index.cshtml" />
+    <Content Include="Views\znajomi\Index.cshtml" />
+    <Content Include="Views\wiadomosci\Index.cshtml" />
+    <Content Include="Views\profil\Index.cshtml" />
+    <Content Include="Views\Admin\Zawodnicy.cshtml" />
+    <Content Include="Views\Admin\Szczegoly_zawodnika.cshtml" />
+    <Content Include="Views\Admin\Stworz_zawodnika.cshtml" />
+    <Content Include="Views\Admin\Edytuj_zawodnika.cshtml" />
+    <Content Include="Views\Admin\Usun_zawodnika.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

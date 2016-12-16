@@ -40,28 +40,25 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li@(pageName == "aktualnosci" ? "class=active" : "")>
-                            @Html.ActionLink("aktualnosci", "Aktualnosci")
+                            @Html.ActionLink("aktualności", "Index", "Aktualnosci")
                         </li>
                         <li@(pageName == "grupy" ? "class=active" : "")>
-                                @Html.ActionLink("grupy", "Grupy")
+                                @Html.ActionLink("grupy", "Index", "Grupy")
                         </li>
                         <li@(pageName == "profil" ? "class=active" : "")>
-                                @Html.ActionLink("profil", "profil")
+                                @Html.ActionLink("profil", "Index", "Profil")
                         </li>
-                        <li@(pageName == "grupy" ? "class=active" : "")>
-                                @Html.ActionLink("grupy", "grupy", "grupy")
-                         </li>
                          <li@(pageName == "statystyki" ? "class=active" : "")>
-                                @Html.ActionLink("statystyki", "Statystyki")
+                                @Html.ActionLink("statystyki", "Index", "Statystyki")
                          </li>
                          <li@(pageName == "wiadomosci" ? "class=active" : "")>
-                                @Html.ActionLink("wiadomosci", "Wiadomosci")
+                                @Html.ActionLink("wiadomosci", "Index","Wiadomosci")
                          </li>
                          <li@(pageName == "znajomi" ? "class=active" : "")>
-                                @Html.ActionLink("znajomi", "Znajomi")
+                                @Html.ActionLink("znajomi", "Index","Znajomi")
                          </li>
                              <li@(pageName == "zaklady" ? "class=active" : "")>
-                                 @Html.ActionLink("zaklady", "zaklady")
+                                 @Html.ActionLink("zaklady","Index", "Zaklady")
                          </li>
 </ul>
             </div>
