@@ -2,7 +2,6 @@
 
 @{
     var pageName = ViewContext.RouteData.Values["controller"].ToString();
-    var button_flag = 0;
 }
 
 
@@ -19,85 +18,87 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link href="~/CSS/tlo.css" rel="stylesheet" />
-    </head>
+</head>
 
 
-    <body>
-        <!-- strona pod menu -->
-            <div class="head">
-                <form class="form-inline">
-                    <div class="input-group">
-                        <span><h1 style="color:green;">Zakłady Online (logo tu bedzie)</h1></span>
-                    </div>
-                    <input type="button" value="Wyloguj" onclick="location.href='@Url.Action("SignOut", "Home")'" />
-                </form>
+<body>
+    <!-- strona pod menu -->
+    <div class="head">
+        <form class="form-inline">
+            <div class="input-group">
+                <span><h1 style="color:white;">Zakłady Online (logo tu bedzie)</h1></span>
             </div>
+            <input type="button" value="Wyloguj" onclick="location.href='@Url.Action("SignOut", "Home")'" />
+        </form>
+    </div>
 
-            <nav class="navbar navbar-inverse" style="margin-bottom:0px">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">WebSiteName</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        <li@(pageName == "aktualnosci" ? "class=active" : "")>
-                            @Html.ActionLink("aktualności", "Index", "Aktualnosci")
-                        </li>
-                        <li@(pageName == "grupy" ? "class=active" : "")>
-                                @Html.ActionLink("grupy", "Index", "Grupy")
-                        </li>
-                        <li@(pageName == "profil" ? "class=active" : "")>
-                                @Html.ActionLink("profil", "Index", "Profil")
-                        </li>
-                         <li@(pageName == "statystyki" ? "class=active" : "")>
-                                @Html.ActionLink("statystyki", "Index", "Statystyki")
-                         </li>
-                         <li@(pageName == "wiadomosci" ? "class=active" : "")>
-                                @Html.ActionLink("wiadomosci", "Index","Wiadomosci")
-                         </li>
-                         <li@(pageName == "znajomi" ? "class=active" : "")>
-                                @Html.ActionLink("znajomi", "Index","Znajomi")
-                         </li>
-                             <li@(pageName == "zaklady" ? "class=active" : "")>
-                                 @Html.ActionLink("zaklady","Index", "Zaklady")
-                         </li>
-</ul>
+    <nav class="navbar navbar-default" style="margin-bottom:0px; background-color:#8EDCE5">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">WebSiteName</a>
             </div>
-        </nav>
-        
+            <ul class="nav navbar-nav">
+                <li @(pageName == "Aktualnosci" ? "class=active" : "")>
+                    @Html.ActionLink("Aktualnosci", "index", "Aktualnosci")
+                    </li>
 
-            <div class="row content">
-                <div class="col-sm-12" style="background-color:black">
-                    <!-- srodek  -->
-                    <div class="body">
-                        @RenderBody()
-                    </div>
-                </div>
+                    <li @(pageName == "profil" ? "class=active" : "")>
+                        @Html.ActionLink("profil", "index", "profil")
+                        </li>
+
+                        <li @(pageName == "grupy" ? "class=active" : "")>
+                            @Html.ActionLink("grupy", "index", "grupy")
+                            </li>
+
+                            <li @(pageName == "statystyki" ? "class=active" : "")>
+                                @Html.ActionLink("statystyki", "index", "statystyki")
+                                </li>
+
+                                <li @(pageName == "wiadomosci" ? " class=active" : "")>
+                                    @Html.ActionLink("wiadomosci", "index", "wiadomosci")
+                                    </li>
+
+                                    <li @(pageName == "znajomi" ? " class=active" : "")>
+                                        @Html.ActionLink("znajomi", "index", "znajomi")
+                                        </li>
+                                        <li @(pageName == "Zaklady" ? " class=active" : "")>
+                                            @Html.ActionLink("Zaklady", "index", "zaklady")
+                                            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- srodek  -->
+    <div class="body">
+        @RenderBody()
+    </div>
+
+
+    <!-- menu boczne -->
+    <div id="czat_menu" class="czat">
+        <span class="glyphicon glyphicon-user">Czat</span>
+        <!--- w li powinny byc linki do odpowiedniego usera do wiadomosci-->
+        <!-- lista do wypisania uzytkownikow, trzeba sprawdzici ilu sie miesci-->
+        <div class="row content">
+            <!--  fragment kodu dotyczacy uzytkownika aktywnego-->
+            <div class="col-sm-10">
+                <li>uzytkownik aktywny </li>
             </div>
-            
-            <!-- menu boczne -->
-            <div id="czat_menu" class="czat">
-                <span class="glyphicon glyphicon-user">Czat</span>
-                <!--- w li powinny byc linki do odpowiedniego usera do wiadomosci-->
-                <!-- lista do wypisania uzytkownikow, trzeba sprawdzici ilu sie miesci-->
-                <div class="row content">
-                    <!--  fragment kodu dotyczacy uzytkownika aktywnego-->
-                    <div class="col-sm-10">
-                        <li>uzytkownik aktywny </li>
-                    </div>
-                    <div class="col-sm-2">
-                        <span class="glyphicon glyphicon-star"></span>
-                    </div>
-                </div>
-                <div class="row content">
+            <div class="col-sm-2">
+                <span class="glyphicon glyphicon-star"></span>
+            </div>
+        </div>
+        <div class="row content">
 
-                    <!--  fragment kodu dotyczacy uzytkownika nieaktywnego-->
-                    <div class="col-sm-10">
-                        <li>uzytkownik nieaktywny </li>
-                    </div>
-                    <div class="col-sm-2">
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </div>
-                </div>
+            <!--  fragment kodu dotyczacy uzytkownika nieaktywnego-->
+            <div class="col-sm-10">
+                <li>uzytkownik nieaktywny </li>
+            </div>
+            <div class="col-sm-2">
+                <span class="glyphicon glyphicon-star-empty"></span>
+            </div>
+        </div>
 
 </body>
 </html>

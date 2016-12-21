@@ -1,40 +1,29 @@
 ﻿body {
-    background-color: Black ;
+    background-color:rgba(118,183,191,.5); 
     height:100%;
 }
-
-
-
 
 div.body {
   margin-left:10px;
   margin-right = 260px;
-
-    color: brown;
+    color:black;
 } 
 
-
 div.head {
-    background-color: DarkRed;
+    background-color: #273D40;
 }
+
 .czat {
     height: 100%;
     width: 250px;
     position: fixed;
     z-index: 1;
-    top: 122px;
+    top: 121px;
     right: 0px;
-    background-color: #111;
+    background-color: rgba(118,183,191,.3);
     overflow-x: hidden;
     padding-top: 0px;
 }
-
-
-
-.czat a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
-}
-
 
 
 #main {
