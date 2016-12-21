@@ -1,0 +1,34 @@
+﻿@model WebApplication2.Models.DB.SEASONS
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Szczegóły sezonów</title>
+</head>
+<body>
+    <div>
+        <h4>Sezony</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Year)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Year)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edytuj sezon", "Edytuj_sezon", new { id = Model.Season_ID }) |
+        @Html.ActionLink("Wróć do poprzedniej strony", "Sezony")
+    </p>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication2.Models.DB.TEAMS>
+﻿@model IEnumerable<WebApplication2.Models.DB.PARTICIPANTS>
 
 @{
     Layout = null;
@@ -13,33 +13,38 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Dodaj drużynę", "Stworz_druzyne")
+        @Html.ActionLink("Dodaj druzyne", "Stworz_druzyne")
     </p>
     <table class="table">
         <tr>
             <th>
-                ID drużyny
+                @Html.DisplayNameFor(model => model.DRIVERS.Driver_Name)
             </th>
             <th>
-               Nazwa drużyny
+                @Html.DisplayNameFor(model => model.SEASONS.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TEAMS.Team_Name)
             </th>
             <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
-            
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Team_ID)
+                    @Html.DisplayFor(modelItem => item.DRIVERS.Driver_Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Team_Name)
+                    @Html.DisplayFor(modelItem => item.SEASONS.Year)
                 </td>
                 <td>
-                    @Html.ActionLink("Edytuj", "Edytuj_druzyne", new { id = item.Team_ID }) |
-                    @Html.ActionLink("Szczegóły", "Szczegoly_druzyny", new { id = item.Team_ID }) |
-                    @Html.ActionLink("Usuń", "Usun_druzyne", new { id = item.Team_ID })
+                    @Html.DisplayFor(modelItem => item.TEAMS.Team_Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edytuj_druzyne", new { id = item.Participants_ID }) |
+                    @Html.ActionLink("Szczegóły", "Szczegoly_druzyny", new { id = item.Participants_ID }) |
+                    @Html.ActionLink("Usuń", "Usun_druzyne", new { id = item.Participants_ID })
                 </td>
             </tr>
         }

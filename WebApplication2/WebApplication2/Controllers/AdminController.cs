@@ -12,20 +12,195 @@ namespace WebApplication2.Controllers
     public class AdminController : Controller
     {
         private ProjektEntities db = new ProjektEntities();
-        // GET: Admin
+
         public ViewResult Panel()
         {
             return View();
         }
         
-        
+        /////////////////////////////////////Sekcja dotyczaca wyscigow//////////////////
         public ActionResult Wyscigi()
         {
+            var rACES = db.RACES.Include(r => r.SEASONS);
+            return View(rACES.ToList());
+        }
+     
+        public ActionResult Szczegoly_wyscigu(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RACES rACES = db.RACES.Find(id);
+            if (rACES == null)
+            {
+                return HttpNotFound();
+            }
+            return View(rACES);
+        }
+
+        public ActionResult Stworz_wyscig()
+        {
+            ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year");
             return View();
-        }        
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Stworz_wyscig([Bind(Include = "Race_ID,Season_ID,Track,Date,Pos_1,Time_1,Pos_2,Pos_3,Pos_4,Pos_5,Pos_6,Pos_7,Pos_8,Pos_9,Pos_10")] RACES rACES)
+        {
+            if (ModelState.IsValid)
+            {
+                db.RACES.Add(rACES);
+                db.SaveChanges();
+                return RedirectToAction("Wyscigi");
+            }
+
+            ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year", rACES.Season_ID);
+            return View(rACES);
+        }
+
+        public ActionResult Edytuj_wyscig(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RACES rACES = db.RACES.Find(id);
+            if (rACES == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year", rACES.Season_ID);
+            return View(rACES);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edytuj_wyscig([Bind(Include = "Race_ID,Season_ID,Track,Date,Pos_1,Time_1,Pos_2,Pos_3,Pos_4,Pos_5,Pos_6,Pos_7,Pos_8,Pos_9,Pos_10")] RACES rACES)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(rACES).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Wyscigi");
+            }
+            ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year", rACES.Season_ID);
+            return View(rACES);
+        }
+
+        public ActionResult Usun_wyscig(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RACES rACES = db.RACES.Find(id);
+            if (rACES == null)
+            {
+                return HttpNotFound();
+            }
+            return View(rACES);
+        }
+
+        [HttpPost, ActionName("Usun_wyscing")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Potwierdzenie_usunieciaWy(int id)
+        {
+            RACES rACES = db.RACES.Find(id);
+            db.RACES.Remove(rACES);
+            db.SaveChanges();
+            return RedirectToAction("Wyscigi");
+        }
+
+        ///////////////////////////////////Sekcja dotyczaca sezonow//////////////////////
         public ActionResult Sezony()
         {
+            return View(db.SEASONS.ToList());
+        }
+
+        public ActionResult Szczegoly_sezonu(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SEASONS sEASONS = db.SEASONS.Find(id);
+            if (sEASONS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sEASONS);
+        }
+
+        public ActionResult Stworz_sezon()
+        {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Stworz_sezon([Bind(Include = "Season_ID,Year")] SEASONS sEASONS)
+        {
+            if (ModelState.IsValid)
+            {
+                db.SEASONS.Add(sEASONS);
+                db.SaveChanges();
+                return RedirectToAction("Sezony");
+            }
+
+            return View(sEASONS);
+        }
+
+        public ActionResult Edytuj_sezon(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SEASONS sEASONS = db.SEASONS.Find(id);
+            if (sEASONS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sEASONS);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edytuj_sezon([Bind(Include = "Season_ID,Year")] SEASONS sEASONS)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(sEASONS).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Sezony");
+            }
+            return View(sEASONS);
+        }
+
+        public ActionResult Usun_sezon(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SEASONS sEASONS = db.SEASONS.Find(id);
+            if (sEASONS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sEASONS);
+        }
+
+        [HttpPost, ActionName("Usun_sezon")]
+        [ValidateAntiForgeryToken]
+        public ActionResult PotwierdzenieUsunieciaSe(int id)
+        {
+            SEASONS sEASONS = db.SEASONS.Find(id);
+            db.SEASONS.Remove(sEASONS);
+            db.SaveChanges();
+            return RedirectToAction("Sezony");
         }
 
         ///////////////////////////////////Sekcja dotyczaca zawodnikow//////////////////////
@@ -120,14 +295,14 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Zawodnicy");
         }
 
-        //////////////////////////////////Sekcja dotyczaca tylko druzyn////////////////
+        //////////////////////////////////Sekcja dotyczaca firm samochodowych////////////////
 
-        public ActionResult Druzyny()
+        public ActionResult Firmy()
         {
             return View(db.TEAMS.ToList());
         }
 
-        public ActionResult Szczegoly_druzyny(int? id)
+        public ActionResult Szczegoly_firmy(int? id)
         {
             if (id == null)
             {
@@ -141,26 +316,26 @@ namespace WebApplication2.Controllers
             return View(tEAMS);
         }
 
-        public ActionResult Stworz_druzyne()
+        public ActionResult Stworz_firme()
         {
             return View();
         }
       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Stworz_druzyne([Bind(Include = "Team_ID,Team_Name")] TEAMS tEAMS)
+        public ActionResult Stworz_firme([Bind(Include = "Team_ID,Team_Name")] TEAMS tEAMS)
         {
             if (ModelState.IsValid)
             {
                 db.TEAMS.Add(tEAMS);
                 db.SaveChanges();
-                return RedirectToAction("Druzyny");
+                return RedirectToAction("Firmy");
             }
 
             return View(tEAMS);
         }
 
-        public ActionResult Edytuj_druzyne(int? id)
+        public ActionResult Edytuj_firme(int? id)
         {
             if (id == null)
             {
@@ -176,18 +351,18 @@ namespace WebApplication2.Controllers
       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edytuj_druzyne([Bind(Include = "Team_ID,Team_Name")] TEAMS tEAMS)
+        public ActionResult Edytuj_firme([Bind(Include = "Team_ID,Team_Name")] TEAMS tEAMS)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tEAMS).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Druzyny");
+                return RedirectToAction("Firmy");
             }
             return View(tEAMS);
         }
 
-        public ActionResult Usun_druzyne(int? id)
+        public ActionResult Usun_firme(int? id)
         {
             if (id == null)
             {
@@ -201,14 +376,14 @@ namespace WebApplication2.Controllers
             return View(tEAMS);
         }
 
-        [HttpPost, ActionName("Usun_druzyne")]
+        [HttpPost, ActionName("Usun_firme")]
         [ValidateAntiForgeryToken]
-        public ActionResult PotwierdzenieUsunieciaDr(int id)
+        public ActionResult PotwierdzenieUsunieciaFr(int id)
         {
             TEAMS tEAMS = db.TEAMS.Find(id);
             db.TEAMS.Remove(tEAMS);
             db.SaveChanges();
-            return RedirectToAction("Druzyny");
+            return RedirectToAction("Firmy");
         }
 
         protected override void Dispose(bool disposing)
@@ -219,13 +394,119 @@ namespace WebApplication2.Controllers
             }
             base.Dispose(disposing);
         }
-                
-        /////////////////////////////////////////////////////Sekcja dotyczaca uzytkownikow
-        
+
+        /////////////////////////////////////////////////////Sekcja dotyczaca uzytkownikow////////////        
+
+        public ActionResult Druzyny()
+        {
+            var pARTICIPANTS = db.PARTICIPANTS.Include(p => p.DRIVERS).Include(p => p.SEASONS).Include(p => p.TEAMS);
+            return View(pARTICIPANTS.ToList());
+        }
+
+        public ActionResult Szczegoly_druzyny(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PARTICIPANTS pARTICIPANTS = db.PARTICIPANTS.Find(id);
+            if (pARTICIPANTS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pARTICIPANTS);
+        }
+
+        public ActionResult Stworz_druzyne()
+        {
+            ViewBag.Driver_ID = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name");
+            ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year");
+            ViewBag.Team_ID = new SelectList(db.TEAMS, "Team_ID", "Team_Name");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Stworz_druzyne([Bind(Include = "Participants_ID,Season_ID,Driver_ID,Team_ID")] PARTICIPANTS pARTICIPANTS)
+        {
+            if (ModelState.IsValid)
+            {
+                db.PARTICIPANTS.Add(pARTICIPANTS);
+                db.SaveChanges();
+                return RedirectToAction("Druzyny");
+            }
+
+            ViewBag.Driver_ID = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", pARTICIPANTS.Driver_ID);
+            ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year", pARTICIPANTS.Season_ID);
+            ViewBag.Team_ID = new SelectList(db.TEAMS, "Team_ID", "Team_Name", pARTICIPANTS.Team_ID);
+            return View(pARTICIPANTS);
+        }
+
+        public ActionResult Edytuj_druzyne(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PARTICIPANTS pARTICIPANTS = db.PARTICIPANTS.Find(id);
+            if (pARTICIPANTS == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Driver_ID = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", pARTICIPANTS.Driver_ID);
+            ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year", pARTICIPANTS.Season_ID);
+            ViewBag.Team_ID = new SelectList(db.TEAMS, "Team_ID", "Team_Name", pARTICIPANTS.Team_ID);
+            return View(pARTICIPANTS);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edytuj_druzne([Bind(Include = "Participants_ID,Season_ID,Driver_ID,Team_ID")] PARTICIPANTS pARTICIPANTS)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(pARTICIPANTS).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Druzyny");
+            }
+            ViewBag.Driver_ID = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", pARTICIPANTS.Driver_ID);
+            ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year", pARTICIPANTS.Season_ID);
+            ViewBag.Team_ID = new SelectList(db.TEAMS, "Team_ID", "Team_Name", pARTICIPANTS.Team_ID);
+            return View(pARTICIPANTS);
+        }
+
+        public ActionResult Usun_druzyne(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PARTICIPANTS pARTICIPANTS = db.PARTICIPANTS.Find(id);
+            if (pARTICIPANTS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pARTICIPANTS);
+        }
+
+        [HttpPost, ActionName("Usun_druzyne")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Potwierdzenie_usunieciaDr(int id)
+        {
+            PARTICIPANTS pARTICIPANTS = db.PARTICIPANTS.Find(id);
+            db.PARTICIPANTS.Remove(pARTICIPANTS);
+            db.SaveChanges();
+            return RedirectToAction("Druzyny");
+        }
+
+        /////////////////////////////////////////////////////Sekcja dotyczaca uzytkownikow///////////
+
         public ActionResult Uzytkownicy()
         {
             return View();
         }
+
+
         public ActionResult Aktualnosci()
         {
             return View();

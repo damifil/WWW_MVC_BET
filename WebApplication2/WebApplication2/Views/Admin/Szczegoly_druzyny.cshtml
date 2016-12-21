@@ -1,4 +1,4 @@
-﻿@model WebApplication2.Models.DB.TEAMS
+﻿@model WebApplication2.Models.DB.PARTICIPANTS
 
 @{
     Layout = null;
@@ -13,21 +13,37 @@
 </head>
 <body>
     <div>
-        <h4>Drużyny</h4>
+        <h4>Drużyna</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Team_Name)
+                @Html.DisplayNameFor(model => model.DRIVERS.Driver_Name)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Team_Name)
+                @Html.DisplayFor(model => model.DRIVERS.Driver_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SEASONS.Year)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SEASONS.Year)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TEAMS.Team_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TEAMS.Team_Name)
             </dd>
 
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edytuj drużynę", "Edytuj_druzyne", new { id = Model.Team_ID }) |
+        @Html.ActionLink("Edytuj", "Edytuj_druzyne", new { id = Model.Participants_ID }) |
         @Html.ActionLink("Wróć do poprzedniej strony", "Druzyny")
     </p>
 </body>

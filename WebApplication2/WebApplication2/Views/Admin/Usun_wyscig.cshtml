@@ -1,0 +1,145 @@
+﻿@model WebApplication2.Models.DB.RACES
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Usuń wyścig</title>
+</head>
+<body>
+    <h3>Jesteś pewny, żeby usunąć wyścig?</h3>
+    <div>
+        <h4>Wyścig</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Track)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Track)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Time_1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Time_1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_4)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_4)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_5)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_5)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_6)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_6)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_7)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_7)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_8)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_8)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_9)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_9)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pos_10)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pos_10)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SEASONS.Year)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SEASONS.Year)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Usuń" class="btn btn-default" /> |
+                @Html.ActionLink("Wróć do poprzedniej strony", "Wyscigi")
+            </div>
+        }
+    </div>
+</body>
+</html>

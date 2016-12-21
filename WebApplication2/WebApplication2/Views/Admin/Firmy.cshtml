@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplication2.Models.DB.TEAMS>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Firmy</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Dodaj firmę", "Stworz_firme")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                ID firmy
+            </th>
+            <th>
+               Nazwa firmy
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team_Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edytuj_firme", new { id = item.Team_ID }) |
+                    @Html.ActionLink("Szczegóły", "Szczegoly_firmy", new { id = item.Team_ID }) |
+                    @Html.ActionLink("Usuń", "Usun_firme", new { id = item.Team_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Wróć do panelu administratora", "Panel")
+</body>
+</html>

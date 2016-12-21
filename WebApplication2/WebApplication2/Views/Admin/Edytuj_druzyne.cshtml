@@ -1,4 +1,4 @@
-﻿@model WebApplication2.Models.DB.TEAMS
+﻿@model WebApplication2.Models.DB.PARTICIPANTS
 
 @{
     Layout = null;
@@ -17,16 +17,32 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Drużyny</h4>
+            <h4>Drużyna</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Team_ID)
+            @Html.HiddenFor(model => model.Participants_ID)
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Team_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Season_ID, "Season_ID", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Team_Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Team_Name, "", new { @class = "text-danger" })
+                    @Html.DropDownList("Season_ID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Season_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Driver_ID, "Driver_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Driver_ID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Driver_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Team_ID, "Team_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Team_ID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Team_ID, "", new { @class = "text-danger" })
                 </div>
             </div>
 

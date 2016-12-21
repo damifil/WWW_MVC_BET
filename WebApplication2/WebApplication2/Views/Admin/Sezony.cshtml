@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebApplication2.Models.DB.SEASONS>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sezony</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Dodaj sezon", "Stworz_sezon")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edytuj_sezon", new { id = item.Season_ID }) |
+                    @Html.ActionLink("Szczegóły", "Szczegoly_sezonu", new { id = item.Season_ID }) |
+                    @Html.ActionLink("Usuń", "Usun_sezon", new { id = item.Season_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Wróć do panelu administratora", "Panel")
+</body>
+</html>

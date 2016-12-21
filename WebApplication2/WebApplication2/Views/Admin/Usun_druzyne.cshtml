@@ -1,4 +1,4 @@
-﻿@model WebApplication2.Models.DB.TEAMS
+﻿@model WebApplication2.Models.DB.PARTICIPANTS
 
 @{
     Layout = null;
@@ -12,17 +12,33 @@
     <title>Usuń drużynę</title>
 </head>
 <body>
-    <h3>Czy na pewno chcesz usunąć drużynę?</h3>
+    <h3>Jesteś pewny, że chcesz usunąć drużynę?</h3>
     <div>
-        <h4>Drużyny</h4>
+        <h4>Drużyna</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Team_Name)
+                @Html.DisplayNameFor(model => model.DRIVERS.Driver_Name)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Team_Name)
+                @Html.DisplayFor(model => model.DRIVERS.Driver_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SEASONS.Year)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SEASONS.Year)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TEAMS.Team_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TEAMS.Team_Name)
             </dd>
 
         </dl>

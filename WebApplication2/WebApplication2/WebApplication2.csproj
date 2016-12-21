@@ -123,6 +123,7 @@
     <Compile Include="Controllers\AktualnosciController.cs" />
     <Compile Include="Controllers\GrupyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PARTICIPANTSController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\StatystykiController.cs" />
     <Compile Include="Controllers\UstawieniaController.cs" />
@@ -205,12 +206,12 @@
     <Content Include="Views\statystyki\statystyki.cshtml" />
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Admin\Aktualnosci.cshtml" />
-    <Content Include="Views\Admin\Druzyny.cshtml" />
+    <Content Include="Views\Admin\Firmy.cshtml" />
     <Content Include="Views\Home\statystyki.cshtml" />
-    <Content Include="Views\Admin\Stworz_druzyne.cshtml" />
-    <Content Include="Views\Admin\Szczegoly_druzyny.cshtml" />
-    <Content Include="Views\Admin\Usun_druzyne.cshtml" />
-    <Content Include="Views\Admin\Edytuj_druzyne.cshtml" />
+    <Content Include="Views\Admin\Stworz_firme.cshtml" />
+    <Content Include="Views\Admin\Szczegoly_firmy.cshtml" />
+    <Content Include="Views\Admin\Usun_firme.cshtml" />
+    <Content Include="Views\Admin\Edytuj_firme.cshtml" />
     <Content Include="Views\statystyki\Index.cshtml" />
     <Content Include="Views\Aktualnosci\Index.cshtml" />
     <Content Include="Views\Ustawienia\Index.cshtml" />
@@ -224,6 +225,21 @@
     <Content Include="Views\Admin\Stworz_zawodnika.cshtml" />
     <Content Include="Views\Admin\Edytuj_zawodnika.cshtml" />
     <Content Include="Views\Admin\Usun_zawodnika.cshtml" />
+    <Content Include="Views\Admin\Sezony.cshtml" />
+    <Content Include="Views\Admin\Szczegoly_sezonu.cshtml" />
+    <Content Include="Views\Admin\Stworz_sezon.cshtml" />
+    <Content Include="Views\Admin\Edytuj_sezon.cshtml" />
+    <Content Include="Views\Admin\Usun_sezon.cshtml" />
+    <Content Include="Views\Admin\Wyscigi.cshtml" />
+    <Content Include="Views\Admin\Szczegoly_wyscigu.cshtml" />
+    <Content Include="Views\Admin\Stworz_wyscig.cshtml" />
+    <Content Include="Views\Admin\Edytuj_wyscig.cshtml" />
+    <Content Include="Views\Admin\Usun_wyscig.cshtml" />
+    <Content Include="Views\Admin\Druzyny.cshtml" />
+    <Content Include="Views\Admin\Szczegoly_druzyny.cshtml" />
+    <Content Include="Views\Admin\Stworz_druzyne.cshtml" />
+    <Content Include="Views\Admin\Edytuj_druzyne.cshtml" />
+    <Content Include="Views\Admin\Usun_druzyne.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
