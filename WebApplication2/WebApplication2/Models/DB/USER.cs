@@ -23,13 +23,18 @@ namespace WebApplication2.Models.DB
             this.INVITATIONS = new HashSet<INVITATIONS>();
             this.INVITATIONS1 = new HashSet<INVITATIONS>();
             this.MEMBERSHIPS = new HashSet<MEMBERSHIPS>();
+            this.MESSAGES = new HashSet<MESSAGES>();
+            this.MESSAGES1 = new HashSet<MESSAGES>();
         }
     
         public string User_ID { get; set; }
         public string Password { get; set; }
         public string e_mail { get; set; }
-        public string Total_score { get; set; }
+        public Nullable<int> Total_score { get; set; }
         public bool Is_Admin { get; set; }
+        public Nullable<bool> Is_Exists { get; set; }
+        public Nullable<bool> Is_Log { get; set; }
+        public byte[] Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BETS> BETS { get; set; }
@@ -43,5 +48,9 @@ namespace WebApplication2.Models.DB
         public virtual ICollection<INVITATIONS> INVITATIONS1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEMBERSHIPS> MEMBERSHIPS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MESSAGES> MESSAGES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MESSAGES> MESSAGES1 { get; set; }
     }
 }

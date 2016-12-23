@@ -30,6 +30,7 @@
     </Key>
     <Property Name="Driver_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Driver_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="PARTICIPANTS" Relationship="Self.FK_PARTICIPANTS_DRIVERS" FromRole="DRIVERS" ToRole="PARTICIPANTS" />
   </EntityType>
   <EntityType Name="FRIENDS">
@@ -48,6 +49,7 @@
     </Key>
     <Property Name="Groups_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Group_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="BETS" Relationship="Self.FK_BETS_GROUPS" FromRole="GROUPS" ToRole="BETS" />
     <NavigationProperty Name="MEMBERSHIPS" Relationship="Self.FK_MEMBERSHIPS_GROUPS" FromRole="GROUPS" ToRole="MEMBERSHIPS" />
   </EntityType>
@@ -72,6 +74,17 @@
     <Property Name="Score" Type="Int32" Nullable="false" />
     <NavigationProperty Name="GROUPS" Relationship="Self.FK_MEMBERSHIPS_GROUPS" FromRole="MEMBERSHIPS" ToRole="GROUPS" />
     <NavigationProperty Name="USER" Relationship="Self.FK_MEMBERSHIPS_USER" FromRole="MEMBERSHIPS" ToRole="USER" />
+  </EntityType>
+  <EntityType Name="MESSAGES">
+    <Key>
+      <PropertyRef Name="Message_ID" />
+    </Key>
+    <Property Name="Message_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message_From" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Message_To" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_MESSAGES_USER" FromRole="MESSAGES" ToRole="USER" />
+    <NavigationProperty Name="USER1" Relationship="Self.FK_MESSAGES_USER1" FromRole="MESSAGES" ToRole="USER" />
   </EntityType>
   <EntityType Name="PARTICIPANTS">
     <Key>
@@ -132,6 +145,7 @@
     </Key>
     <Property Name="Team_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Team_Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="PARTICIPANTS" Relationship="Self.FK_PARTICIPANTS_TEAMS" FromRole="TEAMS" ToRole="PARTICIPANTS" />
   </EntityType>
   <EntityType Name="USER">
@@ -141,14 +155,19 @@
     <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="e_mail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Total_score" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="Total_score" Type="Int32" />
     <Property Name="Is_Admin" Type="Boolean" Nullable="false" />
+    <Property Name="Is_Exists" Type="Boolean" />
+    <Property Name="Is_Log" Type="Boolean" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="BETS" Relationship="Self.FK_BETS_USER" FromRole="USER" ToRole="BETS" />
     <NavigationProperty Name="FRIENDS" Relationship="Self.FK_FRIENDS_USER" FromRole="USER" ToRole="FRIENDS" />
     <NavigationProperty Name="FRIENDS1" Relationship="Self.FK_FRIENDS_USER1" FromRole="USER" ToRole="FRIENDS" />
     <NavigationProperty Name="INVITATIONS" Relationship="Self.FK_INVITATIONS_USER" FromRole="USER" ToRole="INVITATIONS" />
     <NavigationProperty Name="INVITATIONS1" Relationship="Self.FK_INVITATIONS_USER1" FromRole="USER" ToRole="INVITATIONS" />
     <NavigationProperty Name="MEMBERSHIPS" Relationship="Self.FK_MEMBERSHIPS_USER" FromRole="USER" ToRole="MEMBERSHIPS" />
+    <NavigationProperty Name="MESSAGES" Relationship="Self.FK_MESSAGES_USER" FromRole="USER" ToRole="MESSAGES" />
+    <NavigationProperty Name="MESSAGES1" Relationship="Self.FK_MESSAGES_USER1" FromRole="USER" ToRole="MESSAGES" />
   </EntityType>
   <Association Name="FK_BETS_GROUPS">
     <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="1" />
@@ -270,6 +289,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_MESSAGES_USER">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="MESSAGES" Type="Self.MESSAGES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="MESSAGES">
+        <PropertyRef Name="Message_To" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MESSAGES_USER1">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="MESSAGES" Type="Self.MESSAGES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="MESSAGES">
+        <PropertyRef Name="Message_From" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PARTICIPANTS_SEASONS">
     <End Role="SEASONS" Type="Self.SEASONS" Multiplicity="1" />
     <End Role="PARTICIPANTS" Type="Self.PARTICIPANTS" Multiplicity="*" />
@@ -313,6 +356,7 @@
     <EntitySet Name="GROUPS" EntityType="Self.GROUPS" />
     <EntitySet Name="INVITATIONS" EntityType="Self.INVITATIONS" />
     <EntitySet Name="MEMBERSHIPS" EntityType="Self.MEMBERSHIPS" />
+    <EntitySet Name="MESSAGES" EntityType="Self.MESSAGES" />
     <EntitySet Name="PARTICIPANTS" EntityType="Self.PARTICIPANTS" />
     <EntitySet Name="RACES" EntityType="Self.RACES" />
     <EntitySet Name="SEASONS" EntityType="Self.SEASONS" />
@@ -358,6 +402,14 @@
     <AssociationSet Name="FK_MEMBERSHIPS_USER" Association="Self.FK_MEMBERSHIPS_USER">
       <End Role="USER" EntitySet="USER" />
       <End Role="MEMBERSHIPS" EntitySet="MEMBERSHIPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MESSAGES_USER" Association="Self.FK_MESSAGES_USER">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="MESSAGES" EntitySet="MESSAGES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MESSAGES_USER1" Association="Self.FK_MESSAGES_USER1">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="MESSAGES" EntitySet="MESSAGES" />
     </AssociationSet>
     <AssociationSet Name="FK_PARTICIPANTS_SEASONS" Association="Self.FK_PARTICIPANTS_SEASONS">
       <End Role="SEASONS" EntitySet="SEASONS" />

@@ -104,6 +104,7 @@
       <DependentUpon>Projekt.mdf</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="CSS\tlo.css" />
     <Content Include="Models\DB\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -114,7 +115,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="CSS\tlo.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -123,7 +123,6 @@
     <Compile Include="Controllers\AktualnosciController.cs" />
     <Compile Include="Controllers\GrupyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PARTICIPANTSController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\StatystykiController.cs" />
     <Compile Include="Controllers\UstawieniaController.cs" />
@@ -149,6 +148,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\MEMBERSHIPS.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\MESSAGES.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\Model1.Context.cs">
@@ -193,13 +195,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\DB\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DB\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
@@ -240,6 +235,13 @@
     <Content Include="Views\Admin\Stworz_druzyne.cshtml" />
     <Content Include="Views\Admin\Edytuj_druzyne.cshtml" />
     <Content Include="Views\Admin\Usun_druzyne.cshtml" />
+    <EntityDeploy Include="Models\DB\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

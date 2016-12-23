@@ -4,19 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="76411a4526cb4eeca339c92ab85cf221" Name="Diagram1">
-        <EntityTypeShape EntityType="ProjektModel.BETS" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.DRIVERS" Width="1.5" PointX="1.5" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.FRIENDS" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.GROUPS" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.INVITATIONS" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.MEMBERSHIPS" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.PARTICIPANTS" Width="1.5" PointX="3.75" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.RACES" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.SEASONS" Width="1.5" PointX="1.5" PointY="17.375" IsExpanded="true" />
+      <Diagram DiagramId="3c62ca967cf14818828c37cbfb64d182" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjektModel.BETS" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.DRIVERS" Width="1.5" PointX="1.5" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.FRIENDS" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.GROUPS" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.INVITATIONS" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.MEMBERSHIPS" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.MESSAGES" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.PARTICIPANTS" Width="1.5" PointX="3.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.RACES" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.SEASONS" Width="1.5" PointX="1.5" PointY="23.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.TEAMS" Width="1.5" PointX="1.5" PointY="22.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.USER" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.TEAMS" Width="1.5" PointX="1.5" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.USER" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
         <AssociationConnector Association="ProjektModel.FK_BETS_GROUPS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_BETS_RACES" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_BETS_USER" ManuallyRouted="false" />
@@ -27,6 +28,8 @@
         <AssociationConnector Association="ProjektModel.FK_INVITATIONS_USER" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_INVITATIONS_USER1" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_MEMBERSHIPS_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektModel.FK_MESSAGES_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektModel.FK_MESSAGES_USER1" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_PARTICIPANTS_SEASONS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_PARTICIPANTS_TEAMS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_RACES_SEASONS" ManuallyRouted="false" />

@@ -28,6 +28,7 @@
         <MappingFragment StoreEntitySet="DRIVERS">
           <ScalarProperty Name="Driver_ID" ColumnName="Driver_ID" />
           <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -45,6 +46,7 @@
         <MappingFragment StoreEntitySet="GROUPS">
           <ScalarProperty Name="Groups_ID" ColumnName="Groups_ID" />
           <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -64,6 +66,16 @@
           <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
           <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MESSAGES">
+      <EntityTypeMapping TypeName="ProjektModel.MESSAGES">
+        <MappingFragment StoreEntitySet="MESSAGES">
+          <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
+          <ScalarProperty Name="Message_From" ColumnName="Message_From" />
+          <ScalarProperty Name="Message_To" ColumnName="Message_To" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -122,6 +134,7 @@
         <MappingFragment StoreEntitySet="TEAMS">
           <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
           <ScalarProperty Name="Team_Name" ColumnName="Team_Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -133,6 +146,9 @@
           <ScalarProperty Name="e_mail" ColumnName="e_mail" />
           <ScalarProperty Name="Total_score" ColumnName="Total_score" />
           <ScalarProperty Name="Is_Admin" ColumnName="Is_Admin" />
+          <ScalarProperty Name="Is_Exists" ColumnName="Is_Exists" />
+          <ScalarProperty Name="Is_Log" ColumnName="Is_Log" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

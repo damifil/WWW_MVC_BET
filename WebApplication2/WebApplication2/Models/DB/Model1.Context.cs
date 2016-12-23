@@ -31,6 +31,7 @@ namespace WebApplication2.Models.DB
         public virtual DbSet<GROUPS> GROUPS { get; set; }
         public virtual DbSet<INVITATIONS> INVITATIONS { get; set; }
         public virtual DbSet<MEMBERSHIPS> MEMBERSHIPS { get; set; }
+        public virtual DbSet<MESSAGES> MESSAGES { get; set; }
         public virtual DbSet<PARTICIPANTS> PARTICIPANTS { get; set; }
         public virtual DbSet<RACES> RACES { get; set; }
         public virtual DbSet<SEASONS> SEASONS { get; set; }

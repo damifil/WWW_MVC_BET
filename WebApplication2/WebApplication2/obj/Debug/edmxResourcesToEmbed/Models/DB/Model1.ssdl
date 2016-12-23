@@ -27,6 +27,7 @@
     </Key>
     <Property Name="Driver_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Driver_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Image" Type="image" />
   </EntityType>
   <EntityType Name="FRIENDS">
     <Key>
@@ -42,6 +43,7 @@
     </Key>
     <Property Name="Groups_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Group_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Image" Type="image" />
   </EntityType>
   <EntityType Name="INVITATIONS">
     <Key>
@@ -60,6 +62,15 @@
     <Property Name="Group_ID" Type="int" Nullable="false" />
     <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Score" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MESSAGES">
+    <Key>
+      <PropertyRef Name="Message_ID" />
+    </Key>
+    <Property Name="Message_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Message_From" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Message_To" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Content" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="PARTICIPANTS">
     <Key>
@@ -113,6 +124,7 @@
     </Key>
     <Property Name="Team_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Team_Name" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Image" Type="image" />
   </EntityType>
   <EntityType Name="USER">
     <Key>
@@ -121,8 +133,11 @@
     <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="e_mail" Type="varchar" MaxLength="60" Nullable="false" />
-    <Property Name="Total_score" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="Total_score" Type="int" />
     <Property Name="Is_Admin" Type="bit" Nullable="false" />
+    <Property Name="Is_Exists" Type="bit" />
+    <Property Name="Is_Log" Type="bit" />
+    <Property Name="Image" Type="image" />
   </EntityType>
   <Association Name="FK_BETS_GROUPS">
     <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="1" />
@@ -232,6 +247,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_MESSAGES_USER">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="MESSAGES" Type="Self.MESSAGES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="MESSAGES">
+        <PropertyRef Name="Message_To" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MESSAGES_USER1">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="MESSAGES" Type="Self.MESSAGES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="MESSAGES">
+        <PropertyRef Name="Message_From" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PARTICIPANTS_DRIVERS">
     <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="1" />
     <End Role="PARTICIPANTS" Type="Self.PARTICIPANTS" Multiplicity="*" />
@@ -287,6 +326,7 @@
     <EntitySet Name="GROUPS" EntityType="Self.GROUPS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="INVITATIONS" EntityType="Self.INVITATIONS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MEMBERSHIPS" EntityType="Self.MEMBERSHIPS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MESSAGES" EntityType="Self.MESSAGES" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PARTICIPANTS" EntityType="Self.PARTICIPANTS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RACES" EntityType="Self.RACES" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SEASONS" EntityType="Self.SEASONS" Schema="dbo" store:Type="Tables" />
@@ -328,6 +368,14 @@
     <AssociationSet Name="FK_MEMBERSHIPS_USER" Association="Self.FK_MEMBERSHIPS_USER">
       <End Role="USER" EntitySet="USER" />
       <End Role="MEMBERSHIPS" EntitySet="MEMBERSHIPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MESSAGES_USER" Association="Self.FK_MESSAGES_USER">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="MESSAGES" EntitySet="MESSAGES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MESSAGES_USER1" Association="Self.FK_MESSAGES_USER1">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="MESSAGES" EntitySet="MESSAGES" />
     </AssociationSet>
     <AssociationSet Name="FK_PARTICIPANTS_DRIVERS" Association="Self.FK_PARTICIPANTS_DRIVERS">
       <End Role="DRIVERS" EntitySet="DRIVERS" />

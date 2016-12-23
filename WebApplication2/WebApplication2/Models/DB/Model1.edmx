@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ProjektModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ProjektModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BETS">
           <Key>
             <PropertyRef Name="Bet_ID" />
@@ -32,6 +32,7 @@
           </Key>
           <Property Name="Driver_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Driver_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="image" />
         </EntityType>
         <EntityType Name="FRIENDS">
           <Key>
@@ -47,6 +48,7 @@
           </Key>
           <Property Name="Groups_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Group_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="image" />
         </EntityType>
         <EntityType Name="INVITATIONS">
           <Key>
@@ -65,6 +67,15 @@
           <Property Name="Group_ID" Type="int" Nullable="false" />
           <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Score" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MESSAGES">
+          <Key>
+            <PropertyRef Name="Message_ID" />
+          </Key>
+          <Property Name="Message_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message_From" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message_To" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Content" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="PARTICIPANTS">
           <Key>
@@ -118,6 +129,7 @@
           </Key>
           <Property Name="Team_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Team_Name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Image" Type="image" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
@@ -126,8 +138,11 @@
           <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="e_mail" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="Total_score" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Total_score" Type="int" />
           <Property Name="Is_Admin" Type="bit" Nullable="false" />
+          <Property Name="Is_Exists" Type="bit" />
+          <Property Name="Is_Log" Type="bit" />
+          <Property Name="Image" Type="image" />
         </EntityType>
         <Association Name="FK_BETS_GROUPS">
           <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="1" />
@@ -237,6 +252,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MESSAGES_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="MESSAGES" Type="Self.MESSAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="MESSAGES">
+              <PropertyRef Name="Message_To" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MESSAGES_USER1">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="MESSAGES" Type="Self.MESSAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="MESSAGES">
+              <PropertyRef Name="Message_From" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PARTICIPANTS_DRIVERS">
           <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="1" />
           <End Role="PARTICIPANTS" Type="Self.PARTICIPANTS" Multiplicity="*" />
@@ -292,6 +331,7 @@
           <EntitySet Name="GROUPS" EntityType="Self.GROUPS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="INVITATIONS" EntityType="Self.INVITATIONS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEMBERSHIPS" EntityType="Self.MEMBERSHIPS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MESSAGES" EntityType="Self.MESSAGES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PARTICIPANTS" EntityType="Self.PARTICIPANTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RACES" EntityType="Self.RACES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEASONS" EntityType="Self.SEASONS" Schema="dbo" store:Type="Tables" />
@@ -334,6 +374,14 @@
             <End Role="USER" EntitySet="USER" />
             <End Role="MEMBERSHIPS" EntitySet="MEMBERSHIPS" />
           </AssociationSet>
+          <AssociationSet Name="FK_MESSAGES_USER" Association="Self.FK_MESSAGES_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="MESSAGES" EntitySet="MESSAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MESSAGES_USER1" Association="Self.FK_MESSAGES_USER1">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="MESSAGES" EntitySet="MESSAGES" />
+          </AssociationSet>
           <AssociationSet Name="FK_PARTICIPANTS_DRIVERS" Association="Self.FK_PARTICIPANTS_DRIVERS">
             <End Role="DRIVERS" EntitySet="DRIVERS" />
             <End Role="PARTICIPANTS" EntitySet="PARTICIPANTS" />
@@ -351,7 +399,8 @@
             <End Role="RACES" EntitySet="RACES" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProjektModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -385,6 +434,7 @@
           </Key>
           <Property Name="Driver_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Driver_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="PARTICIPANTS" Relationship="Self.FK_PARTICIPANTS_DRIVERS" FromRole="DRIVERS" ToRole="PARTICIPANTS" />
         </EntityType>
         <EntityType Name="FRIENDS">
@@ -403,6 +453,7 @@
           </Key>
           <Property Name="Groups_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Group_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="BETS" Relationship="Self.FK_BETS_GROUPS" FromRole="GROUPS" ToRole="BETS" />
           <NavigationProperty Name="MEMBERSHIPS" Relationship="Self.FK_MEMBERSHIPS_GROUPS" FromRole="GROUPS" ToRole="MEMBERSHIPS" />
         </EntityType>
@@ -427,6 +478,17 @@
           <Property Name="Score" Type="Int32" Nullable="false" />
           <NavigationProperty Name="GROUPS" Relationship="Self.FK_MEMBERSHIPS_GROUPS" FromRole="MEMBERSHIPS" ToRole="GROUPS" />
           <NavigationProperty Name="USER" Relationship="Self.FK_MEMBERSHIPS_USER" FromRole="MEMBERSHIPS" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="MESSAGES">
+          <Key>
+            <PropertyRef Name="Message_ID" />
+          </Key>
+          <Property Name="Message_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message_From" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Message_To" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_MESSAGES_USER" FromRole="MESSAGES" ToRole="USER" />
+          <NavigationProperty Name="USER1" Relationship="Self.FK_MESSAGES_USER1" FromRole="MESSAGES" ToRole="USER" />
         </EntityType>
         <EntityType Name="PARTICIPANTS">
           <Key>
@@ -487,6 +549,7 @@
           </Key>
           <Property Name="Team_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Team_Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="PARTICIPANTS" Relationship="Self.FK_PARTICIPANTS_TEAMS" FromRole="TEAMS" ToRole="PARTICIPANTS" />
         </EntityType>
         <EntityType Name="USER">
@@ -496,14 +559,19 @@
           <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="e_mail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Total_score" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="Total_score" Type="Int32" />
           <Property Name="Is_Admin" Type="Boolean" Nullable="false" />
+          <Property Name="Is_Exists" Type="Boolean" />
+          <Property Name="Is_Log" Type="Boolean" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="BETS" Relationship="Self.FK_BETS_USER" FromRole="USER" ToRole="BETS" />
           <NavigationProperty Name="FRIENDS" Relationship="Self.FK_FRIENDS_USER" FromRole="USER" ToRole="FRIENDS" />
           <NavigationProperty Name="FRIENDS1" Relationship="Self.FK_FRIENDS_USER1" FromRole="USER" ToRole="FRIENDS" />
           <NavigationProperty Name="INVITATIONS" Relationship="Self.FK_INVITATIONS_USER" FromRole="USER" ToRole="INVITATIONS" />
           <NavigationProperty Name="INVITATIONS1" Relationship="Self.FK_INVITATIONS_USER1" FromRole="USER" ToRole="INVITATIONS" />
           <NavigationProperty Name="MEMBERSHIPS" Relationship="Self.FK_MEMBERSHIPS_USER" FromRole="USER" ToRole="MEMBERSHIPS" />
+          <NavigationProperty Name="MESSAGES" Relationship="Self.FK_MESSAGES_USER" FromRole="USER" ToRole="MESSAGES" />
+          <NavigationProperty Name="MESSAGES1" Relationship="Self.FK_MESSAGES_USER1" FromRole="USER" ToRole="MESSAGES" />
         </EntityType>
         <Association Name="FK_BETS_GROUPS">
           <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="1" />
@@ -625,6 +693,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MESSAGES_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="MESSAGES" Type="Self.MESSAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="MESSAGES">
+              <PropertyRef Name="Message_To" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MESSAGES_USER1">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="MESSAGES" Type="Self.MESSAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="MESSAGES">
+              <PropertyRef Name="Message_From" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PARTICIPANTS_SEASONS">
           <End Role="SEASONS" Type="Self.SEASONS" Multiplicity="1" />
           <End Role="PARTICIPANTS" Type="Self.PARTICIPANTS" Multiplicity="*" />
@@ -668,6 +760,7 @@
           <EntitySet Name="GROUPS" EntityType="Self.GROUPS" />
           <EntitySet Name="INVITATIONS" EntityType="Self.INVITATIONS" />
           <EntitySet Name="MEMBERSHIPS" EntityType="Self.MEMBERSHIPS" />
+          <EntitySet Name="MESSAGES" EntityType="Self.MESSAGES" />
           <EntitySet Name="PARTICIPANTS" EntityType="Self.PARTICIPANTS" />
           <EntitySet Name="RACES" EntityType="Self.RACES" />
           <EntitySet Name="SEASONS" EntityType="Self.SEASONS" />
@@ -713,6 +806,14 @@
           <AssociationSet Name="FK_MEMBERSHIPS_USER" Association="Self.FK_MEMBERSHIPS_USER">
             <End Role="USER" EntitySet="USER" />
             <End Role="MEMBERSHIPS" EntitySet="MEMBERSHIPS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MESSAGES_USER" Association="Self.FK_MESSAGES_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="MESSAGES" EntitySet="MESSAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MESSAGES_USER1" Association="Self.FK_MESSAGES_USER1">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="MESSAGES" EntitySet="MESSAGES" />
           </AssociationSet>
           <AssociationSet Name="FK_PARTICIPANTS_SEASONS" Association="Self.FK_PARTICIPANTS_SEASONS">
             <End Role="SEASONS" EntitySet="SEASONS" />
@@ -760,6 +861,7 @@
               <MappingFragment StoreEntitySet="DRIVERS">
                 <ScalarProperty Name="Driver_ID" ColumnName="Driver_ID" />
                 <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -777,6 +879,7 @@
               <MappingFragment StoreEntitySet="GROUPS">
                 <ScalarProperty Name="Groups_ID" ColumnName="Groups_ID" />
                 <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -796,6 +899,16 @@
                 <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
                 <ScalarProperty Name="User_ID" ColumnName="User_ID" />
                 <ScalarProperty Name="Score" ColumnName="Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESSAGES">
+            <EntityTypeMapping TypeName="ProjektModel.MESSAGES">
+              <MappingFragment StoreEntitySet="MESSAGES">
+                <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
+                <ScalarProperty Name="Message_From" ColumnName="Message_From" />
+                <ScalarProperty Name="Message_To" ColumnName="Message_To" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -854,6 +967,7 @@
               <MappingFragment StoreEntitySet="TEAMS">
                 <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
                 <ScalarProperty Name="Team_Name" ColumnName="Team_Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -865,6 +979,9 @@
                 <ScalarProperty Name="e_mail" ColumnName="e_mail" />
                 <ScalarProperty Name="Total_score" ColumnName="Total_score" />
                 <ScalarProperty Name="Is_Admin" ColumnName="Is_Admin" />
+                <ScalarProperty Name="Is_Exists" ColumnName="Is_Exists" />
+                <ScalarProperty Name="Is_Log" ColumnName="Is_Log" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

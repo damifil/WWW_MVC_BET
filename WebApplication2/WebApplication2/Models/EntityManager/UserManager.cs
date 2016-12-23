@@ -20,7 +20,7 @@ namespace WebApplication2.Models.EntityManager
                 user.User_ID = newUser.Login;
                 user.Password = GetMd5Hash(md5Hash, newUser.Password);
                 user.e_mail = newUser.Email;
-                user.Total_score = "0";
+                user.Total_score = 0;
                 user.Is_Admin = false;
 
                 db.USER.Add(user);
