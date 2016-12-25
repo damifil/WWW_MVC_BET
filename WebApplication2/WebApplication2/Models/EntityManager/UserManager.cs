@@ -22,10 +22,10 @@ namespace WebApplication2.Models.EntityManager
                 user.e_mail = newUser.Email;
                 user.Total_score = 0;
                 user.Is_Admin = false;
-
+                user.Is_Exists = true;
                 db.USER.Add(user);
                 db.SaveChanges();
-
+                
             }
         }
         public bool IsLoginExist(string loginName)    // sprawdzenie czy login istnieje w bazie danych
@@ -50,6 +50,84 @@ namespace WebApplication2.Models.EntityManager
                     return string.Empty;
                 }
             }
+        }
+        public string GetLogin(string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                var user = db.USER.Where(o => o.User_ID.Equals(login));
+                if (user.Any())
+                {
+                    System.Diagnostics.Debug.WriteLine(" z getlogin:  " +user.FirstOrDefault().User_ID);
+                    return user.FirstOrDefault().User_ID;
+                }
+            }
+            return string.Empty;
+        }
+
+        public void ChangeEmail(UserSettingView user, string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                using (var dbContextTransaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        USER us = db.USER.Find(login);
+                        us.e_mail = user.emailView.newEmail;
+
+                        db.SaveChanges();
+                        dbContextTransaction.Commit();
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
+            }
+        }
+
+        public void ChangePassword(UserSettingView user, string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                using (var dbContextTransaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        MD5 md5Hash = MD5.Create();
+                        USER us = db.USER.Find(login);
+                        us.Password = GetMd5Hash(md5Hash, user.passwordView.Password);
+
+                        db.SaveChanges();
+                        dbContextTransaction.Commit();
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
+            }
+        }
+
+        public UserSettingView GetEmailImage(string login)
+        {
+            UserSettingView userSettingView = new UserSettingView();
+            
+            System.Diagnostics.Debug.WriteLine("get email: "+ login);
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                var user = db.USER.Find(login);
+                
+                {
+                    if (user != null)
+                        userSettingView.emailView.email = user.e_mail;
+                    userSettingView.passwordView = null;
+                    userSettingView.imageView = null;
+                }
+            }
+
+           return userSettingView;
         }
 
         public static string GetMd5Hash(MD5 md5Hash, string input)

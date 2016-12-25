@@ -1,17 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication2.Models.EntityManager;
+using WebApplication2.Models.ViewModel;
 
 namespace WebApplication2.Controllers
 {
     public class UstawieniaController : Controller
     {
-        // GET: Ustawienia
         public ActionResult Index()
         {
-            return View();
+            string login = User.Identity.Name;
+            UserManager userManager = new UserManager();
+            UserSettingView userSettingView = userManager.GetEmailImage(userManager.GetLogin(login));
+            return View(userSettingView);
+        }
+              
+        [HttpPost]
+        public ActionResult Zmiana_email(UserSettingView userSettingView)
+        {
+            if(ModelState.IsValid)
+            {
+                if (userSettingView.emailView.email == userSettingView.emailView.newEmail)
+                {
+                    ModelState.AddModelError("", "Nowy e-mail jest taki sam jak aktualny.");
+                }
+                else if(userSettingView.emailView.newEmail != userSettingView.emailView.confirmNewEmail)
+                {
+                    ModelState.AddModelError("", "Wpisane adresy e-mail nie są takie same.");
+                }
+                else
+                {
+                    UserManager userManager = new UserManager();
+                    userManager.ChangeEmail(userSettingView, User.Identity.Name);
+                    ViewBag.Status = "Adres e-mail został zmieniony.";
+                }
+               
+            }
+
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Zmiana_hasla(UserSettingView userSettingView)
+        {
+            if (ModelState.IsValid)
+            {
+                MD5 md5Hash = MD5.Create();
+                UserManager userManager = new UserManager();
+                string password = userManager.GetUserPassword(User.Identity.Name);
+
+                if ((UserManager.GetMd5Hash(md5Hash, userSettingView.passwordView.Password)) == password)
+                {
+                    ModelState.AddModelError("", "Nowy hasło jest takie samo jak aktualne.");
+                }
+                else if ((UserManager.GetMd5Hash(md5Hash, userSettingView.passwordView.Password)) != (UserManager.GetMd5Hash(md5Hash, userSettingView.passwordView.confirmPassword)))
+                {
+                    ModelState.AddModelError("", "Wpisane hasła nie są takie same.");
+                }
+                else
+                {
+                    
+                    userManager.ChangePassword(userSettingView, User.Identity.Name);
+                    ViewBag.Status = "Hasło zostało zmienione.";
+                }
+
+            }
+
+            return View("Index");
         }
     }
 }
