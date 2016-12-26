@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebApplication2.Models.EntityManager;
 using WebApplication2.Models.ViewModel;
 
@@ -63,14 +64,26 @@ namespace WebApplication2.Controllers
                 }
                 else
                 {
-                    
                     userManager.ChangePassword(userSettingView, User.Identity.Name);
                     ViewBag.Status = "Hasło zostało zmienione.";
                 }
-
             }
 
             return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Usuniecie_konta(UserSettingView userSettingView)
+        {
+            if (ModelState.IsValid && userSettingView.deleteUserView.deleteU == true)
+            {
+                UserManager userManager = new UserManager();
+                userManager.DeleteUser(userSettingView, User.Identity.Name);
+                FormsAuthentication.SignOut();
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View("Index");       
         }
     }
 }

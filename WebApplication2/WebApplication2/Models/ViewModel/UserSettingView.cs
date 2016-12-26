@@ -10,12 +10,14 @@ namespace WebApplication2.Models.ViewModel
         public EmailView emailView { get; set; }
         public PasswordView passwordView { get; set; }
         public ImageView imageView { get; set; }
+        public DeleteUserView deleteUserView { get; set; }
 
         public UserSettingView()
         {
             this.emailView = new EmailView();
             this.passwordView = new PasswordView();
             this.imageView = new ImageView();
+            this.deleteUserView = new DeleteUserView();
         }
     }
 }

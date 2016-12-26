@@ -23,16 +23,30 @@ namespace WebApplication2.Models.EntityManager
                 user.Total_score = 0;
                 user.Is_Admin = false;
                 user.Is_Exists = true;
+                user.Is_Log = true;
+                user.Image = null;
                 db.USER.Add(user);
                 db.SaveChanges();
                 
             }
         }
-        public bool IsLoginExist(string loginName)    // sprawdzenie czy login istnieje w bazie danych
+        public bool IsLoginExist(string login)    // sprawdzenie czy login istnieje w bazie danych
         {
             using (ProjektEntities db = new ProjektEntities())
             {
-                return db.USER.Where(u => u.User_ID.Equals(loginName)).Any();
+                return db.USER.Where(u => u.User_ID.Equals(login)).Any();
+            }
+        }
+
+        public bool IsUserExists(string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                USER us = db.USER.Find(login);
+                if (us.Is_Exists == true)
+                    return true;
+                else
+                    return false;
             }
         }
 
@@ -110,6 +124,31 @@ namespace WebApplication2.Models.EntityManager
             }
         }
 
+        public void DeleteUser(UserSettingView user, string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                using (var dbContextTransaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        USER us = db.USER.Find(login);
+                        us.Is_Exists = false;
+                        us.Is_Admin = false;
+                        us.Is_Log = false;
+                        db.SaveChanges();
+                        dbContextTransaction.Commit();
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
+            }
+        }
+
+       
+
         public UserSettingView GetEmailImage(string login)
         {
             UserSettingView userSettingView = new UserSettingView();
@@ -130,6 +169,7 @@ namespace WebApplication2.Models.EntityManager
            return userSettingView;
         }
 
+       
         public static string GetMd5Hash(MD5 md5Hash, string input)
         {
             byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));

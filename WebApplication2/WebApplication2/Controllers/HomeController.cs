@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using WebApplication2.Models.DB;
 using WebApplication2.Models.EntityManager;
 using WebApplication2.Models.ViewModel;
 namespace WebApplication2.Controllers
@@ -62,9 +63,14 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult LogIn(LoginRegisterView userView, string returnUrl)
         {
-            if (ModelState.IsValid)
+            UserManager userManager = new UserManager();
+            if (ModelState.IsValid )
             {
-                UserManager userManager = new UserManager();
+                if (!userManager.IsUserExists(userView.UserLoginView.Login))
+                {
+                    ModelState.AddModelError("", "Konto nie istnieje");
+                    return View("Index");
+                }
                 string password = userManager.GetUserPassword(userView.UserLoginView.Login);
                 MD5 md5Hash = MD5.Create();
 
@@ -84,7 +90,7 @@ namespace WebApplication2.Controllers
                 }
             }
 
-            return View("Index");  //wyswietlenie widoku z wpisanymi danymi
+            return View("Index");  
         }
 
 
