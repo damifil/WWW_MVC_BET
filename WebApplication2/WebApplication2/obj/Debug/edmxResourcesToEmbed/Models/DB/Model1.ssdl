@@ -26,7 +26,7 @@
       <PropertyRef Name="Driver_ID" />
     </Key>
     <Property Name="Driver_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Driver_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Driver_Name" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Image" Type="image" />
   </EntityType>
   <EntityType Name="FRIENDS">
@@ -89,17 +89,17 @@
     <Property Name="Season_ID" Type="int" Nullable="false" />
     <Property Name="Track" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
-    <Property Name="Pos_1" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Time_1" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pos_2" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pos_3" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pos_4" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pos_5" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pos_6" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pos_7" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pos_8" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pos_9" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pos_10" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pos_1" Type="int" />
+    <Property Name="Time_1" Type="int" />
+    <Property Name="Pos_2" Type="int" />
+    <Property Name="Pos_3" Type="int" />
+    <Property Name="Pos_4" Type="int" />
+    <Property Name="Pos_5" Type="int" />
+    <Property Name="Pos_6" Type="int" />
+    <Property Name="Pos_7" Type="int" />
+    <Property Name="Pos_8" Type="int" />
+    <Property Name="Pos_9" Type="int" />
+    <Property Name="Pos_10" Type="int" />
   </EntityType>
   <EntityType Name="SEASONS">
     <Key>
@@ -307,6 +307,126 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_RACES_Pos1">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos10">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_10" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos2">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos3">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos4">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos5">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos6">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_6" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos7">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_7" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos8">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_8" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos9">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_9" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_RACES_SEASONS">
     <End Role="SEASONS" Type="Self.SEASONS" Multiplicity="1" />
     <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
@@ -316,6 +436,18 @@
       </Principal>
       <Dependent Role="RACES">
         <PropertyRef Name="Season_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Time1">
+    <End Role="DRIVERS" Type="Self.DRIVERS" Multiplicity="0..1" />
+    <End Role="RACES" Type="Self.RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Time_1" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -389,8 +521,52 @@
       <End Role="TEAMS" EntitySet="TEAMS" />
       <End Role="PARTICIPANTS" EntitySet="PARTICIPANTS" />
     </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos1" Association="Self.FK_RACES_Pos1">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos10" Association="Self.FK_RACES_Pos10">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos2" Association="Self.FK_RACES_Pos2">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos3" Association="Self.FK_RACES_Pos3">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos4" Association="Self.FK_RACES_Pos4">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos5" Association="Self.FK_RACES_Pos5">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos6" Association="Self.FK_RACES_Pos6">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos7" Association="Self.FK_RACES_Pos7">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos8" Association="Self.FK_RACES_Pos8">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos9" Association="Self.FK_RACES_Pos9">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
     <AssociationSet Name="FK_RACES_SEASONS" Association="Self.FK_RACES_SEASONS">
       <End Role="SEASONS" EntitySet="SEASONS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Time1" Association="Self.FK_RACES_Time1">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
       <End Role="RACES" EntitySet="RACES" />
     </AssociationSet>
   </EntityContainer>

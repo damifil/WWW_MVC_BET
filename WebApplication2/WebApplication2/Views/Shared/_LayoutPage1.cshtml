@@ -67,6 +67,9 @@
                             <li @(pageName == "Zaklady" ? " class=active" : "")>
                                 @Html.ActionLink("Zaklady", "index", "zaklady")
                             </li>
+                            <li @(pageName == "Ustawienia" ? " class=active" : "")>
+                                @Html.ActionLink("Ustawienia", "index", "Ustawienia")
+                            </li>
                         </ul>
                     </div>
                 </nav>

@@ -13,6 +13,10 @@ namespace WebApplication2.Controllers
     {
         private ProjektEntities db = new ProjektEntities();
 
+        public ActionResult Index()
+        {
+            return RedirectToAction("Panel");
+        }
         public ViewResult Panel()
         {
             return View();

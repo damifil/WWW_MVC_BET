@@ -29,9 +29,20 @@
       <PropertyRef Name="Driver_ID" />
     </Key>
     <Property Name="Driver_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Driver_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Driver_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="PARTICIPANTS" Relationship="Self.FK_PARTICIPANTS_DRIVERS" FromRole="DRIVERS" ToRole="PARTICIPANTS" />
+    <NavigationProperty Name="RACES" Relationship="ProjektModel.FK_RACES_Pos1" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES1" Relationship="ProjektModel.FK_RACES_Pos10" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES2" Relationship="ProjektModel.FK_RACES_Pos2" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES3" Relationship="ProjektModel.FK_RACES_Pos3" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES4" Relationship="ProjektModel.FK_RACES_Pos4" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES5" Relationship="ProjektModel.FK_RACES_Pos5" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES6" Relationship="ProjektModel.FK_RACES_Pos6" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES7" Relationship="ProjektModel.FK_RACES_Pos7" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES8" Relationship="ProjektModel.FK_RACES_Pos8" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES9" Relationship="ProjektModel.FK_RACES_Pos9" FromRole="DRIVERS" ToRole="RACES" />
+    <NavigationProperty Name="RACES10" Relationship="ProjektModel.FK_RACES_Time1" FromRole="DRIVERS" ToRole="RACES" />
   </EntityType>
   <EntityType Name="FRIENDS">
     <Key>
@@ -106,19 +117,30 @@
     <Property Name="Season_ID" Type="Int32" Nullable="false" />
     <Property Name="Track" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Pos_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Time_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pos_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pos_3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pos_4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pos_5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pos_6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pos_7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pos_8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pos_9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pos_10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pos_1" Type="Int32" />
+    <Property Name="Time_1" Type="Int32" />
+    <Property Name="Pos_2" Type="Int32" />
+    <Property Name="Pos_3" Type="Int32" />
+    <Property Name="Pos_4" Type="Int32" />
+    <Property Name="Pos_5" Type="Int32" />
+    <Property Name="Pos_6" Type="Int32" />
+    <Property Name="Pos_7" Type="Int32" />
+    <Property Name="Pos_8" Type="Int32" />
+    <Property Name="Pos_9" Type="Int32" />
+    <Property Name="Pos_10" Type="Int32" />
     <NavigationProperty Name="BETS" Relationship="Self.FK_BETS_RACES" FromRole="RACES" ToRole="BETS" />
     <NavigationProperty Name="SEASONS" Relationship="Self.FK_RACES_SEASONS" FromRole="RACES" ToRole="SEASONS" />
+    <NavigationProperty Name="DRIVERS" Relationship="ProjektModel.FK_RACES_Pos1" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS1" Relationship="ProjektModel.FK_RACES_Pos10" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS2" Relationship="ProjektModel.FK_RACES_Pos2" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS3" Relationship="ProjektModel.FK_RACES_Pos3" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS4" Relationship="ProjektModel.FK_RACES_Pos4" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS5" Relationship="ProjektModel.FK_RACES_Pos5" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS6" Relationship="ProjektModel.FK_RACES_Pos6" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS7" Relationship="ProjektModel.FK_RACES_Pos7" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS8" Relationship="ProjektModel.FK_RACES_Pos8" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS9" Relationship="ProjektModel.FK_RACES_Pos9" FromRole="RACES" ToRole="DRIVERS" />
+    <NavigationProperty Name="DRIVERS10" Relationship="ProjektModel.FK_RACES_Time1" FromRole="RACES" ToRole="DRIVERS" />
   </EntityType>
   <EntityType Name="SEASONS">
     <Key>
@@ -423,5 +445,181 @@
       <End Role="SEASONS" EntitySet="SEASONS" />
       <End Role="RACES" EntitySet="RACES" />
     </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos1" Association="ProjektModel.FK_RACES_Pos1">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos10" Association="ProjektModel.FK_RACES_Pos10">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos2" Association="ProjektModel.FK_RACES_Pos2">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos3" Association="ProjektModel.FK_RACES_Pos3">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos4" Association="ProjektModel.FK_RACES_Pos4">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos5" Association="ProjektModel.FK_RACES_Pos5">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos6" Association="ProjektModel.FK_RACES_Pos6">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos7" Association="ProjektModel.FK_RACES_Pos7">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos8" Association="ProjektModel.FK_RACES_Pos8">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Pos9" Association="ProjektModel.FK_RACES_Pos9">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RACES_Time1" Association="ProjektModel.FK_RACES_Time1">
+      <End Role="DRIVERS" EntitySet="DRIVERS" />
+      <End Role="RACES" EntitySet="RACES" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_RACES_Pos1">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos10">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_10" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos2">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos3">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos4">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos5">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos6">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_6" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos7">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_7" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos8">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_8" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Pos9">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Pos_9" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RACES_Time1">
+    <End Type="ProjektModel.DRIVERS" Role="DRIVERS" Multiplicity="0..1" />
+    <End Type="ProjektModel.RACES" Role="RACES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRIVERS">
+        <PropertyRef Name="Driver_ID" />
+      </Principal>
+      <Dependent Role="RACES">
+        <PropertyRef Name="Time_1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

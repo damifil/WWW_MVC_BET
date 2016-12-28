@@ -33,6 +33,17 @@
         <AssociationConnector Association="ProjektModel.FK_PARTICIPANTS_SEASONS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_PARTICIPANTS_TEAMS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_RACES_SEASONS" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos1" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos10" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos2" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos3" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos4" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos5" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos6" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos7" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos8" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Pos9" />
+        <AssociationConnector Association="ProjektModel.FK_RACES_Time1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
