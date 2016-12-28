@@ -6,8 +6,14 @@
 .mainContainer, 
 .czat_menu {
      margin-top:120px;
+     
 } 
 
+.mainContainer
+{
+    padding-top:20px;
+
+}
 div.topHeader {
     background-color: #273D40;
         position: fixed;
@@ -46,7 +52,8 @@ div.topHeader {
     z-index: 1;
     background-color: rgba(118,183,191,.3);
     overflow-x: hidden;
-    top: 120px;
+    top: 122px;
+
 }
 
 .czat ul{
@@ -62,9 +69,3 @@ div.topHeader {
     justify-content:space-between;
 }
 
-
-div.czat > ul > li > .glyphicon glyphicon-star
-{
-float:right;
-
-}

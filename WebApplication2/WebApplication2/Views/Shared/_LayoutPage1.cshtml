@@ -23,10 +23,10 @@
     <div class="logo-full-bg">
         <div class="container">
             <form class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 col-sm-8">
                     <h1 style="color:white;">Zakłady Online (logo tu bedzie)</h1>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-4">
                     <input type="button" value="Wyloguj" onclick="location.href='@Url.Action("SignOut", "Home")'" />
                 </div>
             </form>
@@ -78,30 +78,33 @@
     <!-- srodek  -->
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9 col-sm-9">
                 <main class="mainContainer">
                     @RenderBody()
                 </main>
             </div>
 
             <!-- menu boczne -->
-            <div class="col-md-3">
-                <aside id="czat_menu" class="czat">
-                    <span class="glyphicon glyphicon-user">Czat</span>
-                    <!--- w li powinny byc linki do odpowiedniego usera do wiadomosci-->
-                    <!-- lista do wypisania uzytkownikow, trzeba sprawdzici ilu sie miesci-->
-                    <ul>
-                        <!--  fragment kodu dotyczacy uzytkownika aktywnego-->
+            
+                <div class="col-md-3 col-sm-3">
 
-                        <li>uzytkownik aktywny<span class="glyphicon glyphicon-star"></span></li>
+                    <aside id="czat_menu" class="czat">
+                        <span class="glyphicon glyphicon-user">Czat</span>
+                        <!--- w li powinny byc linki do odpowiedniego usera do wiadomosci-->
+                        <!-- lista do wypisania uzytkownikow, trzeba sprawdzici ilu sie miesci-->
+                        <ul>
+                            <!--  fragment kodu dotyczacy uzytkownika aktywnego-->
 
-                        <!--  fragment kodu dotyczacy uzytkownika nieaktywnego-->
-                        <li><span>uzytkownik nieaktywny</span><span class="glyphicon glyphicon-star-empty"></span></li>
+                            <li>uzytkownik aktywny<span class="glyphicon glyphicon-star"></span></li>
 
-                    </ul>
-                </aside>
+                            <!--  fragment kodu dotyczacy uzytkownika nieaktywnego-->
+                            <li><span>uzytkownik nieaktywny</span><span class="glyphicon glyphicon-star-empty"></span></li>
+
+                        </ul>
+                    </aside>
+                </div>
             </div>
         </div>
-    </div>
+
 </body>
 </html>
