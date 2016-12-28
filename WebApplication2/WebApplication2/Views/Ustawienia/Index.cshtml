@@ -6,88 +6,111 @@
 
 
 
-    <!--avatar-->
 
-    <h2>Avatar</h2>
+
 <div class="container">
+    
     <div class="row">
+        <!--pierwsza kolumna-->
         <div class="col-md-4">
+            
+            <!--link do obrazka -->
             <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png" class="img-rounded" alt="avatar" width="200" height="200">
-            <input id="Button_Avatar" type="button" value="zmien" />
+
+            <!-- przycisk obslugujacy zmiane avatara (okienko  z wyborem do wskazania pliku powinno wyskoczyc)-->            
+            <input id="Button_Avatar" type="button" value="zmien" class="btn btn-default" />
+
+            <!-- Formularz dotyczacy zmiany hasla--->
+            @using (Html.BeginForm("Zmiana_hasla", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+
+                @Html.AntiForgeryToken()
+
+                
+                    <div class="form-group">
+                        <h2>Haslo</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label>podaj stare haslo</label>
+                    </div>
+
+                    <!--  podawane stare haslo do sprawdzenia z starymzapisanym w bd podczas zmiany hasla -->
+                    <div class="form-group">
+                        <input id="old_password" type="text" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>podaj nowe haslo</label>
+                    </div>
+
+                    <!-- input z nowym haslem  -->
+                    <div class="form-group">
+                        <input id="Password_input" type="password" />
+                        <span class="glyphicon glyphicon-eye-open" onmouseenter="Password_input.type='text'" ; onmouseleave="Password_input.type='password'"></span>
+                    </div>
+
+                    <!--  przycisk do zmiany  hasla-->
+                    <div class="form-group">
+                        <input type="submit" value="Zmień" class="btn btn-default" />
+                    </div>
+            }
+
+
+            <h2>Usun konto</h2>
+
+            <!-- fpormularz do usuwania konta w sumie to zostawilem z tego co dawid wrzucil-->
+            @using (Html.BeginForm("Usuniecie_konta", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+
+
+                @Html.EditorFor(model => model.deleteUserView.deleteU)
+
+                <input type="submit" value="Usuń konto" class="btn btn-default" />
+            }
+
         </div>
 
-        
-
+         <!--druga kolumna-->
         <div class="col-md-8">
-            <h2>O mnie</h2>
-            <textarea id="describ_user" rows="2" cols="40"></textarea>
-            <input id="Button_descrbe" type="button" value="zmien" />
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <h2>O mnie</h2>
+                </div>
+                <div class="form-group">
+                    <!--tutaj powinien byc aktualny opis wyswietlany jaki uzytkownik mai uzytkownik do niego moze nowy wpisac-->
+                    <textarea id="describ_user" rows="10" cols="40"></textarea>
+                </div>
+                <div class="form-group">
+                    <!--przycisk do zatwierdzenia zmian w opise-->
+                    <input id="Button_describe" type="button" value="zmien" class="btn btn-default" />
+                </div>
+            </form>
+
+            <!--formularz dotyczacy zmiany adresu email-->
+            @using (Html.BeginForm("Zmiana_email", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <h2>email</h2>
+                </div>
+                <div class="form-group">
+                    <label>adres email</label>
+                </div>
+
+                <div class="form-group">
+                    <!--input wyswietlajacy aktualny adres email z mozliwoscia wpisana nowego-->
+                    <input id="email" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <!-- przycisk zatwierdzajcy zmiane adresu email -->
+                    <input type="submit" value="Zmień" class="btn btn-default" />
+                </div>
+            }
 
         </div>
-</div>
-
-
-    <div class="row">
-        <div class="col-md-4">
-
-            <h2>Haslo</h2>
-
-            <p>stare haslo</p>
-            <input id="old_password_input" type="text" />
-
-
-
-            <p>nowe haslo</p>
-            <input id="new_Password_input" type="password" />
-
-
-
-            <p>powtorz nowe haslo</p>
-            <input id="new_Password_confirm_input" type="password" />
-
-
-            <input id="password_button" type="button" value="zatwierdz" />
-
-        </div>
-
-        <div class="col-md-8">
-       
-            <h2>email</h2>
-
-            <p> stary adres email</p>
-            <p>email@wp.pl</p>
-
-            <p>podaj nowy adres email</p>
-            <input id="email_new_input" type="text" />
-
-
-            <p>powtor nowy adres email</p>
-            <input id="email_new_confirm_input" type="text" />
-
-            <input id="email_button" type="button" value="zatwierdz" />
-             
-        </div>
-
-
-</div>
-
-    <div class="row">
-
-    <div class="col-md-4">
-    <h2>Usun konto</h2>
-
 
     </div>
-    </div>
-
 </div>
-
-        
-
-
-
-       
-
-
-
-

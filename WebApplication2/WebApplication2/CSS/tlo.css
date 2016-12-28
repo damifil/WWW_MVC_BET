@@ -9,6 +9,13 @@
      
 } 
 
+#Button_Avatar
+{
+position:absolute;
+margin-top:170px;
+margin-left:-62px;
+}
+
 .mainContainer
 {
     padding-top:20px;
