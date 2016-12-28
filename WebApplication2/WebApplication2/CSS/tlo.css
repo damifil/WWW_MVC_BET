@@ -56,6 +56,16 @@ div.topHeader {
 
 }
 
+article {
+ margin-bottom:10px;
+ background-color:rgba(118,183,191,.2);
+ padding:20px;
+ border-radius:25px;
+}
+
+
+
+
 .czat ul{
     padding: 3px;
 }
