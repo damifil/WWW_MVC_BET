@@ -3,15 +3,131 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>Wybierz wysig do zakladu</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Zakłady</title>
-</head>
-<body>
-    <div> 
+<p>
+    <select id="Select_race">
+        <option value="val0">"wyscig 1"</option>
+        <option value="val1">"wyscig 2"</option>
+    </select>
+</p>
+
+<h2>Obstaw</h2>
+
+<form class="form-inline">
+
+    <div class="form-group">
+        <p>1 miejsce</p>
+        <p>
+            <select id="Selec_first_place">
+                <option value="val0">"zawodnik 1"</option>
+                <option value="val1">"zawodnik 2"</option>
+            </select>
+        </p>
     </div>
-</body>
-</html>
+
+    <div class="form-group">
+        <p>2 miejsce</p>
+        <p>
+            <select id="Selec_second_place">
+                <option value="val0">"zawodnik 1"</option>
+                <option value="val1">"zawodnik 2"</option>
+            </select>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>3 miejsce</p>
+        <p>
+            <select id="Selec_third_place">
+                <option value="val0">"zawodnik 1"</option>
+                <option value="val1">"zawodnik 2"</option>
+            </select>
+        </p>
+    </div>
+
+</form>
+
+
+<h2>Najlepsze okrazenie</h2>
+
+<form class="form-inline">
+    <div class="form-group">
+
+        <p>najlepsze okrazenie</p>
+        <p>
+            <select id="Selec_best_lap">
+                <option value="val0">"zawodnik 1"</option>
+                <option value="val1">"zawodnik 2"</option>
+            </select>
+        </p>
+
+    </div>
+</form>
+
+<input id="Button1" type="button" value="zatwierdz zmiany" />
+
+
+<h1>Obstawione zaklady</h1>
+<p>
+    <select id="Selec_best_lap">
+        <option value="val0">...</option>
+        <option value="val1">zaklad 1</option>
+        <option value="val1">zaklad 2</option>
+
+    </select>
+</p>
+
+
+   
+
+<div class="table" id="table_race">
+    <div>
+
+        <table class="table table-striped" style="width:60%;">
+            <thead>
+                <tr>
+                    <th>opcja</th>
+                    <th>wybrany zawodnik</th>
+                    <th>zawodnik z wyscigu</th>
+                    <th>zdobyte punkty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 zawodnik</td>
+                    <td>1 wybrany zawodnik</td>
+                    <td>zawodnik z wyscigu</td>
+                    <td>zdobyte punkty za zawodnika</td>
+                </tr>
+
+                <tr>
+                    <td>2 zawodnik</td>
+                    <td>2 wybrany zawodnik</td>
+                    <td>zawodnik z wyscigu</td>
+                    <td>zdobyte punkty za zawodnika</td>
+                </tr>
+
+                <tr>
+                    <td>3 zawodnik</td>
+                    <td>3 wybrany zawodnik</td>
+                    <td>zawodnik z wyscigu</td>
+                    <td>zdobyte punkty za zawodnika</td>
+                </tr>
+
+                <tr>
+                    <td>najlepsze okrazenie</td>
+                    <td> wybrany zawodnik</td>
+                    <td>zawodnik z wyscigu</td>
+                    <td>zdobyte punkty za zawodnika</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        <h1>Wynik calkowity wycsigu</h1>
+        <h3>wynik</h3>
+
+
