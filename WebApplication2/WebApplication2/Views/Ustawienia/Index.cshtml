@@ -2,98 +2,92 @@
 @{
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Ustawienia</title>
-</head>
-<body>
-
-    <!-- Formularz dotyczacy zmiany email -->
-    @using (Html.BeginForm("Zmiana_email", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
-    {
-        @Html.AntiForgeryToken()
-       
-            <!-- Wyswietla napis powodzenia zmiany email/hasla-->
-            <span class="alert-success">@ViewBag.Status</span> 
-
-            <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            <div>
-                @Html.LabelFor(model => model.emailView.email)
-                @Html.DisplayFor(model => model.emailView.email)
-            </div>
 
 
-            <div>
-                @Html.LabelFor(model => model.emailView.newEmail)
-                @Html.EditorFor(model => model.emailView.newEmail)
-                @Html.ValidationMessageFor(model => model.emailView.newEmail, "", new { @class = "text-danger" })
-            </div>
 
-            <div>
-                @Html.LabelFor(model => model.emailView.confirmNewEmail)
-                @Html.EditorFor(model => model.emailView.confirmNewEmail)
-                @Html.ValidationMessageFor(model => model.emailView.confirmNewEmail, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Zmień" class="btn btn-default" />
 
-                </div>
-                
-            </div>
+    <!--avatar-->
 
-    }
-    
-
-    <!-- Formularz dotyczacy zmiany hasla -->
-    @using (Html.BeginForm("Zmiana_hasla", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
-    {
-        @Html.AntiForgeryToken()
-
-            <div>
-                @Html.LabelFor(model => model.passwordView.Password)
-                @Html.EditorFor(model => model.passwordView.Password)
-                @Html.ValidationMessageFor(model => model.passwordView.Password, "", new { @class = "text-danger" })
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.passwordView.confirmPassword)
-                @Html.EditorFor(model => model.passwordView.confirmPassword)
-                @Html.ValidationMessageFor(model => model.passwordView.confirmPassword, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Zmień" class="btn btn-default" />
-
-                </div>
-
-            </div>
-
-    }
-
-    @using (Html.BeginForm("Usuniecie_konta", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
-    {
-        @Html.AntiForgeryToken()
-
-        <div>
-            
-            @Html.EditorFor(model => model.deleteUserView.deleteU)
+    <h2>Avatar</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png" class="img-rounded" alt="avatar" width="200" height="200">
+            <input id="Button_Avatar" type="button" value="zmien" />
         </div>
 
-            
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Usuń konto" class="btn btn-default" />
+        
 
-                </div>
+        <div class="col-md-8">
+            <h2>O mnie</h2>
+            <textarea id="describ_user" rows="2" cols="40"></textarea>
+            <input id="Button_descrbe" type="button" value="zmien" />
 
-            </div>
+        </div>
+</div>
 
-    }
-</body>
-</html>
+
+    <div class="row">
+        <div class="col-md-4">
+
+            <h2>Haslo</h2>
+
+            <p>stare haslo</p>
+            <input id="old_password_input" type="text" />
+
+
+
+            <p>nowe haslo</p>
+            <input id="new_Password_input" type="password" />
+
+
+
+            <p>powtorz nowe haslo</p>
+            <input id="new_Password_confirm_input" type="password" />
+
+
+            <input id="password_button" type="button" value="zatwierdz" />
+
+        </div>
+
+        <div class="col-md-8">
+       
+            <h2>email</h2>
+
+            <p> stary adres email</p>
+            <p>email@wp.pl</p>
+
+            <p>podaj nowy adres email</p>
+            <input id="email_new_input" type="text" />
+
+
+            <p>powtor nowy adres email</p>
+            <input id="email_new_confirm_input" type="text" />
+
+            <input id="email_button" type="button" value="zatwierdz" />
+             
+        </div>
+
+
+</div>
+
+    <div class="row">
+
+    <div class="col-md-4">
+    <h2>Usun konto</h2>
+
+
+    </div>
+    </div>
+
+</div>
+
+        
+
+
+
+       
+
+
+
+

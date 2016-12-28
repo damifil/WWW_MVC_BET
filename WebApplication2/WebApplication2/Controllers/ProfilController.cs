@@ -15,10 +15,7 @@ namespace WebApplication2.Controllers
         }
 
 
-        public ActionResult Opcje()
-        {
-            return View();
-        }
+     
     }
 
 
