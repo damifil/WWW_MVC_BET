@@ -9,25 +9,25 @@
 
 
 <div class="container">
-    
+
     <div class="row">
         <!--pierwsza kolumna-->
         <div class="col-md-4">
-            
+
             <!--link do obrazka -->
             <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png" class="img-rounded" alt="avatar" width="200" height="200">
 
-            <!-- przycisk obslugujacy zmiane avatara (okienko  z wyborem do wskazania pliku powinno wyskoczyc)-->            
+            <!-- przycisk obslugujacy zmiane avatara (okienko  z wyborem do wskazania pliku powinno wyskoczyc)-->
             <input id="Button_Avatar" type="button" value="zmien" class="btn btn-default" />
 
             <!-- Formularz dotyczacy zmiany hasla--->
-            @using (Html.BeginForm("Zmiana_hasla", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
+            @using (Html.BeginForm("Zmiana_hasla", "Ustawienia", FormMethod.Post ))
             {
-                 
+
 
                 @Html.AntiForgeryToken()
                      <!-- Wyswietla napis powodzenia zmiany email/hasla-->
-                    <span class="alert-success">@ViewBag.Status</span>
+                <span class="alert-success">@ViewBag.Status</span>
 
                     <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -42,7 +42,7 @@
 
                     <!--  podawane stare haslo do sprawdzenia z starymzapisanym w bd podczas zmiany hasla -->
                     <div class="form-group">
-                        @Html.EditorFor(model => model.passwordView.oldPassword, new { htmlAttributes = new {id = "old_password" } })
+                        @Html.EditorFor(model => model.passwordView.oldPassword, new { htmlAttributes = new { id = "old_password" } })
                     </div>
                     <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
                     @Html.ValidationMessageFor(model => model.passwordView.oldPassword, "", new { @class = "text-danger" })
@@ -58,30 +58,32 @@
                     </div>
                     <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
                     @Html.ValidationMessageFor(model => model.passwordView.Password, "", new { @class = "text-danger" })
-                   
+
                     <!--  przycisk do zmiany  hasla-->
                     <div class="form-group">
                         <input type="submit" value="Zmień" class="btn btn-default" />
                     </div>
             }
 
+            <div class="form-group">
 
-            <h2>Usun konto</h2>
+                <h2>Usun konto</h2>
 
-            <!-- fpormularz do usuwania konta w sumie to zostawilem z tego co dawid wrzucil-->
-            @using (Html.BeginForm("Usuniecie_konta", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
+                <!-- fpormularz do usuwania konta w sumie to zostawilem z tego co dawid wrzucil-->
+                @using (Html.BeginForm("Usuniecie_konta", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
             {
-                @Html.AntiForgeryToken()
+                    @Html.AntiForgeryToken()
 
+                    <label>Potwierdz czy na pewno chcesz usunac konto</label>
 
-                @Html.EditorFor(model => model.deleteUserView.deleteU) 
+                    @Html.EditorFor(model => model.deleteUserView.deleteU)
 
-                <input type="submit" value="Usuń konto" class="btn btn-default" />
-            }
-
+                    <input type="submit" value="Usuń konto" class="btn btn-default" />
+                }
+            </div>
         </div>
 
-         <!--druga kolumna-->
+        <!--druga kolumna-->
         <div class="col-md-8">
             <form class="form-horizontal">
                 <div class="form-group">
@@ -113,7 +115,6 @@
                     <!--input wyswietlajacy aktualny adres email z mozliwoscia wpisana nowego-->
                     @Html.EditorFor(model => model.emailView.newEmail, new { htmlAttributes = new { id = "email" } })
                 </div>
-
                 @Html.ValidationMessageFor(model => model.emailView.newEmail, "", new { @class = "text-danger" })
                 <div class="form-group">
                     <!-- przycisk zatwierdzajcy zmiane adresu email -->

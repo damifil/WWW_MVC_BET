@@ -1,52 +1,61 @@
-﻿@{
+﻿
+@{
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var name = "Globalny";
     var group_name = "nazwa grupy";
 }
 
 
-            <h1>Statystyki</h1>
-  
-
-  
-            <p>Znajdziesz tutaj globalny ranking użytkowników jak i statystyi wybranych grup.</p>
-   
+<h1>Statystyki</h1>
 
 
-   
-            <h5>Wybierz rodzaj rankingu do wyswietlenia</h5>
-  
+
+<p>Znajdziesz tutaj globalny ranking użytkowników jak i statystyi wybranych grup.</p>
 
 
-    
-            <p>
-                Ranking:
-                <select id="Select1">
-                    <option value="val0">"Ranking Globalny"</option>
-                    <option value="val1">"@group_name"</option>
-                </select>
-            </p>
-      
-            <div class="table">
-                <div>
 
-                    <table class="table table-striped" style="width:60%;">
-                        <h3>Ranking @name</h3>
-                        <thead>
-                            <tr>
-                                <th>Pozycja</th>
-                                <th>Login</th>
-                                <th>wynik</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Asc</td>
-                                <td>230</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
- 
+
+<h5>Wybierz rodzaj rankingu do wyswietlenia</h5>
+
+
+
+
+<p>
+    Ranking:
+    <select id="Select1">
+        <option value="val0">"Ranking Globalny"</option>
+        <option value="val1">"@group_name"</option>
+    </select>
+</p>
+
+<div class="table">
+    <div>
+
+        <table class="table table-striped" style="width:100%;">
+            <h3>Ranking @name</h3>
+            <thead>
+                <tr>
+                    <th>Pozycja</th>
+                    <th>Login</th>
+                    <th>wynik</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Asc</td>
+                    <td>230</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<center>
+    <ul class="pagination">
+        <li><a href="#1">1</a></li>
+        <li><a href="#2">2</a></li>
+        <li><a href="#3">3</a></li>
+        <li><a href="#4">4</a></li>
+        <li><a href="#5">5</a></li>
+    </ul>
+</center>
