@@ -19,7 +19,6 @@ margin-left:-62px;
 .mainContainer
 {
     padding-top:20px;
-
 }
 div.topHeader {
     background-color: #273D40;
@@ -36,6 +35,23 @@ div.topHeader {
     width:100%;
     z-index:1;
 }
+
+.logo-full-bg_home{
+    background-color: #273D40;
+    height:70px;
+    position:fixed;
+    top: 0;
+    width:100%;
+    z-index:1;
+    padding:10px;
+}
+
+.mainContainer_home
+{
+        margin-top:80px;
+
+}
+
 .menu-full-bg{
     background-color:#8EDCE5;
     border-radius:4px;

@@ -16,85 +16,75 @@
 </head>
 
 <body>
-    <div class="head">
+   
         <!-- Formularz dotyczący logowania-->
         @using (Html.BeginForm("LogIn", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
         {
-            @Html.AntiForgeryToken() <!-- Sprawdzenie danych w polach-->
-            @Html.ValidationMessageFor(model => model.UserLoginView.Password, "", new { @class = "text-danger" })
-            @Html.ValidationMessageFor(model => model.UserLoginView.Login, "", new { @class = "text-danger" })
 
-            <div class="form-group">
-                <div class="col-md-4">
-                    <!-- logo -->
-                </div>
-                <div class="col-md-2">
-                  
-                </div>
-                <div class="col-md-2">
-                    <!-- przerwa pomiedzy inputami od logowania i rejestracji -->
-                </div>
-                <div class="col-md-2">
-                        
-                </div>
-                <div class="col-md-2">
-                </div>
-              </div>
+                <div class="logo-full-bg_home">
+                    <div class="container">
 
-            <div class="form-group">
-                <div class="col-md-4">
-                    <span><h1 style="color:green;">Zakłady Online (logo tu bedzie)</h1><span>
-                </div>
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        @Html.EditorFor(model => model.UserLoginView.Login, new { htmlAttributes = new { @class = "form-control", id = "login", @placeholder = "Wpisz swój login" } })
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        @Html.EditorFor(model => model.UserLoginView.Password, new { htmlAttributes = new { @class = "form-control", id = "Password_login", @placeholder = "Wpisz hasło" } })
+                        @Html.AntiForgeryToken() <!-- Sprawdzenie danych w polach-->
+                        @Html.ValidationMessageFor(model => model.UserLoginView.Password, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.UserLoginView.Login, "", new { @class = "text-danger" })
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <h1 style="color:white;">Zakłady Online</h1>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    @Html.EditorFor(model => model.UserLoginView.Login, new { htmlAttributes = new { @class = "form-control", id = "login", @placeholder = "Wpisz swój login" } })
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    @Html.EditorFor(model => model.UserLoginView.Password, new { htmlAttributes = new { @class = "form-control", id = "Password_login", @placeholder = "Wpisz hasło" } })
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <input id="Button_login" type="submit" value="Zaloguj" class="btn btn-default" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <input id="Button_login" type="submit" value="Zaloguj" class="btn btn-default" />
-                </div>
-             </div>
                 }
-       </div>
 
-    <!-- Formularz dotyczący rejestracji-->
-    <div class="form-horizontal">
-        @using (Html.BeginForm("SignUp", "Home", FormMethod.Post, new { @class = "form-group" }))
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <h2>Jeśli nie jesteś zarejestrowany, ZAREJESTRUJ SIĘ!</h2>
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserSignUpView.Login, htmlAttributes: new { @class = "control-label col-sm-2" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.UserSignUpView.Login, new { htmlAttributes = new { @placeholder = "np. Makumba" } })
-                    @Html.ValidationMessageFor(model => model.UserSignUpView.Login, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserSignUpView.Password, htmlAttributes: new { @class = "control-label col-sm-2" })
-                <div class="col-sm-10">
-                    @Html.PasswordFor(model => model.UserSignUpView.Password, new { @placeholder = "**********" })
-                    @Html.ValidationMessageFor(model => model.UserSignUpView.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.UserSignUpView.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-sm-10">
-                            @Html.EditorFor(model => model.UserSignUpView.Email, new { htmlAttributes = new { @placeholder = "np. jan_kowalski@wp.pl" } })
-                            @Html.ValidationMessageFor(model => model.UserSignUpView.Email, "", new { @class = "text-danger" })
+                <!-- Formularz dotyczący rejestracji-->
+                @using (Html.BeginForm("SignUp", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div class="mainContainer_home">
+                        <div class="container">
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <h2>Jeśli nie jesteś zarejestrowany, ZAREJESTRUJ SIĘ!</h2>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.UserSignUpView.Login, htmlAttributes: new { @class = "label" })
+                                    @Html.EditorFor(model => model.UserSignUpView.Login, new { htmlAttributes = new { @placeholder = "np. Makumba" } })
+                                    @Html.ValidationMessageFor(model => model.UserSignUpView.Login, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.UserSignUpView.Password, htmlAttributes: new { @class = "label" })
+                                    @Html.PasswordFor(model => model.UserSignUpView.Password, new { @placeholder = "1234" })
+                                    <span class="glyphicon glyphicon-eye-open" onmouseenter="UserSignUpView_Password.type = 'text'" ; onmouseleave="UserSignUpView_Password.type = 'password'"></span>
+                                    @Html.ValidationMessageFor(model => model.UserSignUpView.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.UserSignUpView.Email, htmlAttributes: new { @class = "label" })
+                                    @Html.EditorFor(model => model.UserSignUpView.Email, new { htmlAttributes = new { @placeholder = "np. jan_kowalski@wp.pl" } })
+                                    @Html.ValidationMessageFor(model => model.UserSignUpView.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Zarejestruj" class="btn btn-default" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Zarejestruj" class="btn btn-default" />
-                        </div>
-                    </div>
-        }
-    </div>
+                }
+
 </body>
 
-       
+      </html> 
