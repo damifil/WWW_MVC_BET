@@ -16,9 +16,5 @@ namespace WebApplication2.Models.ViewModel
         [Display(Name = "Nowy e-mail:")]
         public string newEmail { get; set; }
 
-        [Required(ErrorMessage = "Podaj nowy e-mail")]
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Potwierdź e-mail:")]
-        public string confirmNewEmail { get; set; }
     }
 }

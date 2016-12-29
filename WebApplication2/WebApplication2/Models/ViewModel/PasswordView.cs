@@ -13,9 +13,9 @@ namespace WebApplication2.Models.ViewModel
         [Display(Name = "Podaj nowe hasło")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Podaj hasło")]
+        [Required(ErrorMessage = "Podaj stare hasło")]
         [DataType(DataType.Password)]
-        [Display(Name = "Potwierdź hasło:")]
-        public string confirmPassword { get; set; }
+        [Display(Name = "Podaj stare hasło:")]
+        public string oldPassword { get; set; }
     }
 }

@@ -29,10 +29,6 @@ namespace WebApplication2.Controllers
                 {
                     ModelState.AddModelError("", "Nowy e-mail jest taki sam jak aktualny.");
                 }
-                else if(userSettingView.emailView.newEmail != userSettingView.emailView.confirmNewEmail)
-                {
-                    ModelState.AddModelError("", "Wpisane adresy e-mail nie są takie same.");
-                }
                 else
                 {
                     UserManager userManager = new UserManager();
@@ -56,11 +52,11 @@ namespace WebApplication2.Controllers
 
                 if ((UserManager.GetMd5Hash(md5Hash, userSettingView.passwordView.Password)) == password)
                 {
-                    ModelState.AddModelError("", "Nowy hasło jest takie samo jak aktualne.");
+                    ModelState.AddModelError("", "Nowe hasło jest takie samo jak aktualne.");
                 }
-                else if ((UserManager.GetMd5Hash(md5Hash, userSettingView.passwordView.Password)) != (UserManager.GetMd5Hash(md5Hash, userSettingView.passwordView.confirmPassword)))
+                else if ((UserManager.GetMd5Hash(md5Hash, userSettingView.passwordView.oldPassword)) != password)
                 {
-                    ModelState.AddModelError("", "Wpisane hasła nie są takie same.");
+                    ModelState.AddModelError("", "Stare hasło nie jest poprawne.");
                 }
                 else
                 {

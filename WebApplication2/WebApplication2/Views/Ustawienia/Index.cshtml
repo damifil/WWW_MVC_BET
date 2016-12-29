@@ -23,10 +23,15 @@
             <!-- Formularz dotyczacy zmiany hasla--->
             @using (Html.BeginForm("Zmiana_hasla", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
             {
+                 
 
                 @Html.AntiForgeryToken()
+                     <!-- Wyswietla napis powodzenia zmiany email/hasla-->
+                    <span class="alert-success">@ViewBag.Status</span>
 
-                
+                    <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                     <div class="form-group">
                         <h2>Haslo</h2>
                     </div>
@@ -37,8 +42,10 @@
 
                     <!--  podawane stare haslo do sprawdzenia z starymzapisanym w bd podczas zmiany hasla -->
                     <div class="form-group">
-                        <input id="old_password" type="text" />
+                        @Html.EditorFor(model => model.passwordView.oldPassword, new { htmlAttributes = new {id = "old_password" } })
                     </div>
+                    <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
+                    @Html.ValidationMessageFor(model => model.passwordView.oldPassword, "", new { @class = "text-danger" })
 
                     <div class="form-group">
                         <label>podaj nowe haslo</label>
@@ -46,10 +53,12 @@
 
                     <!-- input z nowym haslem  -->
                     <div class="form-group">
-                        <input id="Password_input" type="password" />
+                        @Html.EditorFor(model => model.passwordView.Password, new { htmlAttributes = new { id = "Password_input" } })
                         <span class="glyphicon glyphicon-eye-open" onmouseenter="Password_input.type='text'" ; onmouseleave="Password_input.type='password'"></span>
                     </div>
-
+                    <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
+                    @Html.ValidationMessageFor(model => model.passwordView.Password, "", new { @class = "text-danger" })
+                   
                     <!--  przycisk do zmiany  hasla-->
                     <div class="form-group">
                         <input type="submit" value="Zmień" class="btn btn-default" />
@@ -65,7 +74,7 @@
                 @Html.AntiForgeryToken()
 
 
-                @Html.EditorFor(model => model.deleteUserView.deleteU)
+                @Html.EditorFor(model => model.deleteUserView.deleteU) 
 
                 <input type="submit" value="Usuń konto" class="btn btn-default" />
             }
@@ -93,7 +102,8 @@
             {
                 @Html.AntiForgeryToken()
                 <div class="form-group">
-                    <h2>email</h2>
+                    <!-- wyswietla aktualny email-->
+                    @Html.DisplayFor(model => model.emailView.email)
                 </div>
                 <div class="form-group">
                     <label>adres email</label>
@@ -101,9 +111,10 @@
 
                 <div class="form-group">
                     <!--input wyswietlajacy aktualny adres email z mozliwoscia wpisana nowego-->
-                    <input id="email" type="text" />
+                    @Html.EditorFor(model => model.emailView.newEmail, new { htmlAttributes = new { id = "email" } })
                 </div>
 
+                @Html.ValidationMessageFor(model => model.emailView.newEmail, "", new { @class = "text-danger" })
                 <div class="form-group">
                     <!-- przycisk zatwierdzajcy zmiane adresu email -->
                     <input type="submit" value="Zmień" class="btn btn-default" />
