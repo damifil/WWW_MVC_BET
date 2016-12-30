@@ -3,7 +3,7 @@
     height: 100%;
 }
 
-.mainContainer,
+.mainContainer,.mainContainer_message,asside_message_list
 .czat_menu {
     margin-top: 120px;
 }
@@ -14,7 +14,7 @@
     margin-left: -62px;
 }
 
-.mainContainer {
+.mainContainer,.mainContainer_message,asside_message_list{
     padding-top: 20px;
 }
 
@@ -81,8 +81,7 @@ div.topHeader {
 .message_container{
         display: flex;
 }
-#Button_send_message_group {
-}
+
 
 .container_user_picture {
     margin: 0 10px 10px 10px;

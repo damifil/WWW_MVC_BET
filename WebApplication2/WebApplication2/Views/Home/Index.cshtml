@@ -69,7 +69,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.UserSignUpView.Password, htmlAttributes: new { @class = "label" })
                                     @Html.PasswordFor(model => model.UserSignUpView.Password, new { @placeholder = "1234" })
-                                    <span class="glyphicon glyphicon-eye-open" onmouseenter="UserSignUpView_Password.type = 'text'" ; onmouseleave="UserSignUpView_Password.type = 'password'"></span>
+                                    <span class="glyphicon glyphicon-eye-open"  onmousedown="UserSignUpView_Password.type = 'text'" ; onmouseup="UserSignUpView_Password.type = 'password'"></span>
                                     @Html.ValidationMessageFor(model => model.UserSignUpView.Password, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group">
