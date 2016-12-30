@@ -88,19 +88,21 @@
 
         <!--druga kolumna-->
         <div class="col-md-8">
-            <form>
+            @using (Html.BeginForm("Zmiana_opisu", "Ustawienia", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
                 <div>
                     <h2>O mnie</h2>
                 </div>
                 <div>
                     <!--tutaj powinien byc aktualny opis wyswietlany jaki uzytkownik mai uzytkownik do niego moze nowy wpisac-->
-                    <textarea id="describ_user" rows="10" cols="40"></textarea>
+                    @Html.TextAreaFor(model => model.userDescriptionView.description,  new { @id = "describ_user", @rows = 10, @cols = 40, @placeholder = Html.DisplayFor(n => n.userDescriptionView.description) })
                 </div>
                 <div>
                     <!--przycisk do zatwierdzenia zmian w opise-->
-                    <input id="Button_describe" type="button" value="zmien" class="btn btn-default" />
+                    <input id="Button_describe" type="submit" value="zmien" class="btn btn-default" />
                 </div>
-            </form>
+            }
 
             <!--formularz dotyczacy zmiany adresu email-->
             @using (Html.BeginForm("Zmiana_email", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))

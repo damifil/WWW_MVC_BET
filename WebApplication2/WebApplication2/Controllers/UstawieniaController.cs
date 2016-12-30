@@ -17,13 +17,14 @@ namespace WebApplication2.Controllers
             string login = User.Identity.Name;
             UserManager userManager = new UserManager();
             UserSettingView userSettingView = userManager.GetEmailImage(userManager.GetLogin(login));
+            userSettingView.userDescriptionView.description = userManager.GetDescription(login);
             return View(userSettingView);
         }
               
         [HttpPost]
         public ActionResult Zmiana_email(UserSettingView userSettingView)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (userSettingView.emailView.email == userSettingView.emailView.newEmail)
                 {
@@ -37,6 +38,18 @@ namespace WebApplication2.Controllers
                 }
                
             }
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Zmiana_opisu(UserSettingView userSettingView)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager userManager = new UserManager();
+                userManager.ChangeDescription(userSettingView, User.Identity.Name);
+                ViewBag.Status = "Opis został zmieniony.";
+            }
 
             return View("Index");
         }
@@ -49,7 +62,6 @@ namespace WebApplication2.Controllers
                 MD5 md5Hash = MD5.Create();
                 UserManager userManager = new UserManager();
                 string password = userManager.GetUserPassword(User.Identity.Name);
-
                 if ((UserManager.GetMd5Hash(md5Hash, userSettingView.passwordView.Password)) == password)
                 {
                     ModelState.AddModelError("", "Nowe hasło jest takie samo jak aktualne.");

@@ -79,6 +79,19 @@ namespace WebApplication2.Models.EntityManager
             return string.Empty;
         }
 
+        public string GetDescription(string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                var user = db.USER.Where(o => o.User_ID.Equals(login));
+                if (user.Any())
+                {
+                    return user.FirstOrDefault().Description;
+                }
+            }
+            return string.Empty;
+        }
+
         public void ChangeEmail(UserSettingView user, string login)
         {
             using (ProjektEntities db = new ProjektEntities())
@@ -112,6 +125,28 @@ namespace WebApplication2.Models.EntityManager
                         MD5 md5Hash = MD5.Create();
                         USER us = db.USER.Find(login);
                         us.Password = GetMd5Hash(md5Hash, user.passwordView.Password);
+
+                        db.SaveChanges();
+                        dbContextTransaction.Commit();
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
+            }
+        }
+
+        public void ChangeDescription(UserSettingView user, string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                using (var dbContextTransaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        USER us = db.USER.Find(login);
+                        us.Description = user.userDescriptionView.description;
 
                         db.SaveChanges();
                         dbContextTransaction.Commit();
