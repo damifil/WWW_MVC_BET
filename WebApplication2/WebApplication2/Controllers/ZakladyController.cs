@@ -45,6 +45,7 @@ namespace WebApplication2.Controllers
             return View();
         }
 
+        
         public ActionResult dodaj()
         {
 
@@ -112,7 +113,6 @@ namespace WebApplication2.Controllers
                         Text = c.Track,
                         Value = c.Track
                     }).ToList();
-
 
                     ViewBag.Wyscig1 = xd;
                     BETS itm = new BETS();
@@ -217,7 +217,7 @@ namespace WebApplication2.Controllers
                     wybor.betGetView.betPos3 = ds.Pos_3;
                     wybor.betGetView.betTime1 = ds.Time_1;
                 }
-
+                System.Diagnostics.Debug.WriteLine("wyswietlanie: " + wybor.betGetView.selectedTrack);
                 var races = from rac in db.RACES
                             join dr in db.DRIVERS
                             on rac.Pos_1 equals dr.Driver_ID
@@ -226,8 +226,10 @@ namespace WebApplication2.Controllers
                 foreach (var ds in races)
                 {
                     wybor.betGetView.racePos1 = ds.Driver_Name;
+                    System.Diagnostics.Debug.WriteLine("wyswietlanie: " + ds.Driver_Name );
+                    System.Diagnostics.Debug.WriteLine("wyswietlanie: " + wybor.betGetView.racePos1);
                 }
-              
+
                 var races1 = from rac in db.RACES
                              where rac.Track == wybor.betGetView.selectedTrack
                              join dr in db.DRIVERS
@@ -238,7 +240,7 @@ namespace WebApplication2.Controllers
                 foreach (var ds in races1)
                 {
                     wybor.betGetView.racePos2 = ds.Driver_Name;
-                    
+
                 }
 
                 var races2 = from rac in db.RACES
@@ -261,10 +263,10 @@ namespace WebApplication2.Controllers
                     wybor.betGetView.raceTime1 = ds.Driver_Name;
                 }
 
-
+              
             }
 
-            return View("Index");
+            return View(wybor);
         }
     }
 }
