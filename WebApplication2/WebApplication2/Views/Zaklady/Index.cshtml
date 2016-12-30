@@ -1,4 +1,4 @@
-﻿
+﻿@model WebApplication2.Models.ViewModel.BetSetGetView
 @{
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
@@ -9,72 +9,57 @@
 
 <h2>Obstaw</h2>
 
-<form class="form-inline">
 
+    @Html.BeginForm("dodaj", "Zaklady", FormMethod.Post)
+    { 
     <div class="form-group">
         <p>1 miejsce</p>
         <p>
-            <select id="Selec_first_place">
-                <option value="val0">"zawodnik 1"</option>
-                <option value="val1">"zawodnik 2"</option>
-            </select>
+    @Html.DropDownListFor(model => model.betSetView.Driver_Name1, ViewBag.KategoriaList as IEnumerable<SelectListItem>)
         </p>
     </div>
 
     <div class="form-group">
         <p>2 miejsce</p>
         <p>
-            <select id="Selec_second_place">
-                <option value="val0">"zawodnik 1"</option>
-                <option value="val1">"zawodnik 2"</option>
-            </select>
+            @Html.DropDownListFor(model => model.betSetView.Driver_Name2, ViewBag.KategoriaList as IEnumerable<SelectListItem>)
         </p>
     </div>
 
     <div class="form-group">
         <p>3 miejsce</p>
         <p>
-            <select id="Selec_third_place">
-                <option value="val0">"zawodnik 1"</option>
-                <option value="val1">"zawodnik 2"</option>
-            </select>
+            @Html.DropDownListFor(model => model.betSetView.Driver_Name3, ViewBag.KategoriaList as IEnumerable<SelectListItem>)
         </p>
     </div>
 
-</form>
+
 
 
 <h2>Najlepsze okrazenie</h2>
 
-<form class="form-inline">
+
     <div class="form-group">
 
         <p>najlepsze okrazenie</p>
         <p>
-            <select id="Selec_best_lap">
-                <option value="val0">"zawodnik 1"</option>
-                <option value="val1">"zawodnik 2"</option>
-            </select>
+            @Html.DropDownListFor(model => model.betSetView.Driver_Time1, ViewBag.KategoriaList as IEnumerable<SelectListItem>)
         </p>
 
     </div>
-</form>
 
-<input id="Button1" type="button" value="zatwierdz zmiany" />
+<input id="Button_login" type="submit" value="Zaloguj" class="btn btn-default" />
 
+}
 
 <h1>Twoje zaklady</h1>
+@Html.BeginForm("wyswietl", "Zaklady", FormMethod.Post){
 <p>
-    <select id="Selec_best_lap">
-        <option value="val0">...</option>
-        <option value="val1">zaklad 1</option>
-        <option value="val1">zaklad 2</option>
-
-    </select>
+    @Html.DropDownListFor(model => model.betGetView.selectedTrack, ViewBag.Wyscig1 as IEnumerable<SelectListItem>)
+    
 </p>
-
-
-   
+<input id="Button_login" type="submit" value="Zaloguj" class="btn btn-default" />
+   }
 
 <div class="table" id="table_race">
     <div>
@@ -91,29 +76,29 @@
             <tbody>
                 <tr>
                     <td>1 zawodnik</td>
-                    <td>1 wybrany zawodnik</td>
-                    <td>zawodnik z wyscigu</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.betPos1)</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.racePos1)</td>
                     <td>zdobyte punkty za zawodnika</td>
                 </tr>
 
                 <tr>
                     <td>2 zawodnik</td>
-                    <td>2 wybrany zawodnik</td>
-                    <td>zawodnik z wyscigu</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.betPos2)</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.racePos2)</td>
                     <td>zdobyte punkty za zawodnika</td>
                 </tr>
 
                 <tr>
                     <td>3 zawodnik</td>
-                    <td>3 wybrany zawodnik</td>
-                    <td>zawodnik z wyscigu</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.betPos3)</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.racePos3)</td>
                     <td>zdobyte punkty za zawodnika</td>
                 </tr>
 
                 <tr>
                     <td>najlepsze okrazenie</td>
-                    <td> wybrany zawodnik</td>
-                    <td>zawodnik z wyscigu</td>
+                    <td> @Html.DisplayFor(model => model.betGetView.betTime1)</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.racePos3)</td>
                     <td>zdobyte punkty za zawodnika</td>
                 </tr>
 

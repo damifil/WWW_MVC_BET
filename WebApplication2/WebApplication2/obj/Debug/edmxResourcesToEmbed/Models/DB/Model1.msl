@@ -6,20 +6,12 @@
         <MappingFragment StoreEntitySet="BETS">
           <ScalarProperty Name="Bet_ID" ColumnName="Bet_ID" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
-          <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
           <ScalarProperty Name="Race_ID" ColumnName="Race_ID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Pos_1" ColumnName="Pos_1" />
           <ScalarProperty Name="Time_1" ColumnName="Time_1" />
           <ScalarProperty Name="Pos_2" ColumnName="Pos_2" />
           <ScalarProperty Name="Pos_3" ColumnName="Pos_3" />
-          <ScalarProperty Name="Pos_4" ColumnName="Pos_4" />
-          <ScalarProperty Name="Pos_5" ColumnName="Pos_5" />
-          <ScalarProperty Name="Pos_6" ColumnName="Pos_6" />
-          <ScalarProperty Name="Pos_7" ColumnName="Pos_7" />
-          <ScalarProperty Name="Pos_8" ColumnName="Pos_8" />
-          <ScalarProperty Name="Pos_9" ColumnName="Pos_9" />
-          <ScalarProperty Name="Pos_10" ColumnName="Pos_10" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -100,13 +92,6 @@
           <ScalarProperty Name="Time_1" ColumnName="Time_1" />
           <ScalarProperty Name="Pos_2" ColumnName="Pos_2" />
           <ScalarProperty Name="Pos_3" ColumnName="Pos_3" />
-          <ScalarProperty Name="Pos_4" ColumnName="Pos_4" />
-          <ScalarProperty Name="Pos_5" ColumnName="Pos_5" />
-          <ScalarProperty Name="Pos_6" ColumnName="Pos_6" />
-          <ScalarProperty Name="Pos_7" ColumnName="Pos_7" />
-          <ScalarProperty Name="Pos_8" ColumnName="Pos_8" />
-          <ScalarProperty Name="Pos_9" ColumnName="Pos_9" />
-          <ScalarProperty Name="Pos_10" ColumnName="Pos_10" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -141,6 +126,7 @@
     <EntitySetMapping Name="USER">
       <EntityTypeMapping TypeName="ProjektModel.USER">
         <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="e_mail" ColumnName="e_mail" />
