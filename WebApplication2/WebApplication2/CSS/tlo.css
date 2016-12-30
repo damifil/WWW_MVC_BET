@@ -65,6 +65,10 @@ div.topHeader {
     clear: both;
 }
 
+.collapse,{
+    margin-top:5px;
+}
+
 #Button_gruop_out {
     float: right;
 }

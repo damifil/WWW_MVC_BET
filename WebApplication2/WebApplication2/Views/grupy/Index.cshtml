@@ -7,20 +7,26 @@
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+$(document).ready(function () {
+    $('#tabela_ranking').DataTable();
+});
 </script>
+
+
+
 
 <div>
     <input id="Button_gruop_out" type="button" value="opusc grupe" class="btn btn-default"/>
 
     <h2>Ranking czlonkow grupy</h2>
 
-    <input id="Button_ranking" type="button" value="zwin/rozwin" class="btn btn-default"   data-toggle="collapse" data-target="#table_ranking"/>
+    <input id="Button_ranking" type="button" value="zwin/rozwin" class="btn btn-default"   data-toggle="collapse" data-target="#table_ranking_button"/>
 
-    <!-- trzeba zrobic sortowanie-->
-    <div class="collapse" id="table_ranking">
+    <div class="collapse" id="table_ranking_button">
 
 
-        <table class="table table-striped" style="width:100%;">
+        <table id="tabela_ranking" class="table table-striped" cellspacing="3" width="100%" style="background-color:white">
             <thead>
                 <tr>
                     <th>Pozycja</th>
@@ -28,15 +34,23 @@ $(document).ready(function(){
                     <th>wynik</th>
                 </tr>
             </thead>
+            
             <tbody>
                 <tr>
                     <td>1</td>
                     <td><a href="~/profil/index#id">nazwa_uzytkownika</a></td>
                     <td>230</td>
                 </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="~/profil/index#id">nazwa_uzytkownika2</a></td>
+                    <td>10</td>
+                </tr>
+
             </tbody>
 
         </table>
+        <!--
         <center>
             <ul class="pagination">
                 <li><a href="#1">1</a></li>
@@ -46,7 +60,9 @@ $(document).ready(function(){
                 <li><a href="#5">5</a></li>
             </ul>
         </center>
+            --->
     </div>
+  
 </div>
 
 
