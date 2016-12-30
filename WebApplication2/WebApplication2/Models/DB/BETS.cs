@@ -16,22 +16,13 @@ namespace WebApplication2.Models.DB
     {
         public int Bet_ID { get; set; }
         public string User_ID { get; set; }
-        public int Group_ID { get; set; }
         public int Race_ID { get; set; }
-        public System.DateTime Date { get; set; }
+        public string Date { get; set; }
         public string Pos_1 { get; set; }
         public string Time_1 { get; set; }
         public string Pos_2 { get; set; }
         public string Pos_3 { get; set; }
-        public string Pos_4 { get; set; }
-        public string Pos_5 { get; set; }
-        public string Pos_6 { get; set; }
-        public string Pos_7 { get; set; }
-        public string Pos_8 { get; set; }
-        public string Pos_9 { get; set; }
-        public string Pos_10 { get; set; }
     
-        public virtual GROUPS GROUPS { get; set; }
         public virtual RACES RACES { get; set; }
         public virtual USER USER { get; set; }
     }

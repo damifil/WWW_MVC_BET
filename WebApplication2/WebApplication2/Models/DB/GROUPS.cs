@@ -17,7 +17,6 @@ namespace WebApplication2.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GROUPS()
         {
-            this.BETS = new HashSet<BETS>();
             this.MEMBERSHIPS = new HashSet<MEMBERSHIPS>();
         }
     
@@ -25,8 +24,6 @@ namespace WebApplication2.Models.DB
         public string Group_Name { get; set; }
         public byte[] Image { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BETS> BETS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEMBERSHIPS> MEMBERSHIPS { get; set; }
     }

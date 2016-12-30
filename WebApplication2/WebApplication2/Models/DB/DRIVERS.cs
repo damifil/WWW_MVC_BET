@@ -19,16 +19,8 @@ namespace WebApplication2.Models.DB
         {
             this.PARTICIPANTS = new HashSet<PARTICIPANTS>();
             this.RACES = new HashSet<RACES>();
-            this.RACES1 = new HashSet<RACES>();
             this.RACES2 = new HashSet<RACES>();
             this.RACES3 = new HashSet<RACES>();
-            this.RACES4 = new HashSet<RACES>();
-            this.RACES5 = new HashSet<RACES>();
-            this.RACES6 = new HashSet<RACES>();
-            this.RACES7 = new HashSet<RACES>();
-            this.RACES8 = new HashSet<RACES>();
-            this.RACES9 = new HashSet<RACES>();
-            this.RACES10 = new HashSet<RACES>();
         }
     
         public int Driver_ID { get; set; }
@@ -40,24 +32,8 @@ namespace WebApplication2.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RACES> RACES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RACES> RACES1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RACES> RACES2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RACES> RACES3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RACES> RACES4 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RACES> RACES5 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RACES> RACES6 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RACES> RACES7 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RACES> RACES8 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RACES> RACES9 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RACES> RACES10 { get; set; }
     }
 }

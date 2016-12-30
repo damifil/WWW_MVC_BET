@@ -23,32 +23,17 @@ namespace WebApplication2.Models.DB
         public int Race_ID { get; set; }
         public int Season_ID { get; set; }
         public string Track { get; set; }
-        public System.DateTime Date { get; set; }
+        public string Date { get; set; }
         public Nullable<int> Pos_1 { get; set; }
         public Nullable<int> Time_1 { get; set; }
         public Nullable<int> Pos_2 { get; set; }
         public Nullable<int> Pos_3 { get; set; }
-        public Nullable<int> Pos_4 { get; set; }
-        public Nullable<int> Pos_5 { get; set; }
-        public Nullable<int> Pos_6 { get; set; }
-        public Nullable<int> Pos_7 { get; set; }
-        public Nullable<int> Pos_8 { get; set; }
-        public Nullable<int> Pos_9 { get; set; }
-        public Nullable<int> Pos_10 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BETS> BETS { get; set; }
         public virtual SEASONS SEASONS { get; set; }
         public virtual DRIVERS DRIVERS { get; set; }
-        public virtual DRIVERS DRIVERS1 { get; set; }
         public virtual DRIVERS DRIVERS2 { get; set; }
         public virtual DRIVERS DRIVERS3 { get; set; }
-        public virtual DRIVERS DRIVERS4 { get; set; }
-        public virtual DRIVERS DRIVERS5 { get; set; }
-        public virtual DRIVERS DRIVERS6 { get; set; }
-        public virtual DRIVERS DRIVERS7 { get; set; }
-        public virtual DRIVERS DRIVERS8 { get; set; }
-        public virtual DRIVERS DRIVERS9 { get; set; }
-        public virtual DRIVERS DRIVERS10 { get; set; }
     }
 }

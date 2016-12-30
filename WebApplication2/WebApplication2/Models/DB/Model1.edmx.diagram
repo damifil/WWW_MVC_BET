@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3c62ca967cf14818828c37cbfb64d182" Name="Diagram1">
-        <EntityTypeShape EntityType="ProjektModel.BETS" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.DRIVERS" Width="1.5" PointX="1.5" PointY="25.875" IsExpanded="true" />
+      <Diagram DiagramId="3c62ca967cf14818828c37cbfb64d182" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="ProjektModel.BETS" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.DRIVERS" Width="1.5" PointX="1.625" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.FRIENDS" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.GROUPS" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.INVITATIONS" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
@@ -16,9 +16,8 @@
         <EntityTypeShape EntityType="ProjektModel.RACES" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.SEASONS" Width="1.5" PointX="1.5" PointY="23.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjektModel.TEAMS" Width="1.5" PointX="1.5" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektModel.TEAMS" Width="1.5" PointX="1.75" PointY="29.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjektModel.USER" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <AssociationConnector Association="ProjektModel.FK_BETS_GROUPS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_BETS_RACES" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_BETS_USER" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_PARTICIPANTS_DRIVERS" ManuallyRouted="false" />
@@ -34,15 +33,8 @@
         <AssociationConnector Association="ProjektModel.FK_PARTICIPANTS_TEAMS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_RACES_SEASONS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_RACES_Pos1" />
-        <AssociationConnector Association="ProjektModel.FK_RACES_Pos10" />
         <AssociationConnector Association="ProjektModel.FK_RACES_Pos2" />
         <AssociationConnector Association="ProjektModel.FK_RACES_Pos3" />
-        <AssociationConnector Association="ProjektModel.FK_RACES_Pos4" />
-        <AssociationConnector Association="ProjektModel.FK_RACES_Pos5" />
-        <AssociationConnector Association="ProjektModel.FK_RACES_Pos6" />
-        <AssociationConnector Association="ProjektModel.FK_RACES_Pos7" />
-        <AssociationConnector Association="ProjektModel.FK_RACES_Pos8" />
-        <AssociationConnector Association="ProjektModel.FK_RACES_Pos9" />
         <AssociationConnector Association="ProjektModel.FK_RACES_Time1" />
       </Diagram>
     </edmx:Diagrams>
