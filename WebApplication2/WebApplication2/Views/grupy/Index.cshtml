@@ -3,15 +3,21 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
 <div>
-    <input id="Button_gruop_out" type="button" value="opusc grupe" />
+    <input id="Button_gruop_out" type="button" value="opusc grupe" class="btn btn-default"/>
 
     <h2>Ranking czlonkow grupy</h2>
 
-    <input id="Button_ranking" type="button" value="zwin/rozwin" />
+    <input id="Button_ranking" type="button" value="zwin/rozwin" class="btn btn-default"   data-toggle="collapse" data-target="#table_ranking"/>
 
     <!-- trzeba zrobic sortowanie-->
-    <div class="table_ranking">
+    <div class="collapse" id="table_ranking">
 
 
         <table class="table table-striped" style="width:100%;">
@@ -44,31 +50,34 @@
 </div>
 
 
-
 <h2>Czat</h2>
 <div class="chat_group">
     <!--wyswietlanie wiadomosci innych uzytkownikow-->
-
-    <div class="message">
-            <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png"  class="img-circle chat_group_position_avatar" alt="Cinque Terre" width="50" height="50">
-                <strong class="chat_group_position_name">Damianf</strong>
-        <p>siemka</p>
+    <div class="message_container">
+            <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png"  
+                 data-toggle="tooltip" data-placement="top" title="Damianf 30.12.2016 14:30"
+                  class="img-circle chat_group_position_avatar" alt="Cinque Terre" width="50" height="50">
+        <div class="message">
+            <!----> 
+            <p>siemka</p>
+        </div>
     </div>
-    <!--wyswietlanie wiadomosci uzytkownika-->
-   <div class="message_user">
-       <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png" class="img-circle chat_group_position_avatar" alt="Cinque Terre" width="50" height="50">
-       <strong class="chat_group_position_name">Dawid.</strong>
-       <p>jol</p>
-   </div>
 
-   
-   
+    <!--wyswietlanie wiadomosci uzytkownika-->
+        <div class="message_user" data-toggle="tooltip" data-placement="top" title="David 30.12.2016 14:31">
+            <p>jol</p>
+        </div>
+        
+    <div class="message_user" data-toggle="tooltip" data-placement="top" title="David 30.12.2016 14:32">
+        <p>:D</p>
+    </div>
+    
 </div>
 
 <div>
     <form>
         <textarea id="TextArea_user_send" rows="4" style="width:100%; max-height:200px; max-width:100%"></textarea>
-        <input id="Button_send_message_group" type="submit" value="wyslij" />
+        <input id="Button_send_message_group" type="submit" value="wyslij" class="btn btn-default"/>
     </form>
 </div>
 

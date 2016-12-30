@@ -14,13 +14,40 @@
             <p>Nick</p>
             <p>plec</p>
             <p>dolaczyl: Data jakas</p>
-            <input id="send_Button" type="button" value="napisz" />
+            <input id="send_Button" type="button" value="napisz" class="btn btn-default" />
 
         </div>
         <div class="col-md-8 col-sm-8">
-            <input id="friend_button" type="button" value="zapros/usun" />
+            <input id="friend_button" type="button" value="zapros/usun" class="btn btn-default"/>
             <h2>O mnie</h2>
-            <textarea id="describ_user" rows="2" cols="40"></textarea>
+            
+            <!---------------------------------------------------------------------------->
+            
+            <!--README-->
+            <!--
+                w zaleznosci od tego czy na profilu uzytkownika jestesmy czy na porfilu innegouzytkowniak
+            
+                czesc zakomentowana dotyczy innego uzytkownika u ktoregoopisu nie mozemy zmienic tylko wyswietlic 
+                czesc niezakomentowana dotyczy uzytkowniak ktory jest na swoimprofilu i tam ma wypisany w textarea swoj tesk i mozego zmieniac
+            -->
+
+            <!--
+            <div class="about_me_container">
+
+            </div>
+            -->
+            <form class="form">
+                
+                <div>
+                    <!--tutaj powinien byc aktualny opis wyswietlany jaki uzytkownik mai uzytkownik do niego moze nowy wpisac-->
+                    <textarea id="describ_user" rows="10" cols="40"></textarea>
+                </div>
+                <div>
+                    <!--przycisk do zatwierdzenia zmian w opise-->
+                    <input id="Button_describe" type="button" value="zmien" class="btn btn-default" />
+                </div>
+            </form>
+<!------------------------------------------------------------------------------------------->
 
             <div class="table-responsive">
                 <table class="table table-striped" style="width:60%;">

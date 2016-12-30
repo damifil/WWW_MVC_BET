@@ -32,46 +32,48 @@
                     <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    <div class="form-group">
+                    <div>
                         <h2>Haslo</h2>
                     </div>
 
-                    <div class="form-group">
+                    <div>
                         <label>podaj stare haslo</label>
                     </div>
+                    <form>
+                        <!--  podawane stare haslo do sprawdzenia z starymzapisanym w bd podczas zmiany hasla -->
+                        <div>
+                            @Html.EditorFor(model => model.passwordView.oldPassword, new { htmlAttributes = new { id = "old_password" } })
+                        </div>
+                        <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
+                        @Html.ValidationMessageFor(model => model.passwordView.oldPassword, "", new { @class = "text-danger" })
 
-                    <!--  podawane stare haslo do sprawdzenia z starymzapisanym w bd podczas zmiany hasla -->
-                    <div class="form-group">
-                        @Html.EditorFor(model => model.passwordView.oldPassword, new { htmlAttributes = new { id = "old_password" } })
-                    </div>
-                    <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
-                    @Html.ValidationMessageFor(model => model.passwordView.oldPassword, "", new { @class = "text-danger" })
+                        <div>
+                            <label>podaj nowe haslo</label>
+                        </div>
 
-                    <div class="form-group">
-                        <label>podaj nowe haslo</label>
-                    </div>
+                        <!-- input z nowym haslem  -->
+                        <div>
+                            @Html.EditorFor(model => model.passwordView.Password, new { htmlAttributes = new { id = "Password_input" } })
+                            <span class="glyphicon glyphicon-eye-open" onmouseenter="Password_input.type='text'" ; onmouseleave="Password_input.type='password'"></span>
+                        </div>
+                        <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
+                        @Html.ValidationMessageFor(model => model.passwordView.Password, "", new { @class = "text-danger" })
 
-                    <!-- input z nowym haslem  -->
-                    <div class="form-group">
-                        @Html.EditorFor(model => model.passwordView.Password, new { htmlAttributes = new { id = "Password_input" } })
-                        <span class="glyphicon glyphicon-eye-open" onmouseenter="Password_input.type='text'" ; onmouseleave="Password_input.type='password'"></span>
-                    </div>
-                    <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
-                    @Html.ValidationMessageFor(model => model.passwordView.Password, "", new { @class = "text-danger" })
-
-                    <!--  przycisk do zmiany  hasla-->
-                    <div class="form-group">
-                        <input type="submit" value="Zmień" class="btn btn-default" />
-                    </div>
+                        <!--  przycisk do zmiany  hasla-->
+                        <div>
+                            <input type="submit" value="Zmień" class="btn btn-default" />
+                        </div>
+                    </form>
             }
 
-            <div class="form-group">
+            <div>
 
                 <h2>Usun konto</h2>
 
                 <!-- fpormularz do usuwania konta w sumie to zostawilem z tego co dawid wrzucil-->
                 @using (Html.BeginForm("Usuniecie_konta", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
             {
+                    <form>
                     @Html.AntiForgeryToken()
 
                     <label>Potwierdz czy na pewno chcesz usunac konto</label>
@@ -79,21 +81,22 @@
                     @Html.EditorFor(model => model.deleteUserView.deleteU)
 
                     <input type="submit" value="Usuń konto" class="btn btn-default" />
+                           </form>
                 }
             </div>
         </div>
 
         <!--druga kolumna-->
         <div class="col-md-8">
-            <form class="form-horizontal">
-                <div class="form-group">
+            <form>
+                <div>
                     <h2>O mnie</h2>
                 </div>
-                <div class="form-group">
+                <div>
                     <!--tutaj powinien byc aktualny opis wyswietlany jaki uzytkownik mai uzytkownik do niego moze nowy wpisac-->
                     <textarea id="describ_user" rows="10" cols="40"></textarea>
                 </div>
-                <div class="form-group">
+                <div>
                     <!--przycisk do zatwierdzenia zmian w opise-->
                     <input id="Button_describe" type="button" value="zmien" class="btn btn-default" />
                 </div>
@@ -103,23 +106,24 @@
             @using (Html.BeginForm("Zmiana_email", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
             {
                 @Html.AntiForgeryToken()
-                <div class="form-group">
+                <div>
                     <!-- wyswietla aktualny email-->
                     @Html.DisplayFor(model => model.emailView.email)
                 </div>
-                <div class="form-group">
+                <div>
                     <label>adres email</label>
                 </div>
-
-                <div class="form-group">
-                    <!--input wyswietlajacy aktualny adres email z mozliwoscia wpisana nowego-->
-                    @Html.EditorFor(model => model.emailView.newEmail, new { htmlAttributes = new { id = "email" } })
-                </div>
-                @Html.ValidationMessageFor(model => model.emailView.newEmail, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <!-- przycisk zatwierdzajcy zmiane adresu email -->
-                    <input type="submit" value="Zmień" class="btn btn-default" />
-                </div>
+                <form>
+                    <div>
+                        <!--input wyswietlajacy aktualny adres email z mozliwoscia wpisana nowego-->
+                        @Html.EditorFor(model => model.emailView.newEmail, new { htmlAttributes = new { id = "email" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.emailView.newEmail, "", new { @class = "text-danger" })
+                    <div>
+                        <!-- przycisk zatwierdzajcy zmiane adresu email -->
+                        <input type="submit" value="Zmień" class="btn btn-default" />
+                    </div>
+                </form>
             }
 
         </div>
