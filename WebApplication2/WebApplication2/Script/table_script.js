@@ -5,7 +5,7 @@
     },
 
     initDataTable: function () {
-        var table = $('#tabela_ranking').DataTable({
+        var table = $('#tabela_js_show').DataTable({
 
         });
 
@@ -16,7 +16,7 @@
 
 
     initDataTable: function () {
-        var table = $('#tabela_ranking').DataTable({
+        var table = $('#tabela_js_show').DataTable({
             "language": {
                 "sProcessing": "Przetwarzanie...",
                 "sLengthMenu": "Pokaż _MENU_ pozycji",

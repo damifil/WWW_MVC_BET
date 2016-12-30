@@ -15,9 +15,18 @@
             <p>plec</p>
             <p>dolaczyl: Data jakas</p>
             <input id="send_Button" type="button" value="napisz" class="btn btn-default" />
+            <h2>Grupy do ktorych uzytkownik nalezy</h2>
 
+
+            <input id="Button_group" type="button" value="zwin/rozwin" class="btn btn-default" data-toggle="collapse" data-target="#list_group" />
+            <div class="collapse" id="list_group">
+                <ul>
+                    <li><a href="grupy#1"><p>nazwa_grupy_1</p></a></li>
+                    <li><a href="grupy#2"><p>nazwa_grupy_2</p></a></li>
+                </ul>
+            </div>
         </div>
-        <div class="col-md-8 col-sm-8">
+        <div class="col-md-5 col-sm-5">
             <input id="friend_button" type="button" value="zapros/usun" class="btn btn-default"/>
             <h2>O mnie</h2>
             
@@ -49,8 +58,8 @@
             </form>
 <!------------------------------------------------------------------------------------------->
 
-            <div class="table-responsive">
-                <table class="table table-striped" style="width:60%;">
+            <div class="table-responsive" style="background-color:white">
+                <table class="table table-striped" style="width:100%;">
                     <h2>Ranking Globlany</h2>
                     <thead>
                         <tr>
@@ -93,11 +102,7 @@
                 </table>
             </div>
 
-            <h2>Grupy</h2>
-            <ul>
-                <li><a href="grupy#1"><p>nazwa_grupy_1</p></a></li>
-                <li><a href="grupy#2"><p>nazwa_grupy_2</p></a></li>
-            </ul>
+            
 
 
         </div>
@@ -107,3 +112,15 @@
     </div>
 
 </div>
+
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(document).ready(function () {
+    $('#button_group').DataTable();
+});
+</script>
