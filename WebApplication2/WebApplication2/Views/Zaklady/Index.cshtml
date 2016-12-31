@@ -15,21 +15,21 @@
     <div class="form-group">
         <p>1 miejsce</p>
         <p>
-            @Html.DropDownListFor(model => model.betSetView.Driver_Name1, ViewBag.KategoriaList as IEnumerable<SelectListItem>)
+            @Html.DropDownListFor(model => model.betSetView.Driver_Name1, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
         </p>
     </div>
 
     <div class="form-group">
         <p>2 miejsce</p>
         <p>
-            @Html.DropDownListFor(model => model.betSetView.Driver_Name2, ViewBag.KategoriaList as IEnumerable<SelectListItem>)
+            @Html.DropDownListFor(model => model.betSetView.Driver_Name2, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
         </p>
     </div>
 
     <div class="form-group">
         <p>3 miejsce</p>
         <p>
-            @Html.DropDownListFor(model => model.betSetView.Driver_Name3, ViewBag.KategoriaList as IEnumerable<SelectListItem>)
+            @Html.DropDownListFor(model => model.betSetView.Driver_Name3, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
         </p>
     </div>
 
@@ -43,7 +43,7 @@
 
         <p>najlepsze okrazenie</p>
         <p>
-            @Html.DropDownListFor(model => model.betSetView.Driver_Time1, ViewBag.KategoriaList as IEnumerable<SelectListItem>)
+            @Html.DropDownListFor(model => model.betSetView.Driver_Time1, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
         </p>
 
     </div>
@@ -56,7 +56,7 @@
     <form action="/Zaklady/wyswietl" method="post">
     <p>
 
-        @Html.DropDownListFor(model => model.betGetView.selectedTrack, ViewBag.Wyscig1 as IEnumerable<SelectListItem>, new { @onchange = "this.form.submit();" })
+        @Html.DropDownListFor(model => model.betGetView.selectedTrack, ViewBag.Wyscig1 as IEnumerable<SelectListItem>, "Wybierz", new { @onchange = "this.form.submit();" })
 
     </p>
     
