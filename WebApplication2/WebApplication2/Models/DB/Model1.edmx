@@ -127,7 +127,7 @@
           <Property Name="Is_Admin" Type="bit" Nullable="false" />
           <Property Name="Is_Exists" Type="bit" />
           <Property Name="Is_Log" Type="bit" />
-          <Property Name="Image" Type="image" />
+          <Property Name="Image" Type="varbinary(max)" />
           <Property Name="Description" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK_BETS_RACES">

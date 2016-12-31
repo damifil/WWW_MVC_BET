@@ -15,15 +15,14 @@
         <div class="col-md-4">
 
             <!--link do obrazka -->
-           <!-- <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png" class="img-rounded" alt="avatar" width="200" height="200">-->
-
+            <!-- <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png" class="img-rounded" alt="avatar" width="200" height="200">-->
             <!-- przycisk obslugujacy zmiane avatara (okienko  z wyborem do wskazania pliku powinno wyskoczyc)-->
-          <!--  <input id="Button_Avatar" type="button" value="zmien" class="btn btn-default" />/!-->
-           
+            <!--  <input id="Button_Avatar" type="button" value="zmien" class="btn btn-default" />/!-->
+
             <img src="data:image/png;base64, @Convert.ToBase64String(Model.imageView.imageData)" width="200" height="200" />
-            @using (Html.BeginForm("Zmiana_zdjecia", "Ustawienia", FormMethod.Post, new{ enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Zmiana_zdjecia", "Ustawienia", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                @Html.TextBoxFor(model => model.imageView.File, new { type = "file"})
+                @Html.TextBoxFor(model => model.imageView.File, new { type = "file" })
                 <input type="submit" value="upload" />
             }
             <!-- Formularz dotyczacy zmiany hasla--->
@@ -36,11 +35,11 @@
                 <span class="alert-success">@ViewBag.Status</span>
 
                     <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    <div>
-                        <h2>Haslo</h2>
-                    </div>
+                <div>
+                    <h2>Haslo</h2>
+                </div>
 
                     <div>
                         <label>podaj stare haslo</label>
@@ -80,14 +79,14 @@
                 @using (Html.BeginForm("Usuniecie_konta", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
             {
                     <form>
-                    @Html.AntiForgeryToken()
+                        @Html.AntiForgeryToken()
 
-                    <label>Potwierdz czy na pewno chcesz usunac konto</label>
+                        <label>Potwierdz czy na pewno chcesz usunac konto</label>
 
-                    @Html.EditorFor(model => model.deleteUserView.deleteU)
+                        @Html.EditorFor(model => model.deleteUserView.deleteU)
 
-                    <input type="submit" value="Usuń konto" class="btn btn-default" />
-                           </form>
+                        <input type="submit" value="Usuń konto" class="btn btn-default" />
+                    </form>
                 }
             </div>
         </div>
@@ -102,7 +101,7 @@
                 </div>
                 <div>
                     <!--tutaj powinien byc aktualny opis wyswietlany jaki uzytkownik mai uzytkownik do niego moze nowy wpisac-->
-                    @Html.TextAreaFor(model => model.userDescriptionView.description,  new { @id = "describ_user", @rows = 10, @cols = 40, @placeholder = Html.DisplayFor(n => n.userDescriptionView.description) })
+                    @Html.TextAreaFor(model => model.userDescriptionView.description, new { @id = "describ_user", @rows = 10, @cols = 40, @placeholder = Html.DisplayFor(n => n.userDescriptionView.description) })
                 </div>
                 <div>
                     <!--przycisk do zatwierdzenia zmian w opise-->

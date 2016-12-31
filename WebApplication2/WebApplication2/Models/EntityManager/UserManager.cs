@@ -72,8 +72,20 @@ namespace WebApplication2.Models.EntityManager
                 var user = db.USER.Where(o => o.User_ID.Equals(login));
                 if (user.Any())
                 {
-                    System.Diagnostics.Debug.WriteLine(" z getlogin:  " +user.FirstOrDefault().User_ID);
                     return user.FirstOrDefault().User_ID;
+                }
+            }
+            return string.Empty;
+        }
+
+        public string GetEmail(string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                var user = db.USER.Where(o => o.User_ID.Equals(login));
+                if (user.Any())
+                {
+                    return user.FirstOrDefault().e_mail;
                 }
             }
             return string.Empty;
@@ -92,6 +104,40 @@ namespace WebApplication2.Models.EntityManager
             return string.Empty;
         }
 
+        public byte[] GetImage(string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                var user = db.USER.Where(o => o.User_ID.Equals(login));
+                if (user.Any())
+                {
+                    return user.FirstOrDefault().Image;
+                }
+            }
+            return null;
+        }
+
+        public void ChangeImage(UserSettingView user, string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                using (var dbContextTransaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        USER us = db.USER.Find(login);
+                        us.Image = user.imageView.imageData;
+
+                        db.SaveChanges();
+                        dbContextTransaction.Commit();
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
+            }
+        }
         public void ChangeEmail(UserSettingView user, string login)
         {
             using (ProjektEntities db = new ProjektEntities())
@@ -188,7 +234,7 @@ namespace WebApplication2.Models.EntityManager
         {
             UserSettingView userSettingView = new UserSettingView();
             
-            System.Diagnostics.Debug.WriteLine("get email: "+ login);
+            
             using (ProjektEntities db = new ProjektEntities())
             {
                 var user = db.USER.Find(login);
@@ -196,8 +242,10 @@ namespace WebApplication2.Models.EntityManager
                 {
                     if (user != null)
                         userSettingView.emailView.email = user.e_mail;
-                    userSettingView.passwordView = null;
-                    userSettingView.imageView = null;
+                    userSettingView.passwordView = new PasswordView();
+                    userSettingView.imageView = new ImageView();
+                    userSettingView.userDescriptionView = new UserDescriptionView();
+                   
                 }
             }
 

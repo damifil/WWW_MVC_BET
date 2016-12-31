@@ -253,6 +253,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Zaklady\wyswietl.cshtml" />
+    <Content Include="Views\Ustawienia\Zmiana_email.cshtml" />
+    <Content Include="Views\Ustawienia\Zmiana_opisu.cshtml" />
+    <Content Include="Views\Ustawienia\Zmiana_hasla.cshtml" />
+    <Content Include="Views\Ustawienia\Usuniecie_konta.cshtml" />
+    <Content Include="Views\Ustawienia\Zmiana_zdjecia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -260,7 +265,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\Images\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
