@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace WebApplication2.Models.ViewModel
 {
     public class BetGetView
     {
+        [Required(ErrorMessage = "Wybierz zakład")]
         public string selectedTrack { get; set; }
         public string betPos1 { get; set; }
         public string betPos2 { get; set; }

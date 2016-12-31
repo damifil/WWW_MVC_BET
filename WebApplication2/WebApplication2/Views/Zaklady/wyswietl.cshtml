@@ -6,23 +6,30 @@
 <h2>Wybierz wyscig do zakladu</h2>
 
 
-
 <h2>Obstaw</h2>
 
 
 <form action="/Zaklady/dodaj" method="post" class="form-inline">
+    
+    <!-- Wyswietla napis o dodaniu zakladu-->
+    <span class="alert-success">@ViewBag.Status</span>
+    <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
         <p>1 miejsce</p>
         <p>
             @Html.DropDownListFor(model => model.betSetView.Driver_Name1, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
-        </p>
+            <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
+            @Html.ValidationMessageFor(model => model.betSetView.Driver_Name1, "", new { @class = "text-danger" })
+         </p>
     </div>
 
     <div class="form-group">
         <p>2 miejsce</p>
         <p>
             @Html.DropDownListFor(model => model.betSetView.Driver_Name2, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
+            @Html.ValidationMessageFor(model => model.betSetView.Driver_Name2, "", new { @class = "text-danger" })
         </p>
     </div>
 
@@ -30,7 +37,8 @@
         <p>3 miejsce</p>
         <p>
             @Html.DropDownListFor(model => model.betSetView.Driver_Name3, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
-        </p>
+            @Html.ValidationMessageFor(model => model.betSetView.Driver_Name3, "", new { @class = "text-danger" })
+         </p>
     </div>
 
 
@@ -44,7 +52,8 @@
         <p>najlepsze okrazenie</p>
         <p>
             @Html.DropDownListFor(model => model.betSetView.Driver_Time1, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
-        </p>
+            @Html.ValidationMessageFor(model => model.betSetView.Driver_Time1, "", new { @class = "text-danger" })
+         </p>
 
     </div>
     <div>
@@ -57,7 +66,7 @@
     <p>
 
         @Html.DropDownListFor(model => model.betGetView.selectedTrack, ViewBag.Wyscig1 as IEnumerable<SelectListItem>, "Wybierz", new { @onchange = "this.form.submit();" })
-
+        @Html.ValidationMessageFor(model => model.betGetView.selectedTrack, "", new { @class = "text-danger" })
     </p>
 
 </form>

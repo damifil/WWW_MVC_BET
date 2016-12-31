@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models.DB;
+using WebApplication2.Models.EntityManager;
 using WebApplication2.Models.ViewModel;
 
 namespace WebApplication2.Controllers
@@ -39,7 +40,6 @@ namespace WebApplication2.Controllers
                     Value = c.Track
                 }).ToList();
 
-
                 ViewBag.Wyscig1 = xd;
             }
             return View();
@@ -74,8 +74,7 @@ namespace WebApplication2.Controllers
                     Text = c.Track,
                     Value = c.Track
                 }).ToList();
-
-
+                
                 ViewBag.Wyscig1 = xd;
 
             }
@@ -114,21 +113,28 @@ namespace WebApplication2.Controllers
                         Value = c.Track
                     }).ToList();
 
+                    int raceID = 2;
+
                     ViewBag.Wyscig1 = xd;
-                    BETS itm = new BETS();
 
-                    itm.User_ID = User.Identity.Name;
-                    itm.Date = DateTime.Now.ToString();
-                    itm.Race_ID = 2;
-                    itm.Pos_1 = itm1.betSetView.Driver_Name1;
-                    itm.Pos_2 = itm1.betSetView.Driver_Name2;
-                    itm.Pos_3 = itm1.betSetView.Driver_Name3;
-                    itm.Time_1 = itm1.betSetView.Driver_Time1;
-                    db.BETS.Add(itm);
-                    db.SaveChanges();
+                    BetManager betManager = new BetManager();
+                    if(betManager.IsBetExists(User.Identity.Name, raceID))
+                    {
+                        ModelState.AddModelError("", "Nie można zrobić dwa razy zakładu na ten sam wyścig.");
+                    }
+                    else
+                    if (itm1.betSetView.Driver_Name1 != itm1.betSetView.Driver_Name2 && itm1.betSetView.Driver_Name2 != itm1.betSetView.Driver_Name3 && itm1.betSetView.Driver_Name1 != itm1.betSetView.Driver_Name3)
+                    {
+                        
+                        betManager.SetBet(User.Identity.Name, raceID, itm1.betSetView.Driver_Name1, itm1.betSetView.Driver_Name2, itm1.betSetView.Driver_Name3, itm1.betSetView.Driver_Time1);
+                        ViewBag.Status = "Zakład został dodany.";
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Dane się nie zgadzają, proszę wybrać zawodników jeszcze raz.");
+                    }
+                 
                 }
-
-
             }
             return View("Index");
         }
@@ -262,8 +268,7 @@ namespace WebApplication2.Controllers
                 {
                     wybor.betGetView.raceTime1 = ds.Driver_Name;
                 }
-
-              
+                              
             }
 
             return View(wybor);
