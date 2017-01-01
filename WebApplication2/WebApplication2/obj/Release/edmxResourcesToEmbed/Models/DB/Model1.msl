@@ -4,6 +4,10 @@
     <EntitySetMapping Name="BETS">
       <EntityTypeMapping TypeName="ProjektModel.BETS">
         <MappingFragment StoreEntitySet="BETS">
+          <ScalarProperty Name="ScoreSum" ColumnName="ScoreSum" />
+          <ScalarProperty Name="ScorePos3" ColumnName="ScorePos3" />
+          <ScalarProperty Name="ScorePos2" ColumnName="ScorePos2" />
+          <ScalarProperty Name="ScorePos1" ColumnName="ScorePos1" />
           <ScalarProperty Name="Bet_ID" ColumnName="Bet_ID" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
           <ScalarProperty Name="Race_ID" ColumnName="Race_ID" />

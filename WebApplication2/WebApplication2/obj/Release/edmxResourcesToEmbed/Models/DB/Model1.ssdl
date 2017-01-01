@@ -12,6 +12,10 @@
     <Property Name="Time_1" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Pos_2" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Pos_3" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ScorePos1" Type="int" />
+    <Property Name="ScorePos2" Type="int" />
+    <Property Name="ScorePos3" Type="int" />
+    <Property Name="ScoreSum" Type="int" />
   </EntityType>
   <EntityType Name="DRIVERS">
     <Key>

@@ -23,9 +23,9 @@
             <img src="data:image/png;base64, @Convert.ToBase64String(Model.imageView.imageData)" width="200" height="200" />
             @using (Html.BeginForm("Zmiana_zdjecia", "Ustawienia", FormMethod.Post, new{ enctype = "multipart/form-data" }))
             {
-                @Html.TextBoxFor(model => model.imageView.File, new { type = "file"})
-                <input type="submit" value="upload" />
-            }
+                @Html.TextBoxFor(model => model.imageView.File, new { type = "file", @onchange = "this.form.submit();" })
+
+           }
             <!-- Formularz dotyczacy zmiany hasla--->
             @using (Html.BeginForm("Zmiana_hasla", "Ustawienia", FormMethod.Post))
             {
@@ -106,7 +106,7 @@
                 </div>
                 <div>
                     <!--przycisk do zatwierdzenia zmian w opise-->
-                    <input id="Button_describe" type="submit" value="zmien" class="btn btn-default" />
+                    <input id="Button_describe" type="submit" value="Zmień" class="btn btn-default" />
                 </div>
             }
 
