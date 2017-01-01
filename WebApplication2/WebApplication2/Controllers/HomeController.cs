@@ -81,6 +81,7 @@ namespace WebApplication2.Controllers
                     if (password.Equals(UserManager.GetMd5Hash(md5Hash, userView.UserLoginView.Password)))
                     {
                         FormsAuthentication.SetAuthCookie(userView.UserLoginView.Login, false);
+                        userManager.SetLogIn1(userView.UserLoginView.Login);
                         return RedirectToAction("Index", "Aktualnosci");
                     }
                     else
@@ -97,6 +98,8 @@ namespace WebApplication2.Controllers
         [Authorize] //atrybut(dekorator) ta metoda zadziała tylko dla użytkowników zalogowanych
         public ActionResult SignOut()   //wylogowywanie
         {
+            UserManager userManager = new UserManager();
+            userManager.SetLogIn0(User.Identity.Name);
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }

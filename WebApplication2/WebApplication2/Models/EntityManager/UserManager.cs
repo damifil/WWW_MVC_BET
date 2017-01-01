@@ -24,8 +24,9 @@ namespace WebApplication2.Models.EntityManager
                 user.Is_Admin = false;
                 user.Is_Exists = true;
                 user.Is_Log = true;
-                user.Image = null;
-                db.USER.Add(user);
+                USER admin = db.USER.Find("Admin");
+                user.Image = admin.Image;
+                 db.USER.Add(user);
                 db.SaveChanges();
                 
             }
@@ -228,28 +229,46 @@ namespace WebApplication2.Models.EntityManager
             }
         }
 
-       
-
-        public UserSettingView GetEmailImage(string login)
+       public void SetLogIn1(string login)
         {
-            UserSettingView userSettingView = new UserSettingView();
-            
-            
             using (ProjektEntities db = new ProjektEntities())
             {
-                var user = db.USER.Find(login);
-                
+                using (var dbContextTransaction = db.Database.BeginTransaction())
                 {
-                    if (user != null)
-                        userSettingView.emailView.email = user.e_mail;
-                    userSettingView.passwordView = new PasswordView();
-                    userSettingView.imageView = new ImageView();
-                    userSettingView.userDescriptionView = new UserDescriptionView();
-                   
+                    try
+                    {
+                        USER us = db.USER.Find(login);
+                        us.Is_Log = true;
+                        db.SaveChanges();
+                        dbContextTransaction.Commit();
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
                 }
             }
+        }
 
-           return userSettingView;
+        public void SetLogIn0(string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                using (var dbContextTransaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        USER us = db.USER.Find(login);
+                        us.Is_Log = false;
+                        db.SaveChanges();
+                        dbContextTransaction.Commit();
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
+            }
         }
 
        

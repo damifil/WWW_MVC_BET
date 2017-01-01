@@ -22,6 +22,10 @@ namespace WebApplication2.Models.DB
         public string Time_1 { get; set; }
         public string Pos_2 { get; set; }
         public string Pos_3 { get; set; }
+        public Nullable<int> ScorePos1 { get; set; }
+        public Nullable<int> ScorePos2 { get; set; }
+        public Nullable<int> ScorePos3 { get; set; }
+        public Nullable<int> ScoreSum { get; set; }
     
         public virtual RACES RACES { get; set; }
         public virtual USER USER { get; set; }
