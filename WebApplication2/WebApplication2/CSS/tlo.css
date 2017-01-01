@@ -14,54 +14,72 @@
     margin-left: -62px;
 }
 
-
-
 .mainContainer_message,.asside_message_list
 {
-    margin-top:120px;
+    margin-top:130px;
     padding-top:20px;
 }
 
-
 .mainContainer_message{
-    display:block;
-    position:fixed;
-    height:100%;
-    background-color:wheat;
+   
+    height:372px;
+    background-color:white;
     width:50%;
-    overflow: auto;
-    direction:ltr;
-
+    overflow-y: scroll;
+   
 }
+.message_send{
+    margin-top:8px;
+}
+
 
 @media(min-width: 768px) {
     .mainContainer_message {
-        width: calc( (750px / 12)*8);
+        width: calc( ((750px / 12)*8)-30px);
     }
 }
 
 @media(min-width: 960px) {
     .mainContainer_message {
-        width: calc( (960px / 12)*8);
+        width: calc( ((960px / 12)*8)-30px);
     }
 }
 
 @media(min-width: 1170px) {
      .mainContainer_message {
-        width: calc( (1170px / 12)*8);
+         width:750px;
+        width: calc( ((1170px / 12)*8)-30px);
     }
 }
 
-
 .asside_message_list{
-    position:fixed;
-    height:100%;
-    background-color:aqua;
+    height:502px;
+    background-color:rgba(118,183,191,.3);
     width:50%;
-    overflow: scroll;
+    overflow-y: scroll;
+    border-left:1px;
+    border-color:white;
+    border-left-style:solid;
 }
 
 
+.asside_message_list_not_read{
+    border-bottom:solid;
+    border-color:white;
+background-color:rgba(118,183,191,.9);
+height:100px;
+}
+.search_message{
+    height:100px;
+  border-bottom:solid;
+    border-color:white;
+}
+.asside_message_list_read{
+    border-bottom:solid;
+    border-color:white;
+    height:100px;
+
+}
 
 @media(min-width: 768px) {
     .asside_message_list {
@@ -81,14 +99,32 @@
     }
 }
 
-
-
 .message_element_view{
-        direction:ltr;
+    margin-top: 10px;
+     margin-left:5%;
+     margin-right:5%;
+    background-color: #f1f0f0;
+    padding: 20px;
+    border-radius: 25px;
+    width: 90%;
+    height:auto;
+    float: left;
+    clear: both;
 }
 
+.message_element_view_user{
+     margin-top: 10px;
+     margin-left:5%;
+     margin-right:5%;
 
-
+    background-color: #4080ff;
+    padding: 20px;
+    border-radius: 25px;
+    width: 90%;
+    height:auto;
+    float: right;
+    clear: both;
+}
 
 .mainContainer{
     padding-top: 20px;
@@ -158,7 +194,6 @@ div.topHeader {
         display: flex;
 }
 
-
 .container_user_picture {
     margin: 0 10px 10px 10px;
     background-color: white;
@@ -184,7 +219,6 @@ div.topHeader {
     overflow-y: scroll;
     background-color: white;
 }
-
 
 .message {
     margin-top: 5px;
@@ -223,8 +257,6 @@ div.topHeader {
     color: dimgray;
 }
 
-
-
 .navbar-default {
     border-color: transparent;
     border: none;
@@ -252,10 +284,6 @@ article {
 .czat ul {
     padding: 3px;
 }
-
-    /*@media (min-width:960px){
-    height:calc(100vh - 120px);
-}*/
 
     .czat ul li {
         display: flex;

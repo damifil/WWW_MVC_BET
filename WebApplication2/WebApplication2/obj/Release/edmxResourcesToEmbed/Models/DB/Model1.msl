@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjektModelStoreContainer" CdmEntityContainer="ProjektEntities">
+    <EntitySetMapping Name="BETS">
+      <EntityTypeMapping TypeName="ProjektModel.BETS">
+        <MappingFragment StoreEntitySet="BETS">
+          <ScalarProperty Name="Bet_ID" ColumnName="Bet_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Race_ID" ColumnName="Race_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Pos_1" ColumnName="Pos_1" />
+          <ScalarProperty Name="Time_1" ColumnName="Time_1" />
+          <ScalarProperty Name="Pos_2" ColumnName="Pos_2" />
+          <ScalarProperty Name="Pos_3" ColumnName="Pos_3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DRIVERS">
+      <EntityTypeMapping TypeName="ProjektModel.DRIVERS">
+        <MappingFragment StoreEntitySet="DRIVERS">
+          <ScalarProperty Name="Driver_ID" ColumnName="Driver_ID" />
+          <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRIENDS">
+      <EntityTypeMapping TypeName="ProjektModel.FRIENDS">
+        <MappingFragment StoreEntitySet="FRIENDS">
+          <ScalarProperty Name="User_Friend_ID" ColumnName="User_Friend_ID" />
+          <ScalarProperty Name="Friend_ID" ColumnName="Friend_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GROUPS">
+      <EntityTypeMapping TypeName="ProjektModel.GROUPS">
+        <MappingFragment StoreEntitySet="GROUPS">
+          <ScalarProperty Name="Groups_ID" ColumnName="Groups_ID" />
+          <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INVITATIONS">
+      <EntityTypeMapping TypeName="ProjektModel.INVITATIONS">
+        <MappingFragment StoreEntitySet="INVITATIONS">
+          <ScalarProperty Name="Invitation_ID" ColumnName="Invitation_ID" />
+          <ScalarProperty Name="From_ID" ColumnName="From_ID" />
+          <ScalarProperty Name="To_ID" ColumnName="To_ID" />
+          <ScalarProperty Name="Accept" ColumnName="Accept" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEMBERSHIPS">
+      <EntityTypeMapping TypeName="ProjektModel.MEMBERSHIPS">
+        <MappingFragment StoreEntitySet="MEMBERSHIPS">
+          <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MESSAGES">
+      <EntityTypeMapping TypeName="ProjektModel.MESSAGES">
+        <MappingFragment StoreEntitySet="MESSAGES">
+          <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
+          <ScalarProperty Name="Message_From" ColumnName="Message_From" />
+          <ScalarProperty Name="Message_To" ColumnName="Message_To" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PARTICIPANTS">
+      <EntityTypeMapping TypeName="ProjektModel.PARTICIPANTS">
+        <MappingFragment StoreEntitySet="PARTICIPANTS">
+          <ScalarProperty Name="Participants_ID" ColumnName="Participants_ID" />
+          <ScalarProperty Name="Season_ID" ColumnName="Season_ID" />
+          <ScalarProperty Name="Driver_ID" ColumnName="Driver_ID" />
+          <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RACES">
+      <EntityTypeMapping TypeName="ProjektModel.RACES">
+        <MappingFragment StoreEntitySet="RACES">
+          <ScalarProperty Name="Race_ID" ColumnName="Race_ID" />
+          <ScalarProperty Name="Season_ID" ColumnName="Season_ID" />
+          <ScalarProperty Name="Track" ColumnName="Track" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Pos_1" ColumnName="Pos_1" />
+          <ScalarProperty Name="Time_1" ColumnName="Time_1" />
+          <ScalarProperty Name="Pos_2" ColumnName="Pos_2" />
+          <ScalarProperty Name="Pos_3" ColumnName="Pos_3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEASONS">
+      <EntityTypeMapping TypeName="ProjektModel.SEASONS">
+        <MappingFragment StoreEntitySet="SEASONS">
+          <ScalarProperty Name="Season_ID" ColumnName="Season_ID" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ProjektModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEAMS">
+      <EntityTypeMapping TypeName="ProjektModel.TEAMS">
+        <MappingFragment StoreEntitySet="TEAMS">
+          <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+          <ScalarProperty Name="Team_Name" ColumnName="Team_Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER">
+      <EntityTypeMapping TypeName="ProjektModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+          <ScalarProperty Name="Total_score" ColumnName="Total_score" />
+          <ScalarProperty Name="Is_Admin" ColumnName="Is_Admin" />
+          <ScalarProperty Name="Is_Exists" ColumnName="Is_Exists" />
+          <ScalarProperty Name="Is_Log" ColumnName="Is_Log" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
