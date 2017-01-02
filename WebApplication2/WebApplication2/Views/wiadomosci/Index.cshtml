@@ -1,109 +1,10 @@
-﻿<!DOCTYPE html>
-
+﻿@model WebApplication2.Models.ViewModel.UserSettingView
 @{
-    var pageName = ViewContext.RouteData.Values["controller"].ToString();
+    Layout = "~/Views/Shared/_Layout_without_chat_asside.cshtml";
 }
 
 
-<html lang="pl">
-<head>
-    <title>wiadomosci</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="~/Content/dataTables.bootstrap.css" rel="stylesheet" />
-
-
-    <link href="~/CSS/tlo.css" rel="stylesheet" />
-</head>
-
-
-<body>
-    <div class="logo-full-bg">
-        <div class="container">
-            <form class="row">
-                <div class="col-md-8 col-sm-8">
-                    <h1 style="color:white;">Zakłady Online (logo tu bedzie)</h1>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <input type="button" value="Wyloguj" onclick="location.href='@Url.Action("SignOut", "Home")'" />
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="menu-full-bg">
-        <div class="container">
-            <div class="row">
-                <nav class="navbar navbar-default" style="margin-bottom:0px; background-color:#8EDCE5">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse" id="myNavbar">
-                            <ul class="nav navbar-nav">
-                                <li @(pageName == "Aktualnosci" ? "class=active" : "")>
-                                    @Html.ActionLink("Aktualnosci", "index", "Aktualnosci")
-                                </li>
-
-                                <li @(pageName == "profil" ? "class=active" : "")>
-                                    @Html.ActionLink("profil", "index", "profil")
-                                </li>
-
-                                <li @(pageName == "grupy" ? "class=active" : "")>
-
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                                        Grupy
-                                        <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu" style="margin-bottom:0px; background-color:#8EDCE5">
-                                        <li @(pageName == "nie wiem co" ? "class=active" : "")>
-                                            @Html.ActionLink("nazwa_grupy", "index", "grupy", new { @id = "nazwa_grupy_1" }, FormMethod.Post)
-                                        </li>
-
-                                        <li @(pageName == "nie wiem co" ? "class=active" : "")>
-                                            @Html.ActionLink("nazwa_grupy2", "index", "grupy", new { @id = "nazwa_grupy_2" }, FormMethod.Post)
-                                        </li>
-                                    </ul>
-
-
-                                <li @(pageName == "statystyki" ? "class=active" : "")>
-                                    @Html.ActionLink("statystyki", "index", "statystyki")
-                                </li>
-
-                                <li @(pageName == "wiadomosci" ? " class=active" : "")>
-                                    <!--  <span class="badge">5</span> -->
-
-
-                                    <a href="@Url.Action( "index", "wiadomosci")">wiadomosci <span class="badge">7</span></a>
-
-                                </li>
-
-                                <li @(pageName == "znajomi" ? " class=active" : "")>
-                                    @Html.ActionLink("znajomi", "index", "znajomi")
-                                </li>
-                                <li @(pageName == "Zaklady" ? " class=active" : "")>
-                                    @Html.ActionLink("Zaklady", "index", "zaklady")
-                                </li>
-                                <li @(pageName == "Ustawienia" ? " class=active" : "")>
-                                    @Html.ActionLink("Ustawienia", "index", "Ustawienia")
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- srodek  -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-8">
+    
                 <div class="mainContainer_message">
 
                     <form>
@@ -126,16 +27,14 @@
                         <input id="Button_send_message_group" type="submit" value="wyslij" class="btn btn-default" />
                     </form>
                 </div>
-            </div>
-
-            <div class="col-md-4 col-sm-4 col-xs-4">
+@section asside{
                 <!--albo wyszukuje i powiedzmy otwiera ta strone zjakims hasztagiemiwiadomoscjest ztym uzytkownikiemco wybral alboerror ze nie ma takiegouzytkownia-->
                 <aside class="asside_message_list">
                     <div class="search_message">
                         <div class="search_message_input">
                             <form class="navbar-form navbar-left">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="wyszukaj">
+                                    <input type="text" class="form-control" placeholder="podaj nick uzytkownika">
                                 </div>
                                 <button type="submit" class="btn btn-default">nowa wiadomosc</button>
                             </form>
@@ -154,21 +53,10 @@
                         <p>framnet wiadomosci w sumie to opcjonalne jest</p>
                     </div>
                 </aside>
-
-            </div>
-
-
-        </div>
-    </div>
+    }
 
 
 
 
-</body>
-</html>
 
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
+

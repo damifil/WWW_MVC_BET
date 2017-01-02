@@ -14,9 +14,9 @@
     margin-left: -62px;
 }
 
-.mainContainer_message,.asside_message_list
+.asside_message_list
 {
-    margin-top:130px;
+    margin-top:140px;
     padding-top:20px;
 }
 
@@ -58,11 +58,48 @@
     width:50%;
     overflow-y: scroll;
     border-left:1px;
+     border-top:1px;
+      border-bottom:1px;
     border-color:white;
     border-left-style:solid;
+     border-top-style:solid;
+      border-bottom-style:solid;
+}
+
+.asside_friends_search
+{
+    margin-top:130px;
+    max-height:502px;
+    background-color:rgba(118,183,191,.5);
+    width:100%;
+    overflow-y: scroll;
+    border-left:1px;
+    border-top:1px;
+    border-bottom:1px;
+    border-color:white;
+    border-left-style:solid;
+    border-top-style:solid;
+    border-bottom-style:solid;
+}
+
+.user_in_friend_list
+{
+    border-bottom:1px;
+        border-bottom-style:solid;
+            border-color:white;
+padding:5px;
+
+
 }
 
 
+.search_friends{
+   height:100px;
+ border-bottom:1px;
+        border-bottom-style:solid;
+            border-color:white;
+padding:5px;
+}
 .asside_message_list_not_read{
     border-bottom:solid;
     border-color:white;

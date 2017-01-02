@@ -258,6 +258,7 @@
     <Content Include="Views\Ustawienia\Zmiana_hasla.cshtml" />
     <Content Include="Views\Ustawienia\Usuniecie_konta.cshtml" />
     <Content Include="Views\Ustawienia\Zmiana_zdjecia.cshtml" />
+    <Content Include="Views\Shared\_Layout_without_chat_asside.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
