@@ -21,6 +21,7 @@
           <Property Name="ScorePos2" Type="int" />
           <Property Name="ScorePos3" Type="int" />
           <Property Name="ScoreSum" Type="int" />
+          <Property Name="ScoreTime1" Type="int" />
         </EntityType>
         <EntityType Name="DRIVERS">
           <Key>
@@ -459,6 +460,7 @@
           <Property Name="ScorePos2" Type="Int32" />
           <Property Name="ScorePos3" Type="Int32" />
           <Property Name="ScoreSum" Type="Int32" />
+          <Property Name="ScoreTime1" Type="Int32" />
         </EntityType>
         <EntityType Name="DRIVERS">
           <Key>
@@ -916,6 +918,7 @@
           <EntitySetMapping Name="BETS">
             <EntityTypeMapping TypeName="ProjektModel.BETS">
               <MappingFragment StoreEntitySet="BETS">
+                <ScalarProperty Name="ScoreTime1" ColumnName="ScoreTime1" />
                 <ScalarProperty Name="ScoreSum" ColumnName="ScoreSum" />
                 <ScalarProperty Name="ScorePos3" ColumnName="ScorePos3" />
                 <ScalarProperty Name="ScorePos2" ColumnName="ScorePos2" />

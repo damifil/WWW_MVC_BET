@@ -110,26 +110,66 @@ namespace WebApplication2.Controllers
                               on b.Race_ID equals r.Race_ID
                               where r.Race_ID == rACES.Race_ID
                               select new { b.Pos_1, b.Pos_2, b.Pos_3, b.Bet_ID, b.User_ID };
+
                     var dri1 = from r in db.RACES
                               from dr in db.DRIVERS
                               where r.Pos_1 == dr.Driver_ID
                               select new { dr.Driver_Name };
+                    string pos1 = "";
+                    foreach (var a in dri1)
+                        pos1 = a.Driver_Name;
 
-                    foreach (var a in dri1) {
+                    var dri2 = from r in db.RACES
+                               from dr in db.DRIVERS
+                               where r.Pos_2 == dr.Driver_ID
+                               select new { dr.Driver_Name };
+                    string pos2 = "";
+                    foreach (var a in dri2)
+                        pos2 = a.Driver_Name;
+
+
+                    var dri3 = from r in db.RACES
+                               from dr in db.DRIVERS
+                               where r.Pos_3 == dr.Driver_ID
+                               select new { dr.Driver_Name };
+                    string pos3 = "";
+                    foreach (var a in dri3)
+                        pos3 = a.Driver_Name;
+
+                    var dri4 = from r in db.RACES
+                               from dr in db.DRIVERS
+                               where r.Time_1 == dr.Driver_ID
+                               select new { dr.Driver_Name };
+                    string time1 ="";
+                    foreach (var a in dri4)
+                        time1 = a.Driver_Name;
+                    
                         foreach (var x in bet)
                         {
                             BETS bets = db.BETS.Find(x.Bet_ID);
-                            if (bets.Pos_1 == a.Driver_Name)
-                                bets.ScorePos1 = 5;
-                            if (bets.Pos_2 == x.Pos_2)
-                                bets.ScorePos2 = 3;
-                            if (bets.Pos_3 == x.Pos_3)
-                                bets.ScorePos3 = 1;
-                            if (bets.Time_1 == x.Pos_3)
-                                bets.ScorePos3 = 5;
+                        if (bets.Pos_1 == pos1)
+                            bets.ScorePos1 = 5;
+                        else
+                            bets.ScorePos1 = 0;
+
+                        if (bets.Pos_2 == pos2)
+                            bets.ScorePos2 = 3;
+                        else
+                            bets.ScorePos2 = 0;
+
+                        if (bets.Pos_3 == pos3)
+                            bets.ScorePos3 = 1;
+                        else
+                            bets.ScorePos3 = 0;
+
+                        if (bets.Time_1 == time1)
+                            bets.ScoreTime1 = 5;
+                        else
+                            bets.ScoreTime1 = 0;
+
+                        bets.ScoreSum = bets.ScorePos1 + bets.ScorePos2 + bets.ScorePos3 + bets.ScoreTime1;
                             db.Entry(bets).State = EntityState.Modified;
-                      
-                        }
+                       
                     }
                     db.Entry(rACES).State = EntityState.Modified;
                     db.SaveChanges();

@@ -18,6 +18,7 @@
     <Property Name="ScorePos2" Type="Int32" />
     <Property Name="ScorePos3" Type="Int32" />
     <Property Name="ScoreSum" Type="Int32" />
+    <Property Name="ScoreTime1" Type="Int32" />
   </EntityType>
   <EntityType Name="DRIVERS">
     <Key>
