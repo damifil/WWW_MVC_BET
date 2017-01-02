@@ -51,7 +51,7 @@ namespace WebApplication2.Controllers
                 byte[] data = new byte[userSettingView.imageView.File.ContentLength];
                 userSettingView.imageView.File.InputStream.Read(data, 0, userSettingView.imageView.File.ContentLength);
                 userSettingView.imageView.imageData = data;
-                
+                ViewBag.Status = "Zdjęcie zostało zmienione.";
                 userManager.ChangeImage(userSettingView, User.Identity.Name);
 
             }

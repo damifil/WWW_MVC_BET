@@ -9,11 +9,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Szczegóły</title>
+    <title>Szczegóły wyścigu</title>
 </head>
 <body>
     <div>
-        <h4>Wyścigi</h4>
+        <h4>Wyścig</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -33,91 +33,11 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Pos_1)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_1)
-            </dd>
-
-            <dt>
                 @Html.DisplayNameFor(model => model.Time_1)
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.Time_1)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Pos_2)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_2)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Pos_3)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_3)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Pos_4)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_4)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Pos_5)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_5)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Pos_6)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_6)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Pos_7)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_7)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Pos_8)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_8)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Pos_9)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_9)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Pos_10)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Pos_10)
             </dd>
 
             <dt>
@@ -128,10 +48,34 @@
                 @Html.DisplayFor(model => model.SEASONS.Year)
             </dd>
 
+            <dt>
+                @Html.DisplayNameFor(model => model.DRIVERS.Driver_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DRIVERS.Driver_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DRIVERS2.Driver_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DRIVERS2.Driver_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DRIVERS3.Driver_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DRIVERS3.Driver_Name)
+            </dd>
+
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edytuj", "Edytuj_wyscig", new { id = Model.Race_ID }) |
+        @Html.ActionLink("Edytuj wyścig", "Edytuj_wyscig", new { id = Model.Race_ID }) |
         @Html.ActionLink("Wróć do poprzedniej strony", "Wyscigi")
     </p>
 </body>

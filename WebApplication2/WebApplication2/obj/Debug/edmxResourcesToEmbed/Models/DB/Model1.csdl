@@ -14,6 +14,10 @@
     <Property Name="Pos_3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="RACES" Relationship="Self.FK_BETS_RACES" FromRole="BETS" ToRole="RACES" />
     <NavigationProperty Name="USER" Relationship="Self.FK_BETS_USER" FromRole="BETS" ToRole="USER" />
+    <Property Name="ScorePos1" Type="Int32" />
+    <Property Name="ScorePos2" Type="Int32" />
+    <Property Name="ScorePos3" Type="Int32" />
+    <Property Name="ScoreSum" Type="Int32" />
   </EntityType>
   <EntityType Name="DRIVERS">
     <Key>

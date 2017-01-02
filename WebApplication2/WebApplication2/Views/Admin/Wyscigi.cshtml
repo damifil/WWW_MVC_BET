@@ -24,40 +24,19 @@
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pos_1)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Time_1)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pos_2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pos_3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pos_4)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pos_5)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pos_6)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pos_7)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pos_8)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pos_9)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pos_10)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.SEASONS.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DRIVERS.Driver_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DRIVERS2.Driver_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DRIVERS3.Driver_Name)
             </th>
             <th></th>
         </tr>
@@ -72,43 +51,22 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Pos_1)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Time_1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pos_2)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pos_3)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pos_4)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pos_5)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pos_6)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pos_7)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pos_8)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pos_9)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pos_10)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SEASONS.Year)
                 </td>
                 <td>
-                    @Html.ActionLink("Edytuj wyścig", "Edytuj_wyscig", new { id = item.Race_ID }) |
+                    @Html.DisplayFor(modelItem => item.DRIVERS.Driver_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DRIVERS2.Driver_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DRIVERS3.Driver_Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edytuj_wyscig", new { id = item.Race_ID }) |
                     @Html.ActionLink("Szczegóły", "Szczegoly_wyscigu", new { id = item.Race_ID }) |
                     @Html.ActionLink("Usuń", "Usun_wyscig", new { id = item.Race_ID })
                 </td>

@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models.DB;
+using WebApplication2.Models.ViewModel;
 
 namespace WebApplication2.Controllers
 {
@@ -21,14 +22,16 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-        
+
+
+
         /////////////////////////////////////Sekcja dotyczaca wyscigow//////////////////
         public ActionResult Wyscigi()
         {
-            var rACES = db.RACES.Include(r => r.SEASONS);
+            var rACES = db.RACES.Include(r => r.SEASONS).Include(r => r.DRIVERS).Include(r => r.DRIVERS2).Include(r => r.DRIVERS3);
             return View(rACES.ToList());
         }
-     
+
         public ActionResult Szczegoly_wyscigu(int? id)
         {
             if (id == null)
@@ -43,24 +46,34 @@ namespace WebApplication2.Controllers
             return View(rACES);
         }
 
+        // GET: RACES/Create
         public ActionResult Stworz_wyscig()
         {
             ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year");
+            ViewBag.Pos_1 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name");
+            ViewBag.Pos_2 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name");
+            ViewBag.Pos_3 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name");
+            ViewBag.Time_1 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Stworz_wyscig([Bind(Include = "Race_ID,Season_ID,Track,Date,Pos_1,Time_1,Pos_2,Pos_3,Pos_4,Pos_5,Pos_6,Pos_7,Pos_8,Pos_9,Pos_10")] RACES rACES)
+        public ActionResult Stworz_wyscig([Bind(Include = "Race_ID,Season_ID,Track,Date,Pos_1,Time_1,Pos_2,Pos_3")] RACES rACES)
         {
             if (ModelState.IsValid)
             {
                 db.RACES.Add(rACES);
                 db.SaveChanges();
-                return RedirectToAction("Wyscigi");
+                return RedirectToAction("Index");
+
             }
 
             ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year", rACES.Season_ID);
+            ViewBag.Pos_1 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Pos_1);
+            ViewBag.Pos_2 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Pos_2);
+            ViewBag.Pos_3 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Pos_3);
+            ViewBag.Time_1 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Time_1);
             return View(rACES);
         }
 
@@ -76,20 +89,36 @@ namespace WebApplication2.Controllers
                 return HttpNotFound();
             }
             ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year", rACES.Season_ID);
+            ViewBag.Pos_1 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Pos_1);
+            ViewBag.Pos_2 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Pos_2);
+            ViewBag.Pos_3 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Pos_3);
+            ViewBag.Time_1 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Time_1);
             return View(rACES);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edytuj_wyscig([Bind(Include = "Race_ID,Season_ID,Track,Date,Pos_1,Time_1,Pos_2,Pos_3,Pos_4,Pos_5,Pos_6,Pos_7,Pos_8,Pos_9,Pos_10")] RACES rACES)
+        public ActionResult Edytuj_wyscig([Bind(Include = "Race_ID,Season_ID,Track,Date,Pos_1,Time_1,Pos_2,Pos_3")] RACES rACES)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rACES).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Wyscigi");
+                if (rACES.Pos_1 != rACES.Pos_2 && rACES.Pos_1 != rACES.Pos_3 && rACES.Pos_2 != rACES.Pos_3)
+                {
+                    db.Entry(rACES).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Dane się nie zgadzają.");
+                }
+
             }
+            ViewBag.Time_1 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Time_1);
             ViewBag.Season_ID = new SelectList(db.SEASONS, "Season_ID", "Year", rACES.Season_ID);
+            ViewBag.Pos_1 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Pos_1);
+            ViewBag.Pos_2 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Pos_2);
+            ViewBag.Pos_3 = new SelectList(db.DRIVERS, "Driver_ID", "Driver_Name", rACES.Pos_3);
             return View(rACES);
         }
 
@@ -107,14 +136,15 @@ namespace WebApplication2.Controllers
             return View(rACES);
         }
 
-        [HttpPost, ActionName("Usun_wyscing")]
+        // POST: RACES/Delete/5
+        [HttpPost, ActionName("Usun_wyscig")]
         [ValidateAntiForgeryToken]
-        public ActionResult Potwierdzenie_usunieciaWy(int id)
+        public ActionResult Potwierdzenie_usuniecia_wyscigu(int id)
         {
             RACES rACES = db.RACES.Find(id);
             db.RACES.Remove(rACES);
             db.SaveChanges();
-            return RedirectToAction("Wyscigi");
+            return RedirectToAction("Index");
         }
 
         ///////////////////////////////////Sekcja dotyczaca sezonow//////////////////////
