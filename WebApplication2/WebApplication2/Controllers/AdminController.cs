@@ -104,6 +104,33 @@ namespace WebApplication2.Controllers
             {
                 if (rACES.Pos_1 != rACES.Pos_2 && rACES.Pos_1 != rACES.Pos_3 && rACES.Pos_2 != rACES.Pos_3)
                 {
+                    
+                    var bet = from b in db.BETS
+                              join r in db.RACES
+                              on b.Race_ID equals r.Race_ID
+                              where r.Race_ID == rACES.Race_ID
+                              select new { b.Pos_1, b.Pos_2, b.Pos_3, b.Bet_ID, b.User_ID };
+                    var dri1 = from r in db.RACES
+                              from dr in db.DRIVERS
+                              where r.Pos_1 == dr.Driver_ID
+                              select new { dr.Driver_Name };
+
+                    foreach (var a in dri1) {
+                        foreach (var x in bet)
+                        {
+                            BETS bets = db.BETS.Find(x.Bet_ID);
+                            if (bets.Pos_1 == a.Driver_Name)
+                                bets.ScorePos1 = 5;
+                            if (bets.Pos_2 == x.Pos_2)
+                                bets.ScorePos2 = 3;
+                            if (bets.Pos_3 == x.Pos_3)
+                                bets.ScorePos3 = 1;
+                            if (bets.Time_1 == x.Pos_3)
+                                bets.ScorePos3 = 5;
+                            db.Entry(bets).State = EntityState.Modified;
+                      
+                        }
+                    }
                     db.Entry(rACES).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
