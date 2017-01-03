@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<WebApplication2.Models.ViewModel.FriendsView>
 @{
     Layout = "~/Views/Shared/_Layout_without_chat_asside.cshtml";
 }
@@ -6,27 +6,24 @@
 <!--byc moze tutaj bedzieszukajka-->
 
 <div class="users_list_container">
-    <div class="container_user_picture">
-        <!--adres do profilu uzytkownika-->
-        <a href="~/profil/index#id">
-            <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png" class="img-rounded" alt="avatar" width="100" height="100">
-        </a>
-        <p>nick_uzytkownika</p>
-        <input id="Button_id_uzytkownika" type="button" value="napisz"/>
-    </div>
 
+    <div class="users_list_container">
 
+        @foreach (var item in Model)
+        {
+            <div class="container_user_picture">
+                <!--adres do profilu uzytkownika-->
 
-    <div class="container_user_picture">
-        <!--adres do profilu uzytkownika-->
-        <a href="~/profil/index#id">
-            <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png" class="img-rounded" alt="avatar" width="100" height="100">
-        </a>
-        <p>nick_uzytkownika2</p>
-        <input id="Button_id_uzytkownika" type="button" value="napisz" />
-    </div>
+                <a href="~/profil/index#id">
 
-</div>
+                    <img src="data:image/png;base64, @Convert.ToBase64String(item.imageData)" width="100" height="100" alt="avatar" class="img-rounded" />
+                </a>
+                <p>@Html.DisplayFor(modelItem => item.UserID)</p>
+                <input id="Button_id_uzytkownika" type="button" value="napisz" />
+
+            </div>
+        }
+    </div></div>
 
 @section asside{
 

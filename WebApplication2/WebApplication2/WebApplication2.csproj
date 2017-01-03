@@ -194,6 +194,7 @@
     <Compile Include="Models\ViewModel\BetSetView.cs" />
     <Compile Include="Models\ViewModel\DeleteUserView.cs" />
     <Compile Include="Models\ViewModel\EmailView.cs" />
+    <Compile Include="Models\ViewModel\FriendsView.cs" />
     <Compile Include="Models\ViewModel\ImageView.cs" />
     <Compile Include="Models\ViewModel\LoginRegisterView.cs" />
     <Compile Include="Models\ViewModel\PasswordView.cs" />
