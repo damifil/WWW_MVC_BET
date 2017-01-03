@@ -113,7 +113,7 @@ namespace WebApplication2.Controllers
 
                     var dri1 = from r in db.RACES
                               from dr in db.DRIVERS
-                              where r.Pos_1 == dr.Driver_ID
+                              where r.Pos_1 == dr.Driver_ID && r.Race_ID == rACES.Race_ID
                               select new { dr.Driver_Name };
                     string pos1 = "";
                     foreach (var a in dri1)
@@ -121,16 +121,16 @@ namespace WebApplication2.Controllers
 
                     var dri2 = from r in db.RACES
                                from dr in db.DRIVERS
-                               where r.Pos_2 == dr.Driver_ID
+                               where r.Pos_2 == dr.Driver_ID && r.Race_ID == rACES.Race_ID
                                select new { dr.Driver_Name };
                     string pos2 = "";
                     foreach (var a in dri2)
                         pos2 = a.Driver_Name;
-
-
+                    
+                                   
                     var dri3 = from r in db.RACES
                                from dr in db.DRIVERS
-                               where r.Pos_3 == dr.Driver_ID
+                               where r.Pos_3 == dr.Driver_ID && r.Race_ID == rACES.Race_ID
                                select new { dr.Driver_Name };
                     string pos3 = "";
                     foreach (var a in dri3)
@@ -138,7 +138,7 @@ namespace WebApplication2.Controllers
 
                     var dri4 = from r in db.RACES
                                from dr in db.DRIVERS
-                               where r.Time_1 == dr.Driver_ID
+                               where r.Time_1 == dr.Driver_ID && r.Race_ID == rACES.Race_ID
                                select new { dr.Driver_Name };
                     string time1 ="";
                     foreach (var a in dri4)
@@ -169,8 +169,7 @@ namespace WebApplication2.Controllers
 
                         bets.ScoreSum = bets.ScorePos1 + bets.ScorePos2 + bets.ScorePos3 + bets.ScoreTime1;
                             db.Entry(bets).State = EntityState.Modified;
-                       
-                    }
+                          }
                     db.Entry(rACES).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
