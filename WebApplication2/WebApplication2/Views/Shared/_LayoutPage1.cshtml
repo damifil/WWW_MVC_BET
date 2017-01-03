@@ -66,6 +66,11 @@
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" style="margin-bottom:0px; background-color:#8EDCE5">
+                                        <li @(pageName == "nie wiem co" ? "class=active" : "") style="border-bottom:solid; border-color:white;">
+                                            @Html.ActionLink("stworz/dolacz do grupy", "zarzadzaj", "grupy", FormMethod.Post)
+                                        </li>
+                                        <li><strong>Twoje grupy:</strong></li>
+
                                         <li @(pageName == "nie wiem co" ? "class=active" : "")>
                                             @Html.ActionLink("nazwa_grupy", "index", "grupy", new { @id = "nazwa_grupy_1" }, FormMethod.Post)
                                         </li>
