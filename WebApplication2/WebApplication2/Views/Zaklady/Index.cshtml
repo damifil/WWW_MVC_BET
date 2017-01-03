@@ -94,28 +94,28 @@
                     <td>1 zawodnik</td>
                     <td>@Html.DisplayFor(model => model.betGetView.betPos1)</td>
                     <td>@Html.DisplayFor(model => model.betGetView.racePos1)</td>
-                    <td>zdobyte punkty za zawodnika</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.scorePos1)</td>
                 </tr>
 
                 <tr>
                     <td>2 zawodnik</td>
                     <td>@Html.DisplayFor(model => model.betGetView.betPos2)</td>
                     <td>@Html.DisplayFor(model => model.betGetView.racePos2)</td>
-                    <td>zdobyte punkty za zawodnika</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.scorePos2)</td>
                 </tr>
 
                 <tr>
                     <td>3 zawodnik</td>
                     <td>@Html.DisplayFor(model => model.betGetView.betPos3)</td>
                     <td>@Html.DisplayFor(model => model.betGetView.racePos3)</td>
-                    <td>zdobyte punkty za zawodnika</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.scorePos3)</td>
                 </tr>
 
                 <tr>
                     <td>najlepsze okrazenie</td>
                     <td> @Html.DisplayFor(model => model.betGetView.betTime1)</td>
-                    <td>@Html.DisplayFor(model => model.betGetView.racePos3)</td>
-                    <td>zdobyte punkty za zawodnika</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.raceTime1)</td>
+                    <td>@Html.DisplayFor(model => model.betGetView.scoreTime1)</td>
                 </tr>
 
             </tbody>
@@ -124,7 +124,7 @@
 </div>
 
 <h1>Wynik calkowity wyscigu</h1>
-<h3>wynik</h3>
+<h3>@Html.DisplayFor(model => model.betGetView.scoreSum)</h3>
 
 
 <script>

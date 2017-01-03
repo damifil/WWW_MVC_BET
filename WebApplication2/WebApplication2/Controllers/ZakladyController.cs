@@ -16,7 +16,12 @@ namespace WebApplication2.Controllers
         {
             using (var db = new ProjektEntities())
             {
+                var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
+                
                 var driver = from b in db.DRIVERS
+                             join p in db.PARTICIPANTS
+                             on b.Driver_ID equals p.Driver_ID
+                             where p.Season_ID == season
                              select new { b.Driver_Name };
 
                 var x = driver.ToList().Select(c => new SelectListItem
@@ -51,7 +56,12 @@ namespace WebApplication2.Controllers
 
             using (var db = new ProjektEntities())
             {
+                var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
+
                 var driver = from b in db.DRIVERS
+                             join p in db.PARTICIPANTS
+                             on b.Driver_ID equals p.Driver_ID
+                             where p.Season_ID == season
                              select new { b.Driver_Name };
 
                 var x = driver.ToList().Select(c => new SelectListItem
@@ -89,7 +99,12 @@ namespace WebApplication2.Controllers
 
                 using (var db = new ProjektEntities())
                 {
+                    var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
+
                     var driver = from b in db.DRIVERS
+                                 join p in db.PARTICIPANTS
+                                 on b.Driver_ID equals p.Driver_ID
+                                 where p.Season_ID == season
                                  select new { b.Driver_Name };
 
                     var x = driver.ToList().Select(c => new SelectListItem
@@ -159,7 +174,12 @@ namespace WebApplication2.Controllers
 
                     ViewBag.Wyscig1 = x;
 
+                    var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
+
                     var driver = from b in db.DRIVERS
+                                 join p in db.PARTICIPANTS
+                                 on b.Driver_ID equals p.Driver_ID
+                                 where p.Season_ID == season
                                  select new { b.Driver_Name };
 
                     var xd = driver.ToList().Select(c => new SelectListItem
@@ -197,7 +217,12 @@ namespace WebApplication2.Controllers
 
 
                 ViewBag.Wyscig1 = x;
+                var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
+
                 var driver = from b in db.DRIVERS
+                             join p in db.PARTICIPANTS
+                             on b.Driver_ID equals p.Driver_ID
+                             where p.Season_ID == season
                              select new { b.Driver_Name };
 
                 var xd = driver.ToList().Select(c => new SelectListItem
@@ -213,7 +238,7 @@ namespace WebApplication2.Controllers
                           where rac.Track == wybor.betGetView.selectedTrack
                           from b in db.BETS
                           where (b.User_ID == login) && (b.Race_ID == rac.Race_ID)
-                          select new { b.Pos_1, b.Pos_2, b.Pos_3, b.Time_1 };
+                          select new { b.Pos_1, b.Pos_2, b.Pos_3, b.Time_1, b.ScorePos1, b.ScorePos2, b.ScorePos3, b.ScoreTime1, b.ScoreSum };
 
 
                 foreach (var ds in ras)
@@ -222,8 +247,13 @@ namespace WebApplication2.Controllers
                     wybor.betGetView.betPos2 = ds.Pos_2;
                     wybor.betGetView.betPos3 = ds.Pos_3;
                     wybor.betGetView.betTime1 = ds.Time_1;
+                    wybor.betGetView.scorePos1 = ds.ScorePos1.Value;
+                    wybor.betGetView.scorePos2 = ds.ScorePos2.Value;
+                    wybor.betGetView.scorePos3 = ds.ScorePos3.Value;
+                    wybor.betGetView.scoreTime1 = ds.ScoreTime1.Value;
+                    wybor.betGetView.scoreSum = ds.ScoreSum.Value;
                 }
-                System.Diagnostics.Debug.WriteLine("wyswietlanie: " + wybor.betGetView.selectedTrack);
+             
                 var races = from rac in db.RACES
                             join dr in db.DRIVERS
                             on rac.Pos_1 equals dr.Driver_ID
@@ -232,8 +262,6 @@ namespace WebApplication2.Controllers
                 foreach (var ds in races)
                 {
                     wybor.betGetView.racePos1 = ds.Driver_Name;
-                    System.Diagnostics.Debug.WriteLine("wyswietlanie: " + ds.Driver_Name );
-                    System.Diagnostics.Debug.WriteLine("wyswietlanie: " + wybor.betGetView.racePos1);
                 }
 
                 var races1 = from rac in db.RACES

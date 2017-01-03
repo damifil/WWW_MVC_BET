@@ -29,7 +29,6 @@ namespace WebApplication2.Controllers
             foreach(var x in friend)
             {
                 mod.ListFriends.Add(new FriendsView { UserID = x.User_ID, imageData = x.Image });
-            //    mod.ListSearch.Add(new FriendsView { UserID = x.User_ID, imageData = x.Image });
             }
 
             return View(mod);
@@ -70,7 +69,7 @@ namespace WebApplication2.Controllers
                     mod.ListSearch.Add(new FriendsView { UserID = x.User_ID, imageData = x.Image });
                 }
             }
-            System.Diagnostics.Debug.WriteLine("a " + a);
+
             return View(mod);
         }
     }
