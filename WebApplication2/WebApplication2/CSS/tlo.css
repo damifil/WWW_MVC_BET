@@ -3,7 +3,6 @@
     height: 100%;
 }
 
-
 .day{
     background-color:red;
 }
@@ -13,6 +12,10 @@
     margin-top: 120px;
 }
 
+#tabela_js_show
+{
+    background-color:white;
+}
 .container_page_zaklady, .container_page_zarzadzaj,.collapse_group
 {
     display: flex;
@@ -21,6 +24,19 @@
    
 }
 
+.search_group{
+height:50px;
+}
+
+#TextArea_user_send
+{
+    width:100%; max-height:200px; 
+}
+
+.search_user{
+    height:50px; 
+    margin-left:-15px;
+}
 
 .search_user_add_container{
     padding:5px;

@@ -3,32 +3,7 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-
-$(document).ready(function () {
-    $('#tabela_ranking').DataTable();
-});
-
-
-   
-
-</script>
-
-
-
-
     <input id="Button_gruop_out" type="button" value="opusc grupe" class="btn btn-default"/>
-
-
-
-       
-    
-       
-
-
 
 <h2>Czat</h2>
 <div class="chat_group">
@@ -54,6 +29,7 @@ $(document).ready(function () {
     
 </div>
 
+<!---textarea sluzaca do wpisywania przez uzytownika wiadomosci orazprzycisk wysylajacy je do czatu i BD-->
 <div>
     <form>
         <textarea id="TextArea_user_send" rows="4" style="width:100%; max-height:200px; max-width:100%; margin-top:20px"></textarea>
@@ -61,30 +37,29 @@ $(document).ready(function () {
     </form>
 </div>
 
-
-
 <h2>Ranking czlonkow grupy</h2>
-
 <input id="Button_ranking" type="button" value="zwin/rozwin" class="btn btn-default" data-toggle="collapse" data-target="#table_ranking_button" />
 
 <div class="collapse" id="table_ranking_button">
 
-
-    <table id="tabela_js_show" class="table table-striped" cellspacing="3" width="100%" style="background-color:white">
+    <table id="tabela_js_show" class="table table-striped" cellspacing="3">
         <thead>
+            
             <tr>
                 <th>Pozycja</th>
                 <th>Login</th>
                 <th>wynik</th>
             </tr>
-        </thead>
 
+        </thead>
         <tbody>
+
             <tr>
                 <td>1</td>
                 <td><a href="~/profil/index#id">nazwa_uzytkownika</a></td>
                 <td>230</td>
             </tr>
+            
             <tr>
                 <td>2</td>
                 <td><a href="~/profil/index#id">nazwa_uzytkownika2</a></td>
@@ -92,19 +67,7 @@ $(document).ready(function () {
             </tr>
 
         </tbody>
-
     </table>
-    <!--
-    <center>
-        <ul class="pagination">
-            <li><a href="#1">1</a></li>
-            <li><a href="#2">2</a></li>
-            <li><a href="#3">3</a></li>
-            <li><a href="#4">4</a></li>
-            <li><a href="#5">5</a></li>
-        </ul>
-    </center>
-        --->
 </div>
 
 
@@ -113,8 +76,8 @@ $(document).ready(function () {
 
 <input id="Button1" type="button" value="zwin/rozwin" class="btn btn-default" data-toggle="collapse" data-target="#search_user_add" />
 <div class="collapse" id="search_user_add">
-
-    <div class="search_user" style="height:50px; margin-left:-15px">
+    <!--wyszukiwanie uzytkownika-->
+    <div class="search_user">
         <div class="search_user_input">
             <form class="navbar-form navbar-left" method="post">
                 <div class="form-group">
@@ -124,7 +87,7 @@ $(document).ready(function () {
             </form>
         </div>
     </div>
-    <div >
+    <div>
 
         <div class="search_user_add_container"> <strong>nazwa uzytkownika</strong><input id="Submit1" type="submit" value="dolacz" class="btn btn-default" />  </div>
 
@@ -136,5 +99,13 @@ $(document).ready(function () {
 </div>
 
 
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
+$(document).ready(function () {
+    $('#tabela_ranking').DataTable();
+});
+</script>
 
