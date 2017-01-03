@@ -9,6 +9,8 @@ namespace WebApplication2.Models.ViewModel
     {
         public string UserID { get; set; }
         public byte[] imageData { get; set; }
+
+       
         public FriendsView()
         {
             this.UserID = null;
