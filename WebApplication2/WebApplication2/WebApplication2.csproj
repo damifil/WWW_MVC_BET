@@ -199,6 +199,7 @@
     <Compile Include="Models\ViewModel\ImageView.cs" />
     <Compile Include="Models\ViewModel\LoginRegisterView.cs" />
     <Compile Include="Models\ViewModel\PasswordView.cs" />
+    <Compile Include="Models\ViewModel\RacesView.cs" />
     <Compile Include="Models\ViewModel\UserDescriptionView.cs" />
     <Compile Include="Models\ViewModel\UserLoginView.cs" />
     <Compile Include="Models\ViewModel\UserSettingView.cs" />

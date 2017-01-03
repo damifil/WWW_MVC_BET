@@ -11,6 +11,7 @@ namespace WebApplication2.Models.ViewModel
        
        public BetGetView betGetView { get; set; }
        public BetSetView betSetView { get; set; }
+        public List<RacesView> betRaces { get; set; }
         public BetSetGetView()
         {
             this.betSetView = new BetSetView();

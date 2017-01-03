@@ -14,10 +14,11 @@ namespace WebApplication2.Controllers
         // GET: Zaklady
         public ActionResult Index()
         {
+            BetSetGetView mod = new BetSetGetView();
             using (var db = new ProjektEntities())
             {
                 var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
-                
+
                 var driver = from b in db.DRIVERS
                              join p in db.PARTICIPANTS
                              on b.Driver_ID equals p.Driver_ID
@@ -36,7 +37,7 @@ namespace WebApplication2.Controllers
                 var be = from b in db.BETS
                          join xa in db.RACES
                          on b.Race_ID equals xa.Race_ID
-                         where b.User_ID == login
+                         where b.User_ID == login && b.ScorePos1 != null
                          select new { xa.Track };
 
                 var xd = be.ToList().Select(c => new SelectListItem
@@ -46,11 +47,20 @@ namespace WebApplication2.Controllers
                 }).ToList();
 
                 ViewBag.Wyscig1 = xd;
+
+
+                mod.betRaces = new List<RacesView>();
+
+                var allRace = from r in db.RACES
+                              select new { r.Track, r.Date };
+                foreach (var item in allRace)
+                    mod.betRaces.Add(new RacesView { raceTrack = item.Track, raceDate = item.Date });
             }
-            return View();
+
+            return View(mod);
         }
 
-        
+
         public ActionResult dodaj()
         {
 
@@ -76,7 +86,7 @@ namespace WebApplication2.Controllers
                 var be = from b in db.BETS
                          join xa in db.RACES
                          on b.Race_ID equals xa.Race_ID
-                         where b.User_ID == login
+                         where b.User_ID == login && b.ScorePos1 != null
                          select new { xa.Track };
 
                 var xd = be.ToList().Select(c => new SelectListItem
@@ -84,7 +94,7 @@ namespace WebApplication2.Controllers
                     Text = c.Track,
                     Value = c.Track
                 }).ToList();
-                
+
                 ViewBag.Wyscig1 = xd;
 
             }
@@ -119,7 +129,7 @@ namespace WebApplication2.Controllers
                     var be = from b in db.BETS
                              join xa in db.RACES
                              on b.Race_ID equals xa.Race_ID
-                             where b.User_ID == login
+                             where b.User_ID == login && b.ScorePos1 != null
                              select new { xa.Track };
 
                     var xd = be.ToList().Select(c => new SelectListItem
@@ -133,14 +143,14 @@ namespace WebApplication2.Controllers
                     ViewBag.Wyscig1 = xd;
 
                     BetManager betManager = new BetManager();
-                    if(betManager.IsBetExists(User.Identity.Name, raceID))
+                    if (betManager.IsBetExists(User.Identity.Name, raceID))
                     {
                         ModelState.AddModelError("", "Nie można zrobić dwa razy zakładu na ten sam wyścig.");
                     }
                     else
                     if (itm1.betSetView.Driver_Name1 != itm1.betSetView.Driver_Name2 && itm1.betSetView.Driver_Name2 != itm1.betSetView.Driver_Name3 && itm1.betSetView.Driver_Name1 != itm1.betSetView.Driver_Name3)
                     {
-                        
+
                         betManager.SetBet(User.Identity.Name, raceID, itm1.betSetView.Driver_Name1, itm1.betSetView.Driver_Name2, itm1.betSetView.Driver_Name3, itm1.betSetView.Driver_Time1);
                         ViewBag.Status = "Zakład został dodany.";
                     }
@@ -148,7 +158,7 @@ namespace WebApplication2.Controllers
                     {
                         ModelState.AddModelError("", "Dane się nie zgadzają, proszę wybrać zawodników jeszcze raz.");
                     }
-                 
+
                 }
             }
             return View("Index");
@@ -163,7 +173,7 @@ namespace WebApplication2.Controllers
                     var be = from b in db.BETS
                              join xa in db.RACES
                              on b.Race_ID equals xa.Race_ID
-                             where b.User_ID == login
+                             where b.User_ID == login && b.ScorePos1 != null
                              select new { xa.Track };
 
                     var x = be.ToList().Select(c => new SelectListItem
@@ -206,7 +216,7 @@ namespace WebApplication2.Controllers
                 var be = from b in db.BETS
                          join xa in db.RACES
                          on b.Race_ID equals xa.Race_ID
-                         where b.User_ID == login
+                         where b.User_ID == login && b.ScorePos1 != null
                          select new { xa.Track };
 
                 var x = be.ToList().Select(c => new SelectListItem
@@ -253,7 +263,7 @@ namespace WebApplication2.Controllers
                     wybor.betGetView.scoreTime1 = ds.ScoreTime1.Value;
                     wybor.betGetView.scoreSum = ds.ScoreSum.Value;
                 }
-             
+
                 var races = from rac in db.RACES
                             join dr in db.DRIVERS
                             on rac.Pos_1 equals dr.Driver_ID
@@ -296,7 +306,7 @@ namespace WebApplication2.Controllers
                 {
                     wybor.betGetView.raceTime1 = ds.Driver_Name;
                 }
-                              
+
             }
 
             return View(wybor);
