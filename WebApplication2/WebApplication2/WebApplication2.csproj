@@ -198,6 +198,8 @@
     <Compile Include="Models\ViewModel\FriendsView.cs" />
     <Compile Include="Models\ViewModel\ImageView.cs" />
     <Compile Include="Models\ViewModel\LoginRegisterView.cs" />
+    <Compile Include="Models\ViewModel\MessageListView.cs" />
+    <Compile Include="Models\ViewModel\MessageView.cs" />
     <Compile Include="Models\ViewModel\PasswordView.cs" />
     <Compile Include="Models\ViewModel\RacesView.cs" />
     <Compile Include="Models\ViewModel\UserDescriptionView.cs" />
@@ -264,6 +266,7 @@
     <Content Include="Views\Shared\_Layout_without_chat_asside.cshtml" />
     <Content Include="Views\grupy\zarzadzaj.cshtml" />
     <Content Include="Views\znajomi\Zapros.cshtml" />
+    <Content Include="Views\wiadomosci\wiadomosc.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
