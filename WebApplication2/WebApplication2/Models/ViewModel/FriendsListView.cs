@@ -9,5 +9,6 @@ namespace WebApplication2.Models.ViewModel
     {
         public List<FriendsView> ListFriends { get; set; }
         public List<FriendsView> ListSearch { get; set; }
+        public string userID { get; set; }
     }
 }
