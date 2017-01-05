@@ -69,6 +69,7 @@
     <EntitySetMapping Name="MESSAGES">
       <EntityTypeMapping TypeName="ProjektModel.MESSAGES">
         <MappingFragment StoreEntitySet="MESSAGES">
+          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
           <ScalarProperty Name="Message_From" ColumnName="Message_From" />
           <ScalarProperty Name="Message_To" ColumnName="Message_To" />

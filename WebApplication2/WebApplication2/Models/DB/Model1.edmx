@@ -73,6 +73,7 @@
           <Property Name="Message_From" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Message_To" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Content" Type="varchar(max)" Nullable="false" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PARTICIPANTS">
           <Key>
@@ -525,6 +526,7 @@
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="USER" Relationship="Self.FK_MESSAGES_USER" FromRole="MESSAGES" ToRole="USER" />
           <NavigationProperty Name="USER1" Relationship="Self.FK_MESSAGES_USER1" FromRole="MESSAGES" ToRole="USER" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PARTICIPANTS">
           <Key>
@@ -983,6 +985,7 @@
           <EntitySetMapping Name="MESSAGES">
             <EntityTypeMapping TypeName="ProjektModel.MESSAGES">
               <MappingFragment StoreEntitySet="MESSAGES">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
                 <ScalarProperty Name="Message_From" ColumnName="Message_From" />
                 <ScalarProperty Name="Message_To" ColumnName="Message_To" />

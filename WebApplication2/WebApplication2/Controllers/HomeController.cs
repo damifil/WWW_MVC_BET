@@ -17,6 +17,7 @@ namespace WebApplication2.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            System.Diagnostics.Debug.WriteLine(DateTime.Now);
             return View();
         }
 

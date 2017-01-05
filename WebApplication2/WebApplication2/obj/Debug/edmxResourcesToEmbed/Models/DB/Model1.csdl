@@ -83,6 +83,7 @@
     <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="USER" Relationship="Self.FK_MESSAGES_USER" FromRole="MESSAGES" ToRole="USER" />
     <NavigationProperty Name="USER1" Relationship="Self.FK_MESSAGES_USER1" FromRole="MESSAGES" ToRole="USER" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="PARTICIPANTS">
     <Key>

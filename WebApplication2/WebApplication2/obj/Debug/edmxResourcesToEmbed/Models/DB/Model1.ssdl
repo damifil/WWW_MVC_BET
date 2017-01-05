@@ -68,6 +68,7 @@
     <Property Name="Message_From" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Message_To" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Content" Type="varchar(max)" Nullable="false" />
+    <Property Name="Date" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PARTICIPANTS">
     <Key>

@@ -9,5 +9,7 @@ namespace WebApplication2.Models.ViewModel
     {
         public List<MessageView> ListMessage { get; set; }
         public List<MessageView> ListUsersMessage { get; set; }
+        public string newMessageContent { get; set; }
+        public string newMessageTo { get; set; }
     }
 }
