@@ -60,7 +60,11 @@
                         @Html.ActionLink("Zaproś", "Zapros", new { userID = item.UserID })
                     }
                     <input id="Button_id_user_message" type="button" value="napisz" />
-                    
+                    @using (Html.BeginForm("wiadomosc", "Wiadomosci", FormMethod.Post))
+                    {
+                        @Html.ActionLink("Napisz", "wiadomosc", new { userID = item.UserID })
+                      
+                            }
                 </div>
             </div>
             

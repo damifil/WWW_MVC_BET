@@ -55,6 +55,8 @@ namespace WebApplication2.Controllers
             return View(mod);
         }
 
+       
+
         [HttpPost]
         public ActionResult wyslij(MessageListView messageListView)
         {
@@ -67,7 +69,7 @@ namespace WebApplication2.Controllers
             var listMessage = from m in db.MESSAGES
                               where m.Message_From == User.Identity.Name
                               group m by m.Message_From
-                  into gr
+                                into gr
                               select gr.Distinct();
             //select new { m.Message_To, m.Date };
             var a = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)

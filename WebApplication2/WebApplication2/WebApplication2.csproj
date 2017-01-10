@@ -268,6 +268,7 @@
     <Content Include="Views\znajomi\Zapros.cshtml" />
     <Content Include="Views\wiadomosci\wiadomosc.cshtml" />
     <Content Include="Views\wiadomosci\wyslij.cshtml" />
+    <Content Include="Views\znajomi\wiadomosc.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
