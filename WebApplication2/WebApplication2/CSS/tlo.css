@@ -16,40 +16,7 @@
 {
     background-color:white;
 }
-.container_page_zaklady, .container_page_zarzadzaj,.collapse_group
-{
-    display: flex;
-    justify-content: space-between;
-   
-   
-}
 
-.search_group{
-height:50px;
-}
-
-#TextArea_user_send
-{
-    width:100%; max-height:200px; 
-}
-
-.search_user{
-    height:50px; 
-    margin-left:-15px;
-}
-
-.search_user_add_container{
-    padding:5px;
-   
-    height:45px;
-    width:50%;
-    background-color:white;
-
-}
-
-.search_user_add_container input{
-   float:right;
-}
 
 #Button_Avatar {
     position: absolute;
@@ -57,20 +24,6 @@ height:50px;
     margin-left: -62px;
 }
 
-.asside_message_list
-{
-    margin-top:140px;
-    padding-top:20px;
-}
-
-.mainContainer_message{
-   
-    height:372px;
-    background-color:white;
-    width:50%;
-    overflow-y: scroll;
-   
-}
 .message_send{
     margin-top:8px;
 }
@@ -95,36 +48,6 @@ height:50px;
     }
 }
 
-.asside_message_list{
-    height:502px;
-    background-color:rgba(118,183,191,.3);
-    width:50%;
-    overflow-y: scroll;
-    border-left:1px;
-     border-top:1px;
-      border-bottom:1px;
-    border-color:white;
-    border-left-style:solid;
-     border-top-style:solid;
-      border-bottom-style:solid;
-}
-
-.asside_friends_search
-{
-    margin-top:130px;
-    max-height:502px;
-    background-color:rgba(118,183,191,.5);
-    width:100%;
-    overflow-y: scroll;
-    border-left:1px;
-    border-top:1px;
-    border-bottom:1px;
-    border-color:white;
-    border-left-style:solid;
-    border-top-style:solid;
-    border-bottom-style:solid;
-}
-
 .user_in_friend_list
 {
     border-bottom:1px;
@@ -133,50 +56,6 @@ height:50px;
 padding:5px;
 
 
-}
-
-
-.search_friends{
-   height:100px;
- border-bottom:1px;
-        border-bottom-style:solid;
-            border-color:white;
-padding:5px;
-}
-.asside_message_list_not_read{
-    border-bottom:solid;
-    border-color:white;
-background-color:rgba(118,183,191,.9);
-height:100px;
-}
-.search_message{
-    height:100px;
-  border-bottom:solid;
-    border-color:white;
-}
-.asside_message_list_read{
-    border-bottom:solid;
-    border-color:white;
-    height:100px;
-
-}
-
-@media(min-width: 768px) {
-    .asside_message_list {
-        width: calc( (750px / 12)*4);
-    }
-}
-
-@media(min-width: 960px) {
-    .asside_message_list {
-        width: calc( (960px / 12)*4);
-    }
-}
-
-@media(min-width: 1170px) {
-     .asside_message_list {
-        width: calc( (1170px / 12)*4);
-    }
 }
 
 .message_element_view{
@@ -218,75 +97,23 @@ div.topHeader {
     height: 120px;
 }
 
-.logo-full-bg {
-    background-color: #273D40;
-    height: 70px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-}
-
-.logo-full-bg_home {
-    background-color: #273D40;
-    height: 70px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    padding: 10px;
-}
-
 .mainContainer_home {
     margin-top: 80px;
 }
 
-.menu-full-bg {
-    background-color: #8EDCE5;
-    border-radius: 4px;
-    border: 1px solid white;
-    height: 52px;
-    top: 70px;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-}
+
 
 #describ_user{
     margin:0px;
     clear: both;
 }
 
-.collapse,{
+.collapse{
     margin-top:5px;
 }
 
 #Button_gruop_out {
     float: right;
-}
-
-.users_list_container {
-    display: flex;
-    justify-content: space-around;
-    align-self:flex-start;
-}
-
-.message_container{
-        display: flex;
-}
-
-.search_gropu_container
-{
-    padding:5px;
-    margin-left:15px;
-    height:45px;
-    width:100%;
-    background-color:white;
-}
-
-
-.search_gropu_container input{
-    float:right
 }
 
 .container_user_picture {
@@ -296,8 +123,8 @@ div.topHeader {
     border-radius: 25px;
 }
 
-    .container_user_picture img,
-    .container_user_picture input {
+.container_user_picture img,
+.container_user_picture input {
         margin-left: auto;
         margin-right: auto;
         display: block;
@@ -306,14 +133,6 @@ div.topHeader {
     .container_user_picture p {
         text-align: center;
     }
-
-.chat_group {
-    padding: 20px;
-    width: 100%;
-    height: 400px;
-    overflow-y: scroll;
-    background-color: white;
-}
 
 .message {
     margin-top: 5px;
@@ -361,14 +180,6 @@ div.topHeader {
     display: none;
 }
 
-article {
-    margin-bottom: 10px;
-    background-color: rgba(118,183,191,.2);
-    padding: 20px;
-    border-radius: 25px;
-}
-
-
 .about_me_container
 {
     background-color:white;
@@ -380,11 +191,225 @@ article {
     padding: 3px;
 }
 
-    .czat ul li {
+/*SEARCH--------------------------------------------------------------------------*/
+
+
+/*STRONA GRUPY*/
+.search_user{
+    height:50px; 
+    margin-left:-15px;
+}
+/*kontenery uzytkownicy*/
+.search_user_add_container{
+    padding:5px;
+   
+    height:45px;
+    width:50%;
+    background-color:white;
+
+}
+
+.search_user_add_container input{
+   float:right;
+}
+
+
+/*STRONA ZARZADZAJ*/
+.search_gropu_container
+{
+    padding:5px;
+    margin-left:15px;
+    height:45px;
+    width:100%;
+    background-color:white;
+}
+
+.search_gropu_container input{
+    float:right
+}
+
+
+.search_group{
+height:50px;
+}
+
+/*STRONA ZNAJOMI*/
+
+.search_friends{
+   height:100px;
+ border-bottom:1px;
+        border-bottom-style:solid;
+            border-color:white;
+padding:5px;
+}
+
+/*STRONA WIADOMOSCI*/
+
+.search_message{
+    height:100px;
+  border-bottom:solid;
+    border-color:white;
+}
+
+/*SEARCH--------------------------------------------------------------------------*/
+
+
+/*CONTAINER WITH SCROLL*/    
+.chat_group {
+    padding: 20px;
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+    background-color: white;
+}
+.mainContainer_message{
+   
+    height:372px;
+    background-color:white;
+    width:50%;
+    overflow-y: scroll;
+   
+}
+/*ASSIDE*/
+
+.asside_message_list
+{
+    margin-top:140px;
+    padding-top:20px;
+}
+
+.asside_message_list{
+    height:502px;
+    background-color:rgba(118,183,191,.3);
+    width:50%;
+    overflow-y: scroll;
+    border-left:1px;
+     border-top:1px;
+      border-bottom:1px;
+    border-color:white;
+    border-left-style:solid;
+     border-top-style:solid;
+      border-bottom-style:solid;
+}
+
+.asside_friends_search
+{
+    margin-top:130px;
+    max-height:502px;
+    background-color:rgba(118,183,191,.5);
+    width:100%;
+    overflow-y: scroll;
+    border-left:1px;
+    border-top:1px;
+    border-bottom:1px;
+    border-color:white;
+    border-left-style:solid;
+    border-top-style:solid;
+    border-bottom-style:solid;
+}
+
+.asside_message_list_not_read{
+    border-bottom:solid;
+    border-color:white;
+background-color:rgba(118,183,191,.9);
+height:100px;
+}
+
+
+@media(min-width: 768px) {
+    .asside_message_list {
+        width: calc( (750px / 12)*4);
+    }
+}
+
+@media(min-width: 960px) {
+    .asside_message_list {
+        width: calc( (960px / 12)*4);
+    }
+}
+
+@media(min-width: 1170px) {
+     .asside_message_list {
+        width: calc( (1170px / 12)*4);
+    }
+}
+
+.asside_message_list_read{
+    border-bottom:solid;
+    border-color:white;
+    height:100px;
+
+}
+/*TEXTAREA  ARTICLE*/
+#TextArea_user_send
+{
+    width:100%; max-height:200px; 
+}
+
+article {
+    margin-bottom: 10px;
+    background-color: rgba(118,183,191,.2);
+    padding: 20px;
+    border-radius: 25px;
+}
+
+/*  FLEX CONTAINER*/
+
+.users_list_container {
+    display: flex;
+    justify-content: space-around;
+    align-self:flex-start;
+}
+
+.czat ul li {
         display: flex;
         justify-content: space-between;
     }
 
+.message_container{
+        display: flex;
+}
+
+.container_page_zaklady, .container_page_zarzadzaj,.collapse_group
+{
+    display: flex;
+    justify-content: space-between;   
+}
+
+  /*dotyczace logo, nawigacji*/
+
+  .logo-full-bg {
+    background-color: #273D40;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.logo-full-bg_home {
+    background-color: #273D40;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 10px;
+}
+
+.menu-full-bg {
+    background-color: #8EDCE5;
+    border-radius: 4px;
+    border: 1px solid white;
+    height: 52px;
+    top: 70px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+
+  /*?????????*/
 @media(min-width: 960px) {
     .czat {
         display: block;

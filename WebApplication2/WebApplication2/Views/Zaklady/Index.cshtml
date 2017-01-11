@@ -131,58 +131,64 @@
     @Html.DisplayFor(modelItem => item.raceDate)
     @Html.DisplayFor(modelItem => item.raceTrack)
 }
-<script>
+<script type="text/javascript">
 
 
     var SelectedDates = [];
-  @{/* @foreach(var m in Model.betRaces)
-                                {
-                                    <text>
-                                    @:SelectedDates["date_race"] = @m.raceDate;
-                                    @:SelectedDates["describ"] = @m.raceTrack;
-                                </text>
-                                }*/
+    var licznik = 0;
+
+
+    @foreach(var m in Model.betRaces)
+   {
+          <text>
+            SelectedDates[licznik] = { date_race: new Date("@m.raceDate"), describ: "@m.raceTrack" }
+            licznik++;
+          </text>
               }
 
+    /*
     SelectedDates[0] = { date_race: new Date("2017-01-01T00:00:00+01:00"), describ: "wyscig1" }
     SelectedDates[1] = { date_race: new Date("2017-01-20T00:00:00+01:00"), describ: "wyscig2" }
-
+    */
     $(document).ready(function () {
 
 
-          var date_input=$('input[name="date_picker"]'); //our date input has the name "date"
-          var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-          var options={
-        format: 'yyyy//mm/dd',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-
-
+        var date_input = $('input[name="date_picker"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
+            format: 'yyyy//mm/dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
     })
 
 
+    Date.prototype.withoutTime = function () {
+        var d = new Date(this);
+        d.setHours(0, 0, 0, 0, 0);
+        return d
+    }
+
     $('#date_picker').datepicker({
-      beforeShowDay: function (date) {
+        beforeShowDay: function (date) {
 
-              var len = SelectedDates.length;
+            var len = SelectedDates.length;
 
-              for (i = 0; i < len; i++) {
-                  if (SelectedDates[i].date_race.toString() == date) {
-                      return {
-                      enabled: true,
+            for (i = 0; i < len; i++) {
+                if (SelectedDates[i].date_race.withoutTime().toString() == date.withoutTime()) {
+                    return {
+                        enabled: true,
                         tooltip: SelectedDates[i].describ
-                      };
-                  }
+                    };
+                }
 
-              }
-              return {
-              enabled: false
-              };
-              /* tutaj klasa niieaktywna */
-          }
-      });
+            }
+            return {
+                enabled: false
+            };
+        }
+    });
 
 </script>
