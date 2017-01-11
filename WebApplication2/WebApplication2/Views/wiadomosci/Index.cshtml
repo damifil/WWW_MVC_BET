@@ -36,8 +36,10 @@
 <div class="message_send">
     @using (Html.BeginForm("wyslij", "Wiadomosci", FormMethod.Post))
     {
-        @Html.TextBoxFor(model => model.newMessageContent, new { @rows = 4, @id = "TextArea_user_send", @placeholder = "Napisz wiadomość...." })
-        <!--<textarea id="TextArea_user_send" rows="4"></textarea>-->
+        @Html.TextAreaFor(model => model.newMessageContent, new { @rows = 4, @id = "TextArea_user_send", @placeholder = "Napisz wiadomość...." })
+      
+
+         <!--<textarea id="TextArea_user_send" rows="4"></textarea>-->
         <input id="Button_send_message_group" type="submit" value="wyslij" class="btn btn-default" />
     }
 </div>
@@ -62,13 +64,11 @@
 
         @foreach (var item in Model.ListUsersMessage)
         {
-            <div class="asside_message_list_not_read">
+            <div class="asside_message_list_not_read"   onclick="location.href='@Url.Action("Index", "Wiadomosci", new { userID = item.toUser }, null)'">
                 <strong><p>@Html.DisplayFor(modelItem => item.toUser)</p></strong>
                 <p>@Html.DisplayFor(modelItem => item.date)</p>
                 <p>framnet wiadomosci w sumie to opcjonalne jest</p>
             </div>
-
-
         }
     </aside>
 }

@@ -16,6 +16,7 @@
     <Property Name="ScorePos2" Type="int" />
     <Property Name="ScorePos3" Type="int" />
     <Property Name="ScoreSum" Type="int" />
+    <Property Name="ScoreTime1" Type="int" />
   </EntityType>
   <EntityType Name="DRIVERS">
     <Key>
@@ -67,6 +68,7 @@
     <Property Name="Message_From" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Message_To" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Content" Type="varchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="PARTICIPANTS">
     <Key>

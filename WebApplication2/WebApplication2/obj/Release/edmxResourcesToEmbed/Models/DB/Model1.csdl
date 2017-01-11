@@ -18,6 +18,7 @@
     <Property Name="ScorePos2" Type="Int32" />
     <Property Name="ScorePos3" Type="Int32" />
     <Property Name="ScoreSum" Type="Int32" />
+    <Property Name="ScoreTime1" Type="Int32" />
   </EntityType>
   <EntityType Name="DRIVERS">
     <Key>
@@ -82,6 +83,7 @@
     <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="USER" Relationship="Self.FK_MESSAGES_USER" FromRole="MESSAGES" ToRole="USER" />
     <NavigationProperty Name="USER1" Relationship="Self.FK_MESSAGES_USER1" FromRole="MESSAGES" ToRole="USER" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="PARTICIPANTS">
     <Key>
