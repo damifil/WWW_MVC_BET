@@ -19,57 +19,57 @@
                     <img src="data:image/png;base64, @Convert.ToBase64String(item.imageData)" width="100" height="100" alt="avatar" class="img-rounded" />
                 </a>
                 <p>@Html.DisplayFor(modelItem => item.UserID)</p>
-                <input id="Button_id_uzytkownika" type="button" value="napisz" />
+                <!--  <input id="Button_id_uzytkownika" type="button" value="napisz" />-->
+                @Html.ActionLink("Napisz", "Index", "Wiadomosci", new { userID = item.UserID }, null)
 
             </div>
         }
-    </div></div>
+    </div>
+</div>
 
 
 
 @section asside{
 
-  
+
 
     <aside class="asside_friends_search">
         <div class="search_friends">
             <div class="search_friends_input">
-               @using (Html.BeginForm("Index", "Znajomi", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
-               {
+                @using (Html.BeginForm("Index", "Znajomi", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+                {
                     <div class="form-group">
-                        
-                            @Html.Editor("pole", new { @class = "form-control", @placeholder="nick użytkownika" })
+
+                        @Html.Editor("pole", new { @class = "form-control", @placeholder = "nick użytkownika" })
                     </div>
                     <button type="submit" class="btn btn-default">wyszukaj</button>
                 }
-                
+
             </div>
         </div>
 
         <div class="asside_friend_list">
-@foreach (var item in Model.ListSearch)
-{
-            <div class="user_in_friend_list" href="~/profil/index#id">
-              
-                        <img src="data:image/png;base64, @Convert.ToBase64String(item.imageData)" width="50" height="50" alt="avatar" class="img-rounded" />
-                    
-                <strong> @Html.DisplayFor(modelItem => item.UserID)</strong>
-                <div>
-                    @using (Html.BeginForm("Zapros", "Znajomi", FormMethod.Post))
-                    {
+            @foreach (var item in Model.ListSearch)
+            {
+                <div class="user_in_friend_list" href="~/profil/index#id">
+
+                    <img src="data:image/png;base64, @Convert.ToBase64String(item.imageData)" width="50" height="50" alt="avatar" class="img-rounded" />
+
+                    <strong> @Html.DisplayFor(modelItem => item.UserID)</strong>
+                    <div>
+
                         @Html.ActionLink("Zaproś", "Zapros", new { userID = item.UserID })
-                    }
-                    <input id="Button_id_user_message" type="button" value="napisz" />
-                    @using (Html.BeginForm("wiadomosc", "Wiadomosci", FormMethod.Post))
-                    {
-                        @Html.ActionLink("Napisz", "wiadomosc", new { userID = item.UserID })
-                      
-                            }
+
+                        <!--<input id="Button_id_user_message" type="button" value="napisz" /> -->
+
+                        @Html.ActionLink("Napisz", "Index", "Wiadomosci", new { userID = item.UserID }, null)
+
+
+                    </div>
                 </div>
-            </div>
-            
-}
-       
+
+            }
+
     </aside>
 
 }

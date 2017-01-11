@@ -1,59 +1,77 @@
-﻿@model WebApplication2.Models.ViewModel.UserSettingView
+﻿@model WebApplication2.Models.ViewModel.MessageListView
 @{
     Layout = "~/Views/Shared/_Layout_without_chat_asside.cshtml";
 }
 
 
-    
-                <div class="mainContainer_message">
 
-                    <form>
-                        <div class="message_element_view" data-toggle="tooltip" data-placement="top" title="David 30.12.2016 14:31">
-                            <p>czesc</p>
-                        </div>
+<div class="mainContainer_message">
 
-                        <div class="message_element_view_user" data-toggle="tooltip" data-placement="top" title="Damian 30.12.2016 14:31">
-                            <p>siema</p>
+    <form>
 
-                        </div>
 
-                    </form>
 
+        @foreach (var item in Model.ListMessage)
+        {
+            if (item.fromUser != User.Identity.Name)
+            {
+                <div class="message_element_view" data-toggle="tooltip" data-placement="top" title="David 30.12.2016 14:31">
+                    <p>@Html.DisplayFor(modelItem => item.content, new { htmlAttributes = new { @class = "message_element_view_use" } })</p>
+                </div>
+
+            }
+            else
+            {
+                <div class="message_element_view_user" data-toggle="tooltip" data-placement="top" title="Damian 30.12.2016 14:31">
+                    <p>@Html.DisplayFor(modelItem => item.content, new { htmlAttributes = new { @class = "message_element_use" } })</p>
 
                 </div>
-                <div class="message_send">
-                    <form>
-                        <textarea id="TextArea_user_send" rows="4"></textarea>
-                        <input id="Button_send_message_group" type="submit" value="wyslij" class="btn btn-default" />
-                    </form>
-                </div>
-@section asside{
-                <!--albo wyszukuje i powiedzmy otwiera ta strone zjakims hasztagiemiwiadomoscjest ztym uzytkownikiemco wybral alboerror ze nie ma takiegouzytkownia-->
-                <aside class="asside_message_list">
-                    <div class="search_message">
-                        <div class="search_message_input">
-                            <form class="navbar-form navbar-left">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="podaj nick uzytkownika">
-                                </div>
-                                <button type="submit" class="btn btn-default">nowa wiadomosc</button>
-                            </form>
-                        </div>
-                    </div>
 
-                    <div class="asside_message_list_not_read">
-                        <strong>Nazwa uzytkownika</strong>
-                        <p>data</p>
-                        <p>framnet wiadomosci w sumie to opcjonalne jest</p>
-                    </div>
+            }
+        }
+    </form>
 
-                    <div class="asside_message_list_read">
-                        <strong>Nazwa uzytkownika</strong>
-                        <p>data</p>
-                        <p>framnet wiadomosci w sumie to opcjonalne jest</p>
-                    </div>
-                </aside>
+
+</div>
+<div class="message_send">
+    @using (Html.BeginForm("wyslij", "Wiadomosci", FormMethod.Post))
+    {
+        @Html.TextBoxFor(model => model.newMessageContent, new { @rows = 4, @id = "TextArea_user_send", @placeholder = "Napisz wiadomość...." })
+        <!--<textarea id="TextArea_user_send" rows="4"></textarea>-->
+        <input id="Button_send_message_group" type="submit" value="wyslij" class="btn btn-default" />
     }
+</div>
+
+@section asside{
+    <!--albo wyszukuje i powiedzmy otwiera ta strone zjakims hasztagiemiwiadomoscjest ztym uzytkownikiemco wybral alboerror ze nie ma takiegouzytkownia-->
+    <aside class="asside_message_list">
+        <div class="search_message">
+            <div class="search_message_input">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @using (Html.BeginForm("Index", "Wiadomosci", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+                {
+                    <div class="form-group">
+
+                        @Html.EditorFor(model => model.newMessageTo, new { @class = "form-control", @placeholder = "Podaj nick użytkownika" })
+                        <input type="submit" value="Nowa wiadomość" class="btn btn-default" />
+
+                    </div>
+                }
+            </div>
+        </div>
+
+        @foreach (var item in Model.ListUsersMessage)
+        {
+            <div class="asside_message_list_not_read">
+                <strong><p>@Html.DisplayFor(modelItem => item.toUser)</p></strong>
+                <p>@Html.DisplayFor(modelItem => item.date)</p>
+                <p>framnet wiadomosci w sumie to opcjonalne jest</p>
+            </div>
+
+
+        }
+    </aside>
+}
 
 
 

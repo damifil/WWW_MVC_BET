@@ -10,52 +10,83 @@ namespace WebApplication2.Controllers
 {
     public class WiadomosciController : Controller
     {
-        // GET: Wiadomosci
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult wiadomosc()
+        public static string userTo;
+        public ActionResult Index(string userID)
         {
             ProjektEntities db = new ProjektEntities();
 
             var message = from m in db.MESSAGES
-                          where (m.Message_From == User.Identity.Name && m.Message_To == "Damian") || (m.Message_From == "Damian" && m.Message_To == User.Identity.Name)
-                            orderby m.Message_ID
+                          where (m.Message_From == User.Identity.Name && m.Message_To == userID) || (m.Message_From == userID && m.Message_To == User.Identity.Name)
+                          orderby m.Message_ID
                           select new { m.Message_From, m.Message_To, m.Content, m.Message_ID };
 
-          
+            userTo = userID;
             var mod = new MessageListView
             {
                 ListMessage = new List<MessageView>(),
                 ListUsersMessage = new List<MessageView>()
             };
 
-            foreach(var item in message)
+            foreach (var item in message)
             {
-                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID});
+                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID });
             }
 
 
-            var listMessage = from m in db.MESSAGES
-                              where m.Message_From == User.Identity.Name
-                              group m by  m.Message_From 
-                              into gr
-                            select gr.Distinct();
-            //select new { m.Message_To, m.Date };
-            var a = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
-                .GroupBy(p => p.Message_To).Select(s => s.FirstOrDefault()); 
-                     
-            foreach (var item in a)
+            var listUser = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
+                .GroupBy(p => p.Message_To).Select(s => s.FirstOrDefault());
+
+            foreach (var item in listUser)
             {
-                mod.ListUsersMessage.Add(new MessageView {  toUser = item.Message_To,  date = item.Date });
-                
+                mod.ListUsersMessage.Add(new MessageView { toUser = item.Message_To, date = item.Date });
+
             }
             return View(mod);
         }
 
-       
+        [HttpPost]
+        public ActionResult Index(MessageListView messageListView) // szukaj
+        {
+            ProjektEntities db = new ProjektEntities();
+
+            var us = db.USER.Where(o => o.User_ID.Equals(messageListView.newMessageTo));
+            if (us.Any())
+            {
+                userTo = messageListView.newMessageTo;
+            }
+            else
+            {
+                ModelState.AddModelError("", "Użytkownik o podanym loginie nie istnieje.");
+            }
+
+            var message = from m in db.MESSAGES
+                          where (m.Message_From == User.Identity.Name && m.Message_To == userTo) || (m.Message_From == userTo && m.Message_To == User.Identity.Name)
+                          orderby m.Message_ID
+                          select new { m.Message_From, m.Message_To, m.Content, m.Message_ID };
+
+            var mod = new MessageListView
+            {
+                ListMessage = new List<MessageView>(),
+                ListUsersMessage = new List<MessageView>()
+            };
+
+            foreach (var item in message)
+            {
+                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID });
+            }
+
+
+            var listUser = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
+                .GroupBy(p => p.Message_To).Select(s => s.FirstOrDefault());
+
+            foreach (var item in listUser)
+            {
+                mod.ListUsersMessage.Add(new MessageView { toUser = item.Message_To, date = item.Date });
+
+            }
+            return View(mod);
+
+        }
 
         [HttpPost]
         public ActionResult wyslij(MessageListView messageListView)
@@ -66,24 +97,36 @@ namespace WebApplication2.Controllers
                 ListMessage = new List<MessageView>(),
                 ListUsersMessage = new List<MessageView>()
             };
-            var listMessage = from m in db.MESSAGES
-                              where m.Message_From == User.Identity.Name
-                              group m by m.Message_From
-                                into gr
-                              select gr.Distinct();
-            //select new { m.Message_To, m.Date };
-            var a = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
+            var message = from m in db.MESSAGES
+                          where (m.Message_From == User.Identity.Name && m.Message_To == userTo) || (m.Message_From == userTo && m.Message_To == User.Identity.Name)
+                          orderby m.Message_ID
+                          select new { m.Message_From, m.Message_To, m.Content, m.Message_ID };
+
+
+            foreach (var item in message)
+            {
+                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID });
+            }
+
+            var listUser = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
                 .GroupBy(p => p.Message_To).Select(s => s.FirstOrDefault());
 
-            foreach (var item in a)
+            foreach (var item in listUser)
             {
                 mod.ListUsersMessage.Add(new MessageView { toUser = item.Message_To, date = item.Date });
 
             }
-            var message = db.MESSAGES;
-            
-            System.Diagnostics.Debug.WriteLine( " " + messageListView.newMessageContent);
-            return View(messageListView);
+
+            MESSAGES newMessage = new MESSAGES();
+            newMessage.Message_From = User.Identity.Name;
+            newMessage.Message_To = userTo;
+            newMessage.Content = messageListView.newMessageContent;
+            newMessage.Date = DateTime.Now;
+            db.MESSAGES.Add(newMessage);
+            db.SaveChanges();
+
+            System.Diagnostics.Debug.WriteLine(" " + messageListView.newMessageContent);
+            return View(mod);
         }
     }
 }

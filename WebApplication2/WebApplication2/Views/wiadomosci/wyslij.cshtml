@@ -36,7 +36,7 @@
 <div class="message_send">
     @using (Html.BeginForm("wyslij", "Wiadomosci", FormMethod.Post))
     {
-        @Html.TextBoxFor(model => model.newMessageContent, new { htmlAttributes = new { @rows = "4", @id = "TextArea_user_send", @placeholder = "Napisz wiadomość...." } })
+        @Html.TextBoxFor(model => model.newMessageContent, new { @rows = 4, @id = "TextArea_user_send", @placeholder = "Napisz wiadomość...." })
         <!--<textarea id="TextArea_user_send" rows="4"></textarea>-->
         <input id="Button_send_message_group" type="submit" value="wyslij" class="btn btn-default" />
     }
@@ -47,12 +47,16 @@
     <aside class="asside_message_list">
         <div class="search_message">
             <div class="search_message_input">
-                <form class="navbar-form navbar-left">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @using (Html.BeginForm("Index", "Wiadomosci", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+                {
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="podaj nick uzytkownika">
+
+                        @Html.EditorFor(model => model.newMessageTo, new { @class = "form-control", @placeholder = "Podaj nick użytkownika" })
+                        <input type="submit" value="Nowa wiadomość" class="btn btn-default" />
+
                     </div>
-                    <button type="submit" class="btn btn-default">nowa wiadomosc</button>
-                </form>
+                }
             </div>
         </div>
 
@@ -64,11 +68,6 @@
                 <p>framnet wiadomosci w sumie to opcjonalne jest</p>
             </div>
 
-            <!--<div class="asside_message_list_read">
-                <strong>Nazwa uzytkownika</strong>
-                <p>data</p>
-                <p>framnet wiadomosci w sumie to opcjonalne jest</p>
-            </div> -->
 
         }
     </aside>

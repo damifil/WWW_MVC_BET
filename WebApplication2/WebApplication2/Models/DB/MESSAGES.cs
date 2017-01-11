@@ -18,7 +18,7 @@ namespace WebApplication2.Models.DB
         public string Message_From { get; set; }
         public string Message_To { get; set; }
         public string Content { get; set; }
-        public string Date { get; set; }
+        public System.DateTime Date { get; set; }
     
         public virtual USER USER { get; set; }
         public virtual USER USER1 { get; set; }
