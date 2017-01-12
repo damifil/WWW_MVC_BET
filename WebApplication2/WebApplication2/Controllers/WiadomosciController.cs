@@ -18,7 +18,7 @@ namespace WebApplication2.Controllers
             var message = from m in db.MESSAGES
                           where (m.Message_From == User.Identity.Name && m.Message_To == userID) || (m.Message_From == userID && m.Message_To == User.Identity.Name)
                           orderby m.Message_ID
-                          select new { m.Message_From, m.Message_To, m.Content, m.Message_ID };
+                          select new { m.Message_From, m.Message_To, m.Content, m.Message_ID, m.Date };
 
             userTo = userID;
             var mod = new MessageListView
@@ -29,7 +29,7 @@ namespace WebApplication2.Controllers
 
             foreach (var item in message)
             {
-                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID });
+                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID, date = item.Date });
             }
 
 
@@ -62,7 +62,7 @@ namespace WebApplication2.Controllers
             var message = from m in db.MESSAGES
                           where (m.Message_From == User.Identity.Name && m.Message_To == userTo) || (m.Message_From == userTo && m.Message_To == User.Identity.Name)
                           orderby m.Message_ID
-                          select new { m.Message_From, m.Message_To, m.Content, m.Message_ID };
+                          select new { m.Message_From, m.Message_To, m.Content, m.Message_ID, m.Date };
 
             var mod = new MessageListView
             {
@@ -72,7 +72,7 @@ namespace WebApplication2.Controllers
 
             foreach (var item in message)
             {
-                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID });
+                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID , date = item.Date});
             }
 
 
@@ -100,12 +100,12 @@ namespace WebApplication2.Controllers
             var message = from m in db.MESSAGES
                           where (m.Message_From == User.Identity.Name && m.Message_To == userTo) || (m.Message_From == userTo && m.Message_To == User.Identity.Name)
                           orderby m.Message_ID
-                          select new { m.Message_From, m.Message_To, m.Content, m.Message_ID };
+                          select new { m.Message_From, m.Message_To, m.Content, m.Message_ID, m.Date };
 
 
             foreach (var item in message)
             {
-                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID });
+                mod.ListMessage.Add(new MessageView { fromUser = item.Message_From, toUser = item.Message_To, content = item.Content, messageID = item.Message_ID, date = item.Date });
             }
 
             var listUser = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
@@ -126,7 +126,7 @@ namespace WebApplication2.Controllers
             db.SaveChanges();
 
             System.Diagnostics.Debug.WriteLine(" " + messageListView.newMessageContent);
-            return View(mod);
+            return RedirectToAction("Index", new { userID = userTo}); 
         }
     }
 }

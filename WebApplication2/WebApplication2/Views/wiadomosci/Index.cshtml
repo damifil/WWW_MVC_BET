@@ -15,14 +15,14 @@
         {
             if (item.fromUser != User.Identity.Name)
             {
-                <div class="message_element_view" data-toggle="tooltip" data-placement="top" title="David 30.12.2016 14:31">
+                <div class="message_element_view" data-toggle="tooltip" data-placement="top" title="@item.fromUser @item.date">
                     <p>@Html.DisplayFor(modelItem => item.content, new { htmlAttributes = new { @class = "message_element_view_use" } })</p>
                 </div>
 
             }
             else
             {
-                <div class="message_element_view_user" data-toggle="tooltip" data-placement="top" title="Damian 30.12.2016 14:31">
+                <div class="message_element_view_user" data-toggle="tooltip" data-placement="top" title="@item.toUser @item.date">
                     <p>@Html.DisplayFor(modelItem => item.content, new { htmlAttributes = new { @class = "message_element_use" } })</p>
 
                 </div>
