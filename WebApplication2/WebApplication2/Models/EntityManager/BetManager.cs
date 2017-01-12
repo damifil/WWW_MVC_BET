@@ -45,10 +45,8 @@ namespace WebApplication2.Models.EntityManager
                          where b.User_ID == login && b.Race_ID == raceID
                          select new { b.Race_ID};
 
-                System.Diagnostics.Debug.WriteLine("coś " + be);
                 foreach (var x in be)
                 {
-                    System.Diagnostics.Debug.WriteLine("coś " + x.Race_ID + " wyn");
                     if (x.Race_ID != 0)
                         return true;
                     else

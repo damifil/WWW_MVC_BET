@@ -63,7 +63,7 @@ namespace WebApplication2.Controllers
 
         public ActionResult dodaj()
         {
-
+            BetSetGetView mod = new BetSetGetView();
             using (var db = new ProjektEntities())
             {
                 var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
@@ -96,14 +96,22 @@ namespace WebApplication2.Controllers
                 }).ToList();
 
                 ViewBag.Wyscig1 = xd;
+               
+                mod.betRaces = new List<RacesView>();
+
+                var allRace = from r in db.RACES
+                              select new { r.Track, r.Date };
+                foreach (var item in allRace)
+                    mod.betRaces.Add(new RacesView { raceTrack = item.Track, raceDate = item.Date });
 
             }
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public ActionResult dodaj(BetSetGetView itm1)
         {
+            BetSetGetView mod = new BetSetGetView();
             if (ModelState.IsValid)
             {
 
@@ -141,6 +149,13 @@ namespace WebApplication2.Controllers
                     int raceID = 2;
 
                     ViewBag.Wyscig1 = xd;
+                    
+                    mod.betRaces = new List<RacesView>();
+
+                    var allRace = from r in db.RACES
+                                  select new { r.Track, r.Date };
+                    foreach (var item in allRace)
+                        mod.betRaces.Add(new RacesView { raceTrack = item.Track, raceDate = item.Date });
 
                     BetManager betManager = new BetManager();
                     if (betManager.IsBetExists(User.Identity.Name, raceID))
@@ -161,7 +176,7 @@ namespace WebApplication2.Controllers
 
                 }
             }
-            return View("Index");
+            return View(mod);
         }
         public ActionResult wyswietl()
         {
@@ -199,6 +214,13 @@ namespace WebApplication2.Controllers
                     }).ToList();
 
                     ViewBag.KategoriaList = xd;
+                    BetSetGetView mod = new BetSetGetView();
+                    mod.betRaces = new List<RacesView>();
+
+                    var allRace = from r in db.RACES
+                                  select new { r.Track, r.Date };
+                    foreach (var item in allRace)
+                        mod.betRaces.Add(new RacesView { raceTrack = item.Track, raceDate = item.Date });
 
                 }
 

@@ -266,6 +266,7 @@
     <Content Include="Views\Shared\_Layout_without_chat_asside.cshtml" />
     <Content Include="Views\grupy\zarzadzaj.cshtml" />
     <Content Include="Views\wiadomosci\wyslij.cshtml" />
+    <Content Include="Views\Zaklady\dodaj.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
