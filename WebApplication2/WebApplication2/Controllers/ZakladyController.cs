@@ -114,7 +114,7 @@ namespace WebApplication2.Controllers
             BetSetGetView mod = new BetSetGetView();
             if (ModelState.IsValid)
             {
-
+                
                 using (var db = new ProjektEntities())
                 {
                     var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
@@ -145,17 +145,24 @@ namespace WebApplication2.Controllers
                         Text = c.Track,
                         Value = c.Track
                     }).ToList();
-
-                    int raceID = 2;
-
                     ViewBag.Wyscig1 = xd;
                     
+
                     mod.betRaces = new List<RacesView>();
 
                     var allRace = from r in db.RACES
                                   select new { r.Track, r.Date };
                     foreach (var item in allRace)
                         mod.betRaces.Add(new RacesView { raceTrack = item.Track, raceDate = item.Date });
+
+                    int raceID  = 1;
+                    string date = Request.Form["date_picker"];
+                    date = date.Replace("/", "-");
+                    var searchRaceID = from r in db.RACES
+                                  where r.Date.Contains(date)
+                                  select new { r.Race_ID , };
+                    foreach (var item in searchRaceID)
+                        raceID = item.Race_ID;
 
                     BetManager betManager = new BetManager();
                     if (betManager.IsBetExists(User.Identity.Name, raceID))
@@ -328,6 +335,12 @@ namespace WebApplication2.Controllers
                 {
                     wybor.betGetView.raceTime1 = ds.Driver_Name;
                 }
+
+                wybor.betRaces = new List<RacesView>();
+                var allRace = from r in db.RACES
+                              select new { r.Track, r.Date };
+                foreach (var item in allRace)
+                    wybor.betRaces.Add(new RacesView { raceTrack = item.Track, raceDate = item.Date });
 
             }
 

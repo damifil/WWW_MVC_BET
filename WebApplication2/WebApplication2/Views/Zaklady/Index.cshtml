@@ -3,75 +3,70 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 <div class="container_page_zaklady">
-    <div class="choice_race">
-        <h2>Wybierz wyscig do zakladu</h2>
-        <form method="post">
-            <label class="control-label" for="date">Data wyscigu</label>
-            <input class="form-control" id="date_picker" name="date_picker" placeholder="MM/DD/YYY" type="text" />
-            <input id="Submit_race" type="submit" value="zatwierdz" class="btn btn-default" />
-        </form>
-    </div>
-    <form action="/Zaklady/dodaj" method="post" class="form-inline">
+    <form action="/Zaklady/dodaj" method="post">
         <div class="choice_race">
             <h2>Wybierz wyscig do zakladu</h2>
-           
-              
+            <label class="control-label" for="date">Data wyscigu</label>
+            <input class="form-control" id="date_picker" name="date_picker" placeholder="MM/DD/YYY" type="text" />
         </div>
-        <div class="choice_race_bet">
 
-            <h2>Obstaw</h2>
+        <div class="form-inline">
+            <div class="choice_race_bet">
 
-            <!-- Wyswietla napis o dodaniu zakladu-->
-            <span class="alert-success">@ViewBag.Status</span>
-            <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <h2>Obstaw</h2>
 
-            <div class="form-group">
-                <p>1 miejsce</p>
-                <p>
-                    @Html.DropDownListFor(model => model.betSetView.Driver_Name1, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
-                    <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
-                    @Html.ValidationMessageFor(model => model.betSetView.Driver_Name1, "", new { @class = "text-danger" })
-                </p>
+                <!-- Wyswietla napis o dodaniu zakladu-->
+                <span class="alert-success">@ViewBag.Status</span>
+                <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <p>1 miejsce</p>
+                    <p>
+                        @Html.DropDownListFor(model => model.betSetView.Driver_Name1, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
+                        <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
+                        @Html.ValidationMessageFor(model => model.betSetView.Driver_Name1, "", new { @class = "text-danger" })
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>2 miejsce</p>
+                    <p>
+                        @Html.DropDownListFor(model => model.betSetView.Driver_Name2, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
+                        @Html.ValidationMessageFor(model => model.betSetView.Driver_Name2, "", new { @class = "text-danger" })
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>3 miejsce</p>
+                    <p>
+                        @Html.DropDownListFor(model => model.betSetView.Driver_Name3, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
+                        @Html.ValidationMessageFor(model => model.betSetView.Driver_Name3, "", new { @class = "text-danger" })
+                    </p>
+                </div>
+
+
+
+
+                <h2>Najlepsze okrazenie</h2>
+
+
+                <div class="form-group">
+
+                    <p>najlepsze okrazenie</p>
+                    <p>
+                        @Html.DropDownListFor(model => model.betSetView.Driver_Time1, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
+                        @Html.ValidationMessageFor(model => model.betSetView.Driver_Time1, "", new { @class = "text-danger" })
+                    </p>
+
+                </div>
+                <div>
+                    <input id="Button_login" type="submit" value="Zatwierdź zmiany" class="btn btn-default" />
+                </div>
+
+
+
             </div>
-
-            <div class="form-group">
-                <p>2 miejsce</p>
-                <p>
-                    @Html.DropDownListFor(model => model.betSetView.Driver_Name2, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
-                    @Html.ValidationMessageFor(model => model.betSetView.Driver_Name2, "", new { @class = "text-danger" })
-                </p>
-            </div>
-
-            <div class="form-group">
-                <p>3 miejsce</p>
-                <p>
-                    @Html.DropDownListFor(model => model.betSetView.Driver_Name3, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
-                    @Html.ValidationMessageFor(model => model.betSetView.Driver_Name3, "", new { @class = "text-danger" })
-                </p>
-            </div>
-
-
-
-
-            <h2>Najlepsze okrazenie</h2>
-
-
-            <div class="form-group">
-
-                <p>najlepsze okrazenie</p>
-                <p>
-                    @Html.DropDownListFor(model => model.betSetView.Driver_Time1, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
-                    @Html.ValidationMessageFor(model => model.betSetView.Driver_Time1, "", new { @class = "text-danger" })
-                </p>
-
-            </div>
-            <div>
-                <input id="Button_login" type="submit" value="Zatwierdź zmiany" class="btn btn-default" />
-            </div>
-
-
-
         </div>
     </form>
 </div>
@@ -172,7 +167,7 @@
     }
 
     $('#date_picker').datepicker({
-        format: 'yyyy//mm/dd',
+        format: 'yyyy/mm/dd',
 
         beforeShowDay: function (date) {
 

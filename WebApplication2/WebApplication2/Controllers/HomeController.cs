@@ -83,7 +83,7 @@ namespace WebApplication2.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(userView.UserLoginView.Login, false);
                         userManager.SetLogIn1(userView.UserLoginView.Login);
-                        return RedirectToAction("Index", "Aktualnosci");
+                        return RedirectToAction("Index", "Profil");
                     }
                     else
                     {
