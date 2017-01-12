@@ -29,6 +29,36 @@
 }
 
 
+.bet_fixed
+{
+    display:flex;
+   justify-content: space-between;
+    align-self:flex-start;
+    width:100%;
+}
+
+
+@media(min-width: 768px) {
+    .bet_fixed {
+        width: calc( ((750px / 12)*8)-30px);
+    }
+}
+
+@media(min-width: 960px) {
+    .bet_fixed {
+        width: calc( ((960px / 12)*8)-30px);
+    }
+}
+
+@media(min-width: 1170px) {
+     .bet_fixed {
+         width:750px;
+        width: calc( ((1170px / 12)*8)-30px);
+    }
+}
+
+
+
 @media(min-width: 768px) {
     .mainContainer_message {
         width: calc( ((750px / 12)*8)-30px);
