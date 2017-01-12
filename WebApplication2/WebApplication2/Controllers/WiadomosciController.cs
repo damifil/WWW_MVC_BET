@@ -34,7 +34,7 @@ namespace WebApplication2.Controllers
 
 
             var listUser = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
-                .GroupBy(p => p.Message_To).Select(s => s.FirstOrDefault());
+               .GroupBy(p => p.Message_To, (a, b) => b.OrderByDescending(e => e.Message_ID)).Select(s => s.FirstOrDefault());
 
             foreach (var item in listUser)
             {
@@ -77,7 +77,7 @@ namespace WebApplication2.Controllers
 
 
             var listUser = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
-                .GroupBy(p => p.Message_To).Select(s => s.FirstOrDefault());
+                  .GroupBy(p => p.Message_To, (a, b) => b.OrderByDescending(e => e.Message_ID)).Select(s => s.FirstOrDefault());
 
             foreach (var item in listUser)
             {
@@ -109,7 +109,7 @@ namespace WebApplication2.Controllers
             }
 
             var listUser = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
-                .GroupBy(p => p.Message_To).Select(s => s.FirstOrDefault());
+                          .GroupBy(p => p.Message_To, (a, b) => b.OrderByDescending(e => e.Message_ID)).Select(s => s.FirstOrDefault());
 
             foreach (var item in listUser)
             {
