@@ -313,7 +313,12 @@ padding:5px;
 background-color:rgba(118,183,191,.9);
 height:100px;
 }
-
+.asside_message_list_not_read:hover {
+    border-bottom:solid;
+    border-color:white;
+background-color:rgba(118,183,191,.1);
+height:100px;
+}
 
 @media(min-width: 768px) {
     .asside_message_list {
