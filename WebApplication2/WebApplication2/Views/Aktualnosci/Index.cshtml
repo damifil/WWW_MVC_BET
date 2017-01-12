@@ -5,6 +5,36 @@
 
 <div class="container_topics">
 
+
+
+    @using System.Xml;
+
+    @{
+        //Get the XML from remote URL
+        XmlDocument xml = new XmlDocument();
+
+        //URL currently hardcoded - but you could use a macro param to pass in URL
+        xml.Load("http://www.f1wm.pl/rss_f1.php");
+
+        //Select the nodes we want to loop through
+        XmlNodeList nodes = xml.SelectNodes("//item");
+
+        //Traverse the entire XML nodes.
+        foreach (XmlNode node in nodes)
+         {
+            //Get the value from the <title> node
+            var title = node.SelectSingleNode("title").InnerText;
+
+            //Get the value from the <description> node
+            var description = node.SelectSingleNode("description").InnerText;
+            <article>
+            <h1>@title</h1>
+                <p>@Html.Raw(description)</p>
+            </article>
+        }
+    }
+
+
     <article>
 
         <h1>Naglowek wiadomosci pierwszej</h1>
@@ -38,5 +68,7 @@
         <li class="previous"><a href="#">Poprzednia strona</a></li>
         <li class="next"><a href="#">Nastepna strona</a></li>
     </ul>
+
+
 
 </div>
