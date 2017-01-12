@@ -215,11 +215,16 @@ div.topHeader {
 
 
 /*STRONA ZARZADZAJ*/
+
+.container_search>div
+{
+    margin-bottom:50px;
+}
 .search_gropu_container
 {
     padding:5px;
     margin-left:15px;
-    height:45px;
+    height:75px;
     width:100%;
     background-color:white;
 }
@@ -280,7 +285,7 @@ padding:5px;
 .asside_message_list{
     height:502px;
     background-color:rgba(118,183,191,.3);
-    width:50%;
+    width:100%;
     overflow-y: scroll;
     border-left:1px;
      border-top:1px;
@@ -374,7 +379,7 @@ article {
         display: flex;
 }
 
-.container_page_zaklady, .container_page_zarzadzaj,.collapse_group
+.container_page_zaklady,.collapse_group
 {
     display: flex;
     justify-content: space-between;   

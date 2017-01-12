@@ -21,11 +21,11 @@
           <!--  <input id="Button_Avatar" type="button" value="zmien" class="btn btn-default" />/!-->
            
             <img src="data:image/png;base64, @Convert.ToBase64String(Model.imageView.imageData)" width="200" height="200" />
-            @using (Html.BeginForm("Zmiana_zdjecia", "Ustawienia", FormMethod.Post, new{ enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Zmiana_zdjecia", "Ustawienia", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.TextBoxFor(model => model.imageView.File, new { type = "file", @onchange = "this.form.submit();" })
 
-           }
+            }
             <!-- Formularz dotyczacy zmiany hasla--->
             @using (Html.BeginForm("Zmiana_hasla", "Ustawienia", FormMethod.Post))
             {
@@ -78,7 +78,7 @@
 
                 <!-- fpormularz do usuwania konta w sumie to zostawilem z tego co dawid wrzucil-->
                 @using (Html.BeginForm("Usuniecie_konta", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
-            {
+                {
                     <form>
                     @Html.AntiForgeryToken()
 
@@ -102,7 +102,7 @@
                 </div>
                 <div>
                     <!--tutaj powinien byc aktualny opis wyswietlany jaki uzytkownik mai uzytkownik do niego moze nowy wpisac-->
-                    @Html.TextAreaFor(model => model.userDescriptionView.description,  new { @id = "describ_user", @rows = 10, @cols = 40, @placeholder = Html.DisplayFor(n => n.userDescriptionView.description) })
+                    @Html.TextAreaFor(model => model.userDescriptionView.description, new { @id = "describ_user", @rows = 10, @cols = 40, @placeholder = Html.DisplayFor(n => n.userDescriptionView.description) })
                 </div>
                 <div>
                     <!--przycisk do zatwierdzenia zmian w opise-->
@@ -114,10 +114,7 @@
             @using (Html.BeginForm("Zmiana_email", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
             {
                 @Html.AntiForgeryToken()
-                <div>
-                    <!-- wyswietla aktualny email-->
-                    @Html.DisplayFor(model => model.emailView.email)
-                </div>
+                
                 <div>
                     <label>adres email</label>
                 </div>
@@ -138,3 +135,11 @@
 
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        document.getElementById("email").value = "@Html.DisplayFor(model => model.emailView.email)";
+ 
+    });
+</script>
