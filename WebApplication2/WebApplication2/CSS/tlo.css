@@ -61,20 +61,20 @@
 
 @media(min-width: 768px) {
     .mainContainer_message {
-        width: calc( ((750px / 12)*8)-30px);
+        width: calc( ((750px / 12)*7)-30px);
     }
 }
 
 @media(min-width: 960px) {
     .mainContainer_message {
-        width: calc( ((960px / 12)*8)-30px);
+        width: calc( ((960px / 12)*7)-30px);
     }
 }
 
 @media(min-width: 1170px) {
      .mainContainer_message {
-         width:750px;
-        width: calc( ((1170px / 12)*8)-30px);
+         width:652.5px;
+        width: calc( ((1170px / 12)*7)-30px);
     }
 }
 
@@ -87,7 +87,11 @@ padding:5px;
 
 
 }
-
+.logout_buttton {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
 .message_element_view{
     margin-top: 10px;
      margin-left:5%;
@@ -128,7 +132,14 @@ div.topHeader {
 }
 
 .mainContainer_home {
-    margin-top: 80px;
+    margin-top: 160px;
+}
+@media(min-width: 450px) {
+   .mainContainer_home {
+       margin-top: 80px;
+    }
+
+
 }
 
 
@@ -233,8 +244,8 @@ div.topHeader {
 .search_user_add_container{
     padding:5px;
    
-    height:45px;
-    width:50%;
+    height:75px;
+    width:100%;
     background-color:white;
 
 }
@@ -311,6 +322,13 @@ padding:5px;
     margin-top:140px;
     padding-top:20px;
 }
+
+.asside_message_group
+{
+      margin-top:140px;
+    padding-top:20px;
+}
+
 
 .asside_message_list{
     height:502px;
@@ -428,12 +446,19 @@ article {
 
 .logo-full-bg_home {
     background-color: #273D40;
-    height: 70px;
+    height: 150px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1;
     padding: 10px;
+}
+@media(min-width: 450px) {
+   .logo-full-bg_home {
+       height: 70px;
+    }
+
+
 }
 
 .menu-full-bg {

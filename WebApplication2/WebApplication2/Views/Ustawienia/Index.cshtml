@@ -60,7 +60,8 @@
                         <!-- input z nowym haslem  -->
                         <div>
                             @Html.EditorFor(model => model.passwordView.Password, new { htmlAttributes = new { id = "Password_input" } })
-                            <span class="glyphicon glyphicon-eye-open" onmousedown="Password_input.type='text'" ; onmouseup="Password_input.type='password'"></span>
+                            <span class="glyphicon glyphicon-eye-open" onmousedown="Password_input.type='text'" ; onmouseup="Password_input.type='password'" 
+                                  data-toggle="tooltip" title="nacisnij by zobaczyc wpisane haslo" ></span>
                         </div>
                         <!-- wyświetla sie, gdy nie wpisano hasla i nacisnieto przycisk "zmien"-->
                         @Html.ValidationMessageFor(model => model.passwordView.Password, "", new { @class = "text-danger" })
@@ -140,6 +141,9 @@
 <script>
     $(document).ready(function () {
         document.getElementById("email").value = "@Html.DisplayFor(model => model.emailView.email)";
- 
+        $('[data-toggle="tooltip"]').tooltip();
+
+
     });
+
 </script>
