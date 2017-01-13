@@ -39,11 +39,11 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div>
-                        <h2>Haslo</h2>
+                        <h2>Hasło</h2>
                     </div>
 
                     <div>
-                        <label>podaj stare haslo</label>
+                        <label>podaj stare hasło</label>
                     </div>
                     <form>
                         <!--  podawane stare haslo do sprawdzenia z starymzapisanym w bd podczas zmiany hasla -->
@@ -54,7 +54,7 @@
                         @Html.ValidationMessageFor(model => model.passwordView.oldPassword, "", new { @class = "text-danger" })
 
                         <div>
-                            <label>podaj nowe haslo</label>
+                            <label>podaj nowe hasło</label>
                         </div>
 
                         <!-- input z nowym haslem  -->
@@ -75,7 +75,7 @@
 
             <div>
 
-                <h2>Usun konto</h2>
+                <h2>Usuń konto</h2>
 
                 <!-- fpormularz do usuwania konta w sumie to zostawilem z tego co dawid wrzucil-->
                 @using (Html.BeginForm("Usuniecie_konta", "Ustawienia", FormMethod.Post, new { @class = "form-horizontal" }))
@@ -83,7 +83,7 @@
                     <form>
                     @Html.AntiForgeryToken()
 
-                    <label>Potwierdz czy na pewno chcesz usunac konto</label>
+                    <label>Potwierdź czy na pewno chcesz usunąć konto</label>
 
                     @Html.EditorFor(model => model.deleteUserView.deleteU)
 
@@ -117,7 +117,7 @@
                 @Html.AntiForgeryToken()
                 
                 <div>
-                    <label>adres email</label>
+                    <label>adres e-mail</label>
                 </div>
                 <form>
                     <div>

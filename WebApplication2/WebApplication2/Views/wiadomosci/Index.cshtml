@@ -54,7 +54,7 @@
                 {
                     <div class="form-group">
 
-                        @Html.EditorFor(model => model.newMessageTo, new { @class = "form-control", @placeholder = "Podaj nick użytkownika" })
+                        @Html.EditorFor(model => model.newMessageTo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Podaj nick użytkownika" } })
                         <input type="submit" value="Nowa wiadomość" class="btn btn-default" />
 
                     </div>
