@@ -24,6 +24,7 @@ namespace WebApplication2.Models.EntityManager
                 user.Is_Admin = false;
                 user.Is_Exists = true;
                 user.Is_Log = true;
+                user.Date_join = DateTime.Now;
                 USER admin = db.USER.Find("Admin");
                 user.Image = admin.Image;
                  db.USER.Add(user);
@@ -104,7 +105,18 @@ namespace WebApplication2.Models.EntityManager
             }
             return string.Empty;
         }
-
+        public DateTime GetDateJoin(string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                var user = db.USER.Where(o => o.User_ID.Equals(login));
+                if (user.Any())
+                {
+                    return user.FirstOrDefault().Date_join;
+                }
+            }
+            return DateTime.Now;
+        }
         public byte[] GetImage(string login)
         {
             using (ProjektEntities db = new ProjektEntities())

@@ -135,6 +135,7 @@
           <Property Name="Is_Log" Type="bit" />
           <Property Name="Image" Type="varbinary(max)" />
           <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Date_join" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_BETS_RACES">
           <End Role="RACES" Type="Self.RACES" Multiplicity="1" />
@@ -607,6 +608,7 @@
           <NavigationProperty Name="MESSAGES" Relationship="Self.FK_MESSAGES_USER" FromRole="USER" ToRole="MESSAGES" />
           <NavigationProperty Name="MESSAGES1" Relationship="Self.FK_MESSAGES_USER1" FromRole="USER" ToRole="MESSAGES" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date_join" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_BETS_RACES">
           <End Role="RACES" Type="Self.RACES" Multiplicity="1" />
@@ -1048,6 +1050,7 @@
           <EntitySetMapping Name="USER">
             <EntityTypeMapping TypeName="ProjektModel.USER">
               <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="Date_join" ColumnName="Date_join" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="User_ID" ColumnName="User_ID" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

@@ -36,6 +36,7 @@ namespace WebApplication2.Models.DB
         public Nullable<bool> Is_Log { get; set; }
         public byte[] Image { get; set; }
         public string Description { get; set; }
+        public System.DateTime Date_join { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BETS> BETS { get; set; }

@@ -132,6 +132,7 @@
     <EntitySetMapping Name="USER">
       <EntityTypeMapping TypeName="ProjektModel.USER">
         <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="Date_join" ColumnName="Date_join" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
           <ScalarProperty Name="Password" ColumnName="Password" />

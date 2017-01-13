@@ -201,6 +201,7 @@
     <Compile Include="Models\ViewModel\MessageListView.cs" />
     <Compile Include="Models\ViewModel\MessageView.cs" />
     <Compile Include="Models\ViewModel\PasswordView.cs" />
+    <Compile Include="Models\ViewModel\ProfileView.cs" />
     <Compile Include="Models\ViewModel\RacesView.cs" />
     <Compile Include="Models\ViewModel\UserDescriptionView.cs" />
     <Compile Include="Models\ViewModel\UserLoginView.cs" />

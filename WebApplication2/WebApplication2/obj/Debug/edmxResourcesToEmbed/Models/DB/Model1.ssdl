@@ -130,6 +130,7 @@
     <Property Name="Is_Log" Type="bit" />
     <Property Name="Image" Type="varbinary(max)" />
     <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Date_join" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK_BETS_RACES">
     <End Role="RACES" Type="Self.RACES" Multiplicity="1" />

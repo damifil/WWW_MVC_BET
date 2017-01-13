@@ -1,4 +1,4 @@
-﻿
+﻿@model WebApplication2.Models.ViewModel.ProfileView
 @{
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
@@ -10,10 +10,9 @@
 
         <!--bok (avatar,nick,dolaczyl,punkty rankingu,  , opcje/napisz)  -->
         <div class="col-md-4 col-sm-4">
-            <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png" class="img-rounded" alt="avatar" width="200" height="200">
-            <p>Nick</p>
-            <p>plec</p>
-            <p>dolaczyl: Data jakas</p>
+            <img src="data:image/png;base64, @Convert.ToBase64String(Model.imageData)" class="img-rounded"  alt="avatar" width="200" height="200" />
+            <p>Nick: @Html.DisplayFor(model => model.login)</p>
+            <p>Dołączył: @Html.DisplayFor(model => model.date_join)</p>
             <input id="send_Button" type="button" value="napisz" class="btn btn-default" />
             <h2>Grupy do ktorych uzytkownik nalezy</h2>
 
@@ -49,7 +48,8 @@
                 
                 <div>
                     <!--tutaj powinien byc aktualny opis wyswietlany jaki uzytkownik mai uzytkownik do niego moze nowy wpisac-->
-                    <textarea id="describ_user" rows="10" cols="40"></textarea>
+                    
+                    @Html.TextAreaFor(model => model.description, new { @id = "describ_user", @rows = 10, @cols = 40, @placeholder = Html.DisplayFor(n => n.description) })
                 </div>
                 <div>
                     <!--przycisk do zatwierdzenia zmian w opise-->
