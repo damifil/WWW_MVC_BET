@@ -44,11 +44,7 @@ namespace WebApplication2.Models.EntityManager
         {
             using (ProjektEntities db = new ProjektEntities())
             {
-                USER us = db.USER.Find(login);
-                if (us.Is_Exists == true)
-                    return true;
-                else
-                    return false;
+                return db.USER.Where(u => u.User_ID.Equals(login)).Where(u => u.Is_Exists == true).Any();               
             }
         }
 
