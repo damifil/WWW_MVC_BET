@@ -1,4 +1,4 @@
-﻿
+﻿@model WebApplication2.Models.ViewModel.StatisticView
 @{
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var name = "Globalny";
@@ -28,7 +28,6 @@
     </select>
 </p>
 
-
     <div class="table">
         <div>
             <h3>Ranking @name</h3>
@@ -42,11 +41,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Asc</td>
-                        <td>230</td>
-                    </tr>
+                    @foreach (var item in Model.global)
+                    {
+                        <tr>
+                            <td>item.position</td>
+                            <td>item.login</td>
+                            <td>item.points</td>
+                        </tr>                    
+                    }
                 </tbody>
             </table>
         </div>
