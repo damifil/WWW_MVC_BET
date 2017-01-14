@@ -16,7 +16,7 @@ namespace WebApplication2.Controllers
         {
             ProjektEntities db = new ProjektEntities();
 
-            var GlobalStats = from i in db.USER orderby i.Total_score ascending
+            var GlobalStats = from i in db.USER orderby i.Total_score descending
                               select new { i.User_ID, i.Total_score };
 
             var FriendStats = from i in db.FRIENDS
@@ -24,13 +24,18 @@ namespace WebApplication2.Controllers
                               join us in db.USER 
                               on i.Friend_ID equals us.User_ID
                               where us.Is_Exists == true
-                              orderby us.Total_score ascending
+                              orderby us.Total_score descending
                               select new { us.User_ID, us.Total_score };
 
             var GroupStats = from i in db.USER
                              select new {  };
 
-            var mod = new StatisticView { global = new List<PointUserView>() };
+            var mod = new StatisticView
+            {
+                global = new List<PointUserView>(),
+                group = new List<PointGroupView>(),
+                friend = new List<PointUserView>()
+            };
 
             int m = 0;
             foreach(var item in GlobalStats)
