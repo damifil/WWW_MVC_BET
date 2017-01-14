@@ -16,8 +16,6 @@ namespace WebApplication2.Controllers
         {
             ProjektEntities db = new ProjektEntities();
 
-            StatisticView stats = new StatisticView();
-
             var GlobalStats = from i in db.USER orderby i.Total_score ascending
                               select new { i.User_ID, i.Total_score };
 
@@ -32,7 +30,7 @@ namespace WebApplication2.Controllers
             var GroupStats = from i in db.USER
                              select new {  };
 
-            var mod = new StatisticView();
+            var mod = new StatisticView { global = new List<PointUserView>() };
 
             int m = 0;
             foreach(var item in GlobalStats)
