@@ -10,6 +10,6 @@ namespace WebApplication2.Models.ViewModel
         public List<PointUserView> global { get; set; }
         public List<PointUserView> friend { get; set; }
         public List<PointGroupView> group { get; set; }
-        public List<string> groups { get; set; }
+        public PointUserView user { get; set; }
     }
 }
