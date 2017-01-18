@@ -89,7 +89,7 @@ namespace WebApplication2.Controllers
             //Wypełnienie danych statystyk znajomych
             foreach(var item in FriendStats)
             {
-                mod.friend.Add(new PointUserView { });
+                mod.friend.Add(new PointUserView { login = item.User_ID, points = item.Total_score });
             }
 
             //Dodanie statystyk użytkownika do statystyk jego przyjaciół
