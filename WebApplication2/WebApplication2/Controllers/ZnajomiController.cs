@@ -16,7 +16,7 @@ namespace WebApplication2.Controllers
         {
             ProjektEntities db = new ProjektEntities();
             var friend = from i in db.FRIENDS
-                         where i.User_ID == User.Identity.Name
+                         where i.User_ID == User.Identity.Name 
                          join us in db.USER
                          on i.Friend_ID equals us.User_ID
                          where us.Is_Exists == true
@@ -41,7 +41,7 @@ namespace WebApplication2.Controllers
         {
             ProjektEntities db = new ProjektEntities();
             var friend = from i in db.FRIENDS
-                         where i.User_ID == User.Identity.Name
+                         where i.User_ID == User.Identity.Name 
                          join us in db.USER
                          on i.Friend_ID equals us.User_ID
                          where us.Is_Exists == true
@@ -63,12 +63,13 @@ namespace WebApplication2.Controllers
             if (a != string.Empty)
             {
                 var search = from us in db.USER
-                             where us.User_ID.Contains(a) && us.Is_Exists == true
+                             where us.User_ID.Contains(a) && us.Is_Exists == true && us.User_ID != User.Identity.Name
                              orderby us.User_ID
                              select new { us.User_ID, us.Image };
 
                 foreach (var x in search)
                 {
+                    System.Diagnostics.Debug.WriteLine("imie " + x.User_ID + " wpis " + a);
                     mod.ListSearch.Add(new FriendsView { UserID = x.User_ID, imageData = x.Image });
                 }
             }
@@ -102,11 +103,20 @@ namespace WebApplication2.Controllers
             USER user = db.USER.Find(userID);
 
 
-            INVITATIONS invitation = new INVITATIONS();
-            invitation.Accept = false;
-            invitation.From_ID = User.Identity.Name;
-            invitation.To_ID = userID;
-            db.INVITATIONS.Add(invitation);
+            /*  INVITATIONS invitation = new INVITATIONS();
+              invitation.Accept = false;
+              invitation.From_ID = User.Identity.Name;
+              invitation.To_ID = userID;
+              db.INVITATIONS.Add(invitation);*/
+
+            FRIENDS newFriend = new FRIENDS();
+            newFriend.Friend_ID = userID;
+            newFriend.User_ID = User.Identity.Name;
+            db.FRIENDS.Add(newFriend);
+            db.SaveChanges();
+            newFriend.User_ID = userID;
+            newFriend.Friend_ID = User.Identity.Name;
+            db.FRIENDS.Add(newFriend);
             db.SaveChanges();
 
             return RedirectToAction("Index");

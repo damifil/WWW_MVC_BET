@@ -7,29 +7,29 @@
 
 <div class="mainContainer_message">
 
-    <form>
 
 
 
-        @foreach (var item in Model.ListMessage)
+
+    @foreach (var item in Model.ListMessage)
+    {
+        if (item.fromUser != User.Identity.Name)
         {
-            if (item.fromUser != User.Identity.Name)
-            {
-                <div class="message_element_view" data-toggle="tooltip" data-placement="top" title="@item.toUser @item.date">
-                    <p>@Html.DisplayFor(modelItem => item.content, new { htmlAttributes = new { @class = "message_element_view_use" } })</p>
-                </div>
+            <div class="message_element_view" data-toggle="tooltip" data-placement="top" title="@item.toUser @item.date">
+                <p>@Html.DisplayFor(modelItem => item.content, new { htmlAttributes = new { @class = "message_element_view_use" } })</p>
+            </div>
 
-            }
-            else
-            {
-                <div class="message_element_view_user" data-toggle="tooltip" data-placement="top" title="@User.Identity.Name @item.date">
-                    <p>@Html.DisplayFor(modelItem => item.content, new { htmlAttributes = new { @class = "message_element_use" } })</p>
-
-                </div>
-
-            }
         }
-    </form>
+        else
+        {
+            <div class="message_element_view_user" data-toggle="tooltip" data-placement="top" title="@User.Identity.Name @item.date">
+                <p>@Html.DisplayFor(modelItem => item.content, new { htmlAttributes = new { @class = "message_element_use" } })</p>
+
+            </div>
+
+        }
+    }
+
 
 
 </div>
