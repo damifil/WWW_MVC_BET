@@ -13,7 +13,7 @@ namespace WebApplication2.Models.ViewModel
         public DateTime date_join { get; set; }
         public string description { get; set; }
         public bool invite_delete { get; set; }
-
+        public List<PointUserView> global { get; set; }
         public List<string> groups { get; set; }
         
     }

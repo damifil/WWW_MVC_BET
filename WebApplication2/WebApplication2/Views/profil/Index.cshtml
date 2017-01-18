@@ -65,39 +65,19 @@
                         <tr>
                             <th>Pozycja</th>
                             <th>Login</th>
-                            <th>wynik</th>
+                            <th>Wynik</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>nick_1</td>
-                            <td>wynik_1</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>nick_2</td>
-                            <td>wynik_2</td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>nick_3</td>
-                            <td>wynik_3</td>
-                        </tr>
-
-
-                        <tr>
-                            <td>...</td>
-                            <td>...</td>
-                            <td>...</td>
-                        </tr>
-
-                        <tr>
-                            <td>jakas_liczba</td>
-                            <td>nick_usera</td>
-                            <td>wynik_usera</td>
-                        </tr>
+                        foreach (var item in Model.global)
+                        {
+                            if()
+                                <tr>
+                                    <td>@(m++)</td>
+                                    <td>@item.login</td>
+                                    <td>@item.points</td>
+                                </tr>
+                        }
                     </tbody>
                 </table>
             </div>
