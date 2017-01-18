@@ -8,10 +8,10 @@
 
 <p>Znajdziesz tutaj globalny ranking użytkowników jak i statystyi wybranych grup.</p>
 
-<h5>Wybierz rodzaj rankingu do wyswietlenia </h5>
+Wybierz rodzaj rankingu do wyswietlenia: 
 
-Ranking:
 <select id="Select1" onchange="self.location = location.protocol + '//' + location.host + location.pathname + '?selected=' + this.options[this.selectedIndex].value">
+    <option value="" selected>Wybierz ranking</option>
     <option value="globalne">Ranking globalny</option>
     <option value="znajomi">Ranking znajomych</option>
     @foreach(var item in Model.group)
