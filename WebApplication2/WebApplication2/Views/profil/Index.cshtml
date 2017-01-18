@@ -1,6 +1,7 @@
 ﻿@model WebApplication2.Models.ViewModel.ProfileView
 @{
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    int m=1;
 }
 
 
@@ -69,14 +70,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        foreach (var item in Model.global)
-                        {
-                            if()
+                        @foreach (var item in Model.global){
+                            if(Model.login==item.login){
                                 <tr>
-                                    <td>@(m++)</td>
+                                    <td>@m</td>
                                     <td>@item.login</td>
                                     <td>@item.points</td>
                                 </tr>
+                            }
+                            m++;
                         }
                     </tbody>
                 </table>

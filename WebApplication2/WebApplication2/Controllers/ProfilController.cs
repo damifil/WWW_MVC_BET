@@ -32,6 +32,8 @@ namespace WebApplication2.Controllers
                               orderby i.Total_score descending
                               select new { i.User_ID, i.Total_score };
 
+            profileView.global = new List<PointUserView>();
+
             //Wypełnienie danych statystyk globalnych
             foreach (var item in GlobalStats)
             {
