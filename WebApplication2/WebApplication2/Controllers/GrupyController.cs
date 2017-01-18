@@ -23,11 +23,18 @@ namespace WebApplication2.Controllers
                           orderby m.Group_chat_ID
                           select new { m.from_user, m.message, m.Group_Name };
 
-
+            var GroupStat = from i in db.MEMBERSHIPS
+                            where (i.Group_Name==groupName)
+                            join u in db.USER
+                            on i.User_ID equals u.User_ID
+                            where u.Is_Exists == true
+                            orderby u.Total_score descending
+                            select new { i.User_ID, u.Total_score };
 
             var mod = new MessageListGroupView
             {
-                ListGroupMessage = new List<MessageGroupView>()
+                ListGroupMessage = new List<MessageGroupView>(),
+                group = new PointGroupView(groupName)
             };
 
             foreach (var item in message)
@@ -40,7 +47,10 @@ namespace WebApplication2.Controllers
                 });
             }
 
-
+            foreach(var item in GroupStat)
+            {
+                mod.group.members.Add(new PointUserView() { login = item.User_ID, points = item.Total_score });
+            }
 
             return View(mod);
         }

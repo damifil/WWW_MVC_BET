@@ -2,6 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout_without_chat_asside.cshtml";
+    int m=1;
 }
 <input id="Button_gruop_out" type="button" value="opusc grupe" class="btn btn-default" />
 
@@ -62,29 +63,21 @@
 
             <table id="tabela_js_show" class="table table-striped" cellspacing="3">
                 <thead>
-
                     <tr>
                         <th>Pozycja</th>
                         <th>Login</th>
-                        <th>wynik</th>
+                        <th>Wynik</th>
                     </tr>
-
                 </thead>
                 <tbody>
-
-                    <tr>
-                        <td>1</td>
-                        <td><a href="~/profil/index#id">nazwa_uzytkownika</a></td>
-                        <td>230</td>
-                    </tr>
-
-
-                    <tr>
-                        <td>2</td>
-                        <td><a href="~/profil/index#id">nazwa_uzytkownika2</a></td>
-                        <td>10</td>
-                    </tr>
-
+                    @foreach(var item in Model.group.members)
+                    {
+                        <tr>
+                            <td>@(m++)</td>
+                            <td>@item.login</td>
+                            <td>@item.points</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

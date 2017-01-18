@@ -9,6 +9,6 @@ namespace WebApplication2.Models.ViewModel
     {
         public List<MessageGroupView> ListGroupMessage { get; set; }
         public string newMessageContent { get; set; }
-
+        public PointGroupView group { get; set; }
     }
 }
