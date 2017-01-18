@@ -6,7 +6,7 @@
 <input id="Button_gruop_out" type="button" value="opusc grupe" class="btn btn-default" />
 
 <h2>Czat</h2>
-<form>
+
 
     <div class="chat_group">
         <!--wyswietlanie wiadomosci innych uzytkownikow-->
@@ -14,46 +14,42 @@
 
 
         @foreach (var item in Model.ListGroupMessage)
+        {
+            if (item.fromUser != User.Identity.Name)
             {
-                
                 <div class="message_container">
                     <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png"
-                         data-toggle="tooltip" data-placement="top" title="Damianf 30.12.2016 14:30"
+                         data-toggle="tooltip" data-placement="top" title="@Html.DisplayFor(modelItem => item.fromUser)"
                          class="img-circle chat_group_position_avatar" alt="Cinque Terre" width="50" height="50">
                     <div class="message">
-                            @Html.DisplayFor(modelItem => item.message );
+                        <p>@Html.DisplayFor(modelItem => item.message)</p>
                     </div>
                 </div>
-            
+            }
+            else
+            {
+                <div class="message_user" data-toggle="tooltip" data-placement="top" title="@Html.DisplayFor(modelItem => item.fromUser)">
+                    <p>@Html.DisplayFor(modelItem => item.message)</p>
+                </div>
+            }
         }
 
-        <div class="message_container">
-            <img src="http://dblots.pl/images/avatars/15479139565570bbaa70320.png"
-                 data-toggle="tooltip" data-placement="top" title="Damianf 30.12.2016 14:30"
-                 class="img-circle chat_group_position_avatar" alt="Cinque Terre" width="50" height="50">
-            <div class="message">
-                <!---->
-                <p>siemka</p>
-            </div>
-        </div>
-
-        <!--wyswietlanie wiadomosci uzytkownika-->
-        <div class="message_user" data-toggle="tooltip" data-placement="top" title="David 30.12.2016 14:31">
-            <p>jol</p>
-        </div>
-
-        <div class="message_user" data-toggle="tooltip" data-placement="top" title="David 30.12.2016 14:32">
-            <p>:D</p>
-        </div>
 
     </div>
 
     <!---textarea sluzaca do wpisywania przez uzytownika wiadomosci orazprzycisk wysylajacy je do czatu i BD-->
     <div>
-        <textarea id="TextArea_user_send" rows="4" style="width:100%; max-height:200px; max-width:100%; margin-top:20px"></textarea>
-        <input id="Button_send_message_group" type="submit" value="wyslij" class="btn btn-default" />
+        <form action="/Grupy/wyslij" method="post">
+          
+       
+            @Html.TextAreaFor(model => model.newMessageContent, new { @rows = 4, @id = "TextArea_user_send", @placeholder = "Napisz wiadomość...." })
+
+
+            <input id="Button_send_message_group" type="submit" value="wyslij" class="btn btn-default" />
+        </form>
+
+<!-- <textarea id="TextArea_user_send" rows="4" style="width:100%; max-height:200px; max-width:100%; margin-top:20px"></textarea>-->
     </div>
-</form>
 
 
 @section asside{
