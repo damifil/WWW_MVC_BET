@@ -36,11 +36,17 @@ namespace WebApplication2.Controllers
             var listUser = db.MESSAGES.Where(m => m.Message_From == User.Identity.Name)
                .GroupBy(p => p.Message_To, (a, b) => b.OrderByDescending(e => e.Message_ID)).Select(s => s.FirstOrDefault());
 
+            var listUser1 = db.MESSAGES.Where(m => m.Message_To == User.Identity.Name)
+               .GroupBy(p => p.Message_From, (a, b) => b.OrderByDescending(e => e.Message_ID)).Select(s => s.FirstOrDefault());
             foreach (var item in listUser)
             {
                 mod.ListUsersMessage.Add(new MessageView { toUser = item.Message_To, date = item.Date });
 
             }
+           /* foreach(var item in listUser1)
+            {
+                mod.ListMessage.Add(new MessageView { toUser = item.Message_To, date = item.Date });
+            }*/
             return View(mod);
         }
 
@@ -91,6 +97,11 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult wyslij(MessageListView messageListView)
         {
+            
+            if (string.IsNullOrWhiteSpace(messageListView.newMessageContent))
+            {
+             return RedirectToAction("Index", new { userID = userTo });
+            }
             ProjektEntities db = new ProjektEntities();
             var mod = new MessageListView
             {
@@ -117,6 +128,8 @@ namespace WebApplication2.Controllers
 
             }
 
+            if (userTo == null)
+                userTo = User.Identity.Name;
             MESSAGES newMessage = new MESSAGES();
             newMessage.Message_From = User.Identity.Name;
             newMessage.Message_To = userTo;
@@ -125,7 +138,6 @@ namespace WebApplication2.Controllers
             db.MESSAGES.Add(newMessage);
             db.SaveChanges();
 
-            System.Diagnostics.Debug.WriteLine(" " + messageListView.newMessageContent);
             return RedirectToAction("Index", new { userID = userTo}); 
         }
     }
