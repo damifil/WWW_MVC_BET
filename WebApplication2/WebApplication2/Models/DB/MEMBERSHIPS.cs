@@ -14,11 +14,11 @@ namespace WebApplication2.Models.DB
     
     public partial class MEMBERSHIPS
     {
-        public int Group_ID { get; set; }
         public string User_ID { get; set; }
         public int Score { get; set; }
+        public string Group_Name { get; set; }
     
-        public virtual GROUPS GROUPS { get; set; }
         public virtual USER USER { get; set; }
+        public virtual GROUPS GROUPS { get; set; }
     }
 }

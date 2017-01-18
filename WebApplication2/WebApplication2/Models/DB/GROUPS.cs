@@ -18,13 +18,15 @@ namespace WebApplication2.Models.DB
         public GROUPS()
         {
             this.MEMBERSHIPS = new HashSet<MEMBERSHIPS>();
+            this.Group_mesage = new HashSet<Group_mesage>();
         }
     
-        public int Groups_ID { get; set; }
         public string Group_Name { get; set; }
         public byte[] Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEMBERSHIPS> MEMBERSHIPS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Group_mesage> Group_mesage { get; set; }
     }
 }

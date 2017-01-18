@@ -39,11 +39,19 @@
           <Property Name="Friend_ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Group_mesage">
+          <Key>
+            <PropertyRef Name="Group_chat_ID" />
+          </Key>
+          <Property Name="Group_chat_ID" Type="int" Nullable="false" />
+          <Property Name="Group_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="from_user" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="GROUPS">
           <Key>
-            <PropertyRef Name="Groups_ID" />
+            <PropertyRef Name="Group_Name" />
           </Key>
-          <Property Name="Groups_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Group_Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Image" Type="image" />
         </EntityType>
@@ -58,10 +66,10 @@
         </EntityType>
         <EntityType Name="MEMBERSHIPS">
           <Key>
-            <PropertyRef Name="Group_ID" />
+            <PropertyRef Name="Group_Name" />
             <PropertyRef Name="User_ID" />
           </Key>
-          <Property Name="Group_ID" Type="int" Nullable="false" />
+          <Property Name="Group_Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Score" Type="int" Nullable="false" />
         </EntityType>
@@ -185,6 +193,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_from_user">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="Group_mesage" Type="Self.Group_mesage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Group_mesage">
+              <PropertyRef Name="from_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupName">
+          <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="1" />
+          <End Role="Group_mesage" Type="Self.Group_mesage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GROUPS">
+              <PropertyRef Name="Group_Name" />
+            </Principal>
+            <Dependent Role="Group_mesage">
+              <PropertyRef Name="Group_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_INVITATIONS_USER">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
           <End Role="INVITATIONS" Type="Self.INVITATIONS" Multiplicity="*" />
@@ -214,10 +246,10 @@
           <End Role="MEMBERSHIPS" Type="Self.MEMBERSHIPS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GROUPS">
-              <PropertyRef Name="Groups_ID" />
+              <PropertyRef Name="Group_Name" />
             </Principal>
             <Dependent Role="MEMBERSHIPS">
-              <PropertyRef Name="Group_ID" />
+              <PropertyRef Name="Group_Name" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -357,6 +389,7 @@
           <EntitySet Name="BETS" EntityType="Self.BETS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DRIVERS" EntityType="Self.DRIVERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FRIENDS" EntityType="Self.FRIENDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group_mesage" EntityType="Self.Group_mesage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GROUPS" EntityType="Self.GROUPS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="INVITATIONS" EntityType="Self.INVITATIONS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEMBERSHIPS" EntityType="Self.MEMBERSHIPS" Schema="dbo" store:Type="Tables" />
@@ -382,6 +415,14 @@
           <AssociationSet Name="FK_FRIENDS_USER1" Association="Self.FK_FRIENDS_USER1">
             <End Role="USER" EntitySet="USER" />
             <End Role="FRIENDS" EntitySet="FRIENDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_from_user" Association="Self.FK_from_user">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="Group_mesage" EntitySet="Group_mesage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupName" Association="Self.FK_GroupName">
+            <End Role="GROUPS" EntitySet="GROUPS" />
+            <End Role="Group_mesage" EntitySet="Group_mesage" />
           </AssociationSet>
           <AssociationSet Name="FK_INVITATIONS_USER" Association="Self.FK_INVITATIONS_USER">
             <End Role="USER" EntitySet="USER" />
@@ -488,12 +529,12 @@
         </EntityType>
         <EntityType Name="GROUPS">
           <Key>
-            <PropertyRef Name="Groups_ID" />
+            <PropertyRef Name="Group_Name" />
           </Key>
-          <Property Name="Groups_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Group_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="MEMBERSHIPS" Relationship="Self.FK_MEMBERSHIPS_GROUPS" FromRole="GROUPS" ToRole="MEMBERSHIPS" />
+          <NavigationProperty Name="MEMBERSHIPS" Relationship="ProjektModel.FK_MEMBERSHIPS_GROUPS" FromRole="GROUPS" ToRole="MEMBERSHIPS" />
+          <NavigationProperty Name="Group_mesage" Relationship="ProjektModel.FK_GroupName" FromRole="GROUPS" ToRole="Group_mesage" />
         </EntityType>
         <EntityType Name="INVITATIONS">
           <Key>
@@ -508,14 +549,14 @@
         </EntityType>
         <EntityType Name="MEMBERSHIPS">
           <Key>
-            <PropertyRef Name="Group_ID" />
             <PropertyRef Name="User_ID" />
+            <PropertyRef Name="Group_Name" />
           </Key>
-          <Property Name="Group_ID" Type="Int32" Nullable="false" />
           <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Score" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="GROUPS" Relationship="Self.FK_MEMBERSHIPS_GROUPS" FromRole="MEMBERSHIPS" ToRole="GROUPS" />
           <NavigationProperty Name="USER" Relationship="Self.FK_MEMBERSHIPS_USER" FromRole="MEMBERSHIPS" ToRole="USER" />
+          <Property Name="Group_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GROUPS" Relationship="ProjektModel.FK_MEMBERSHIPS_GROUPS" FromRole="MEMBERSHIPS" ToRole="GROUPS" />
         </EntityType>
         <EntityType Name="MESSAGES">
           <Key>
@@ -609,6 +650,7 @@
           <NavigationProperty Name="MESSAGES1" Relationship="Self.FK_MESSAGES_USER1" FromRole="USER" ToRole="MESSAGES" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Date_join" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Group_mesage" Relationship="ProjektModel.FK_from_user" FromRole="USER" ToRole="Group_mesage" />
         </EntityType>
         <Association Name="FK_BETS_RACES">
           <End Role="RACES" Type="Self.RACES" Multiplicity="1" />
@@ -667,18 +709,6 @@
             </Principal>
             <Dependent Role="FRIENDS">
               <PropertyRef Name="User_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MEMBERSHIPS_GROUPS">
-          <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="1" />
-          <End Role="MEMBERSHIPS" Type="Self.MEMBERSHIPS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GROUPS">
-              <PropertyRef Name="Groups_ID" />
-            </Principal>
-            <Dependent Role="MEMBERSHIPS">
-              <PropertyRef Name="Group_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -812,10 +842,6 @@
             <End Role="USER" EntitySet="USER" />
             <End Role="FRIENDS" EntitySet="FRIENDS" />
           </AssociationSet>
-          <AssociationSet Name="FK_MEMBERSHIPS_GROUPS" Association="Self.FK_MEMBERSHIPS_GROUPS">
-            <End Role="GROUPS" EntitySet="GROUPS" />
-            <End Role="MEMBERSHIPS" EntitySet="MEMBERSHIPS" />
-          </AssociationSet>
           <AssociationSet Name="FK_INVITATIONS_USER" Association="Self.FK_INVITATIONS_USER">
             <End Role="USER" EntitySet="USER" />
             <End Role="INVITATIONS" EntitySet="INVITATIONS" />
@@ -863,6 +889,19 @@
           <AssociationSet Name="FK_RACES_Time1" Association="ProjektModel.FK_RACES_Time1">
             <End Role="DRIVERS" EntitySet="DRIVERS" />
             <End Role="RACES" EntitySet="RACES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEMBERSHIPS_GROUPS" Association="ProjektModel.FK_MEMBERSHIPS_GROUPS">
+            <End Role="GROUPS" EntitySet="GROUPS" />
+            <End Role="MEMBERSHIPS" EntitySet="MEMBERSHIPS" />
+          </AssociationSet>
+          <EntitySet Name="Group_mesage" EntityType="ProjektModel.Group_mesage" />
+          <AssociationSet Name="FK_from_user" Association="ProjektModel.FK_from_user">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="Group_mesage" EntitySet="Group_mesage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupName" Association="ProjektModel.FK_GroupName">
+            <End Role="GROUPS" EntitySet="GROUPS" />
+            <End Role="Group_mesage" EntitySet="Group_mesage" />
           </AssociationSet>
         </EntityContainer>
         <Association Name="FK_RACES_Pos1">
@@ -913,6 +952,53 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MEMBERSHIPS_GROUPS">
+          <End Type="ProjektModel.GROUPS" Role="GROUPS" Multiplicity="1" />
+          <End Type="ProjektModel.MEMBERSHIPS" Role="MEMBERSHIPS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GROUPS">
+              <PropertyRef Name="Group_Name" />
+            </Principal>
+            <Dependent Role="MEMBERSHIPS">
+              <PropertyRef Name="Group_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Group_mesage">
+          <Key>
+            <PropertyRef Name="Group_chat_ID" />
+          </Key>
+          <Property Name="Group_chat_ID" Type="Int32" Nullable="false" />
+          <Property Name="Group_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="from_user" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USER" Relationship="ProjektModel.FK_from_user" FromRole="Group_mesage" ToRole="USER" />
+          <NavigationProperty Name="GROUPS" Relationship="ProjektModel.FK_GroupName" FromRole="Group_mesage" ToRole="GROUPS" />
+        </EntityType>
+        <Association Name="FK_from_user">
+          <End Type="ProjektModel.USER" Role="USER" Multiplicity="1" />
+          <End Type="ProjektModel.Group_mesage" Role="Group_mesage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Group_mesage">
+              <PropertyRef Name="from_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupName">
+          <End Type="ProjektModel.GROUPS" Role="GROUPS" Multiplicity="1" />
+          <End Type="ProjektModel.Group_mesage" Role="Group_mesage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GROUPS">
+              <PropertyRef Name="Group_Name" />
+            </Principal>
+            <Dependent Role="Group_mesage">
+              <PropertyRef Name="Group_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -959,7 +1045,6 @@
           <EntitySetMapping Name="GROUPS">
             <EntityTypeMapping TypeName="ProjektModel.GROUPS">
               <MappingFragment StoreEntitySet="GROUPS">
-                <ScalarProperty Name="Groups_ID" ColumnName="Groups_ID" />
                 <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
@@ -978,7 +1063,7 @@
           <EntitySetMapping Name="MEMBERSHIPS">
             <EntityTypeMapping TypeName="ProjektModel.MEMBERSHIPS">
               <MappingFragment StoreEntitySet="MEMBERSHIPS">
-                <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+                <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
                 <ScalarProperty Name="User_ID" ColumnName="User_ID" />
                 <ScalarProperty Name="Score" ColumnName="Score" />
               </MappingFragment>
@@ -1060,6 +1145,16 @@
                 <ScalarProperty Name="Is_Exists" ColumnName="Is_Exists" />
                 <ScalarProperty Name="Is_Log" ColumnName="Is_Log" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_mesage">
+            <EntityTypeMapping TypeName="ProjektModel.Group_mesage">
+              <MappingFragment StoreEntitySet="Group_mesage">
+                <ScalarProperty Name="from_user" ColumnName="from_user" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
+                <ScalarProperty Name="Group_chat_ID" ColumnName="Group_chat_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

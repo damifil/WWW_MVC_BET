@@ -38,5 +38,6 @@ namespace WebApplication2.Models.DB
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TEAMS> TEAMS { get; set; }
         public virtual DbSet<USER> USER { get; set; }
+        public virtual DbSet<Group_mesage> Group_mesage { get; set; }
     }
 }

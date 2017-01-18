@@ -25,6 +25,7 @@ namespace WebApplication2.Models.DB
             this.MEMBERSHIPS = new HashSet<MEMBERSHIPS>();
             this.MESSAGES = new HashSet<MESSAGES>();
             this.MESSAGES1 = new HashSet<MESSAGES>();
+            this.Group_mesage = new HashSet<Group_mesage>();
         }
     
         public string User_ID { get; set; }
@@ -54,5 +55,7 @@ namespace WebApplication2.Models.DB
         public virtual ICollection<MESSAGES> MESSAGES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MESSAGES> MESSAGES1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Group_mesage> Group_mesage { get; set; }
     }
 }

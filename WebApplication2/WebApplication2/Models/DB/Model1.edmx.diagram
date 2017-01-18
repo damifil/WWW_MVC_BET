@@ -23,7 +23,6 @@
         <AssociationConnector Association="ProjektModel.FK_PARTICIPANTS_DRIVERS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_FRIENDS_USER" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_FRIENDS_USER1" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjektModel.FK_MEMBERSHIPS_GROUPS" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_INVITATIONS_USER" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_INVITATIONS_USER1" ManuallyRouted="false" />
         <AssociationConnector Association="ProjektModel.FK_MEMBERSHIPS_USER" ManuallyRouted="false" />
@@ -36,6 +35,10 @@
         <AssociationConnector Association="ProjektModel.FK_RACES_Pos2" />
         <AssociationConnector Association="ProjektModel.FK_RACES_Pos3" />
         <AssociationConnector Association="ProjektModel.FK_RACES_Time1" />
+        <AssociationConnector Association="ProjektModel.FK_MEMBERSHIPS_GROUPS" />
+        <EntityTypeShape EntityType="ProjektModel.Group_mesage" Width="1.5" PointX="6" PointY="5.125" />
+        <AssociationConnector Association="ProjektModel.FK_from_user" />
+        <AssociationConnector Association="ProjektModel.FK_GroupName" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
