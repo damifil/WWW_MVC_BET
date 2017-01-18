@@ -67,16 +67,16 @@
                                     </a>
                                     <ul class="dropdown-menu" style="margin-bottom:0px; background-color:#8EDCE5">
                                         <li @(pageName == "nie wiem co" ? "class=active" : "") style="border-bottom:solid; border-color:white;">
-                                            @Html.ActionLink("stworz/dolacz do grupy", "zarzadzaj", "grupy", FormMethod.Post)
+                                            @Html.ActionLink("stworz/dolacz do grupy", "zarzadzaj", "grupy")
                                         </li>
                                         <li><strong>Twoje grupy:</strong></li>
 
                                         <li @(pageName == "nie wiem co" ? "class=active" : "")>
-                                            @Html.ActionLink("nazwa_grupy", "index", "grupy", new { group_ID="Nieznani" }, FormMethod.Post)
+                                           <a href="@Url.Action("Index", "Grupy", new {groupName="Nieznani"}, null)">nazwa grupy</a>
                                         </li>
 
                                         <li @(pageName == "nie wiem co" ? "class=active" : "")>
-                                            @Html.ActionLink("nazwa_grupy2", "index", "grupy", new { @id = "Wrogowie" }, FormMethod.Post)
+                                            @Html.ActionLink("nazwa_grupy2", "index", "Grupy", new { @id = "Wrogowie" }, FormMethod.Post)
                                         </li>
                                     </ul>
 
