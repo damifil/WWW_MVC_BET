@@ -8,6 +8,7 @@ namespace WebApplication2.Models.ViewModel
     public class MessageListGroupView
     {
         public List<MessageGroupView> ListGroupMessage { get; set; }
+        public string newMessageContent { get; set; }
 
     }
 }
