@@ -43,7 +43,7 @@
           <Key>
             <PropertyRef Name="Group_chat_ID" />
           </Key>
-          <Property Name="Group_chat_ID" Type="int" Nullable="false" />
+          <Property Name="Group_chat_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Group_Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="message" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="from_user" Type="varchar" MaxLength="50" Nullable="false" />

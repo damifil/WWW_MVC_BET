@@ -34,11 +34,19 @@
     <Property Name="Friend_ID" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Group_mesage">
+    <Key>
+      <PropertyRef Name="Group_chat_ID" />
+    </Key>
+    <Property Name="Group_chat_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Group_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="message" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="from_user" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="GROUPS">
     <Key>
-      <PropertyRef Name="Groups_ID" />
+      <PropertyRef Name="Group_Name" />
     </Key>
-    <Property Name="Groups_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Group_Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Image" Type="image" />
   </EntityType>
@@ -53,10 +61,10 @@
   </EntityType>
   <EntityType Name="MEMBERSHIPS">
     <Key>
-      <PropertyRef Name="Group_ID" />
+      <PropertyRef Name="Group_Name" />
       <PropertyRef Name="User_ID" />
     </Key>
-    <Property Name="Group_ID" Type="int" Nullable="false" />
+    <Property Name="Group_Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="User_ID" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Score" Type="int" Nullable="false" />
   </EntityType>
@@ -180,6 +188,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_from_user">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="Group_mesage" Type="Self.Group_mesage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Group_mesage">
+        <PropertyRef Name="from_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupName">
+    <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="1" />
+    <End Role="Group_mesage" Type="Self.Group_mesage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUPS">
+        <PropertyRef Name="Group_Name" />
+      </Principal>
+      <Dependent Role="Group_mesage">
+        <PropertyRef Name="Group_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_INVITATIONS_USER">
     <End Role="USER" Type="Self.USER" Multiplicity="1" />
     <End Role="INVITATIONS" Type="Self.INVITATIONS" Multiplicity="*" />
@@ -209,10 +241,10 @@
     <End Role="MEMBERSHIPS" Type="Self.MEMBERSHIPS" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="GROUPS">
-        <PropertyRef Name="Groups_ID" />
+        <PropertyRef Name="Group_Name" />
       </Principal>
       <Dependent Role="MEMBERSHIPS">
-        <PropertyRef Name="Group_ID" />
+        <PropertyRef Name="Group_Name" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -352,6 +384,7 @@
     <EntitySet Name="BETS" EntityType="Self.BETS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DRIVERS" EntityType="Self.DRIVERS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FRIENDS" EntityType="Self.FRIENDS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Group_mesage" EntityType="Self.Group_mesage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GROUPS" EntityType="Self.GROUPS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="INVITATIONS" EntityType="Self.INVITATIONS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MEMBERSHIPS" EntityType="Self.MEMBERSHIPS" Schema="dbo" store:Type="Tables" />
@@ -377,6 +410,14 @@
     <AssociationSet Name="FK_FRIENDS_USER1" Association="Self.FK_FRIENDS_USER1">
       <End Role="USER" EntitySet="USER" />
       <End Role="FRIENDS" EntitySet="FRIENDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_from_user" Association="Self.FK_from_user">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="Group_mesage" EntitySet="Group_mesage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupName" Association="Self.FK_GroupName">
+      <End Role="GROUPS" EntitySet="GROUPS" />
+      <End Role="Group_mesage" EntitySet="Group_mesage" />
     </AssociationSet>
     <AssociationSet Name="FK_INVITATIONS_USER" Association="Self.FK_INVITATIONS_USER">
       <End Role="USER" EntitySet="USER" />

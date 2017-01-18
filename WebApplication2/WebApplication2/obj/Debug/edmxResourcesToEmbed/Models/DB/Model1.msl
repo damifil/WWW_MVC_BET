@@ -41,7 +41,6 @@
     <EntitySetMapping Name="GROUPS">
       <EntityTypeMapping TypeName="ProjektModel.GROUPS">
         <MappingFragment StoreEntitySet="GROUPS">
-          <ScalarProperty Name="Groups_ID" ColumnName="Groups_ID" />
           <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
           <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
@@ -60,7 +59,7 @@
     <EntitySetMapping Name="MEMBERSHIPS">
       <EntityTypeMapping TypeName="ProjektModel.MEMBERSHIPS">
         <MappingFragment StoreEntitySet="MEMBERSHIPS">
-          <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+          <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
           <ScalarProperty Name="Score" ColumnName="Score" />
         </MappingFragment>
@@ -142,6 +141,16 @@
           <ScalarProperty Name="Is_Exists" ColumnName="Is_Exists" />
           <ScalarProperty Name="Is_Log" ColumnName="Is_Log" />
           <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group_mesage">
+      <EntityTypeMapping TypeName="ProjektModel.Group_mesage">
+        <MappingFragment StoreEntitySet="Group_mesage">
+          <ScalarProperty Name="from_user" ColumnName="from_user" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
+          <ScalarProperty Name="Group_chat_ID" ColumnName="Group_chat_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

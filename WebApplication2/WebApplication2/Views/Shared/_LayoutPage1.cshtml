@@ -72,11 +72,11 @@
                                         <li><strong>Twoje grupy:</strong></li>
 
                                         <li @(pageName == "nie wiem co" ? "class=active" : "")>
-                                            @Html.ActionLink("nazwa_grupy", "index", "grupy", new { @id = "nazwa_grupy_1" }, FormMethod.Post)
+                                            @Html.ActionLink("nazwa_grupy", "index", "grupy", new { group_ID="Nieznani" }, FormMethod.Post)
                                         </li>
 
                                         <li @(pageName == "nie wiem co" ? "class=active" : "")>
-                                            @Html.ActionLink("nazwa_grupy2", "index", "grupy", new { @id = "nazwa_grupy_2" }, FormMethod.Post)
+                                            @Html.ActionLink("nazwa_grupy2", "index", "grupy", new { @id = "Wrogowie" }, FormMethod.Post)
                                         </li>
                                     </ul>
 
