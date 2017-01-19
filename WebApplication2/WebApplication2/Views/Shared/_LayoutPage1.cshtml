@@ -166,30 +166,15 @@
             <span class="glyphicon glyphicon-user">Czat</span>
             <!--- w li powinny byc linki do odpowiedniego usera do wiadomosci-->
             <!-- lista do wypisania uzytkownikow, trzeba sprawdzici ilu sie miesci-->
-            @{
-                var FriendList =    from i in db.FRIENDS
-                                    where i.User_ID == User.Identity.Name
-                                    join us in db.USER
-                                    on i.Friend_ID equals us.User_ID
-                                    orderby us.Is_Log descending
-                                    select new { us.User_ID, us.Is_Log };
+            <ul>
+                <!--  fragment kodu dotyczacy uzytkownika aktywnego-->
 
-                foreach(var item in FriendList)
-                {
-                    <ul>
-                        @{
-                            if(item.Is_Log==true)
-                            {
-                                <li><a href='@Url.Action("Index","Wiadomosci", new {@item.User_ID}, null)'>@item.User_ID</a><span class="glyphicon glyphicon-star"></span></li>
-                            }
-                            else
-                            {
-                                <li><a href='@Url.Action("Index","Wiadomosci", new {@item.User_ID}, null)'>@item.User_ID</a><span class="glyphicon glyphicon-star-empty"></span></li>
-                            }
-                        }
-                    </ul>
-                }
-            }
+                <li>uzytkownik aktywny<span class="glyphicon glyphicon-star"></span></li>
+
+                <!--  fragment kodu dotyczacy uzytkownika nieaktywnego-->
+                <li><span>uzytkownik nieaktywny</span><span class="glyphicon glyphicon-star-empty"></span></li>
+
+            </ul>
         </div>
     </aside>
 
