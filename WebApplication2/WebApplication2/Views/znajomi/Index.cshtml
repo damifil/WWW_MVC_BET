@@ -51,10 +51,9 @@
         <div class="asside_friend_list">
             @foreach (var item in Model.ListSearch)
             {
-                <div class="user_in_friend_list" href="~/profil/index#id">
+                <div class="user_in_friend_list">
 
-                    <img src="data:image/png;base64, @Convert.ToBase64String(item.imageData)" width="50" height="50" alt="avatar" class="img-rounded" />
-
+                    <img src="data:image/png;base64, @Convert.ToBase64String(item.imageData)" onclick="location.href='@Url.Action("Index", "Profil", new { userID = item.UserID }, null)'" width="100" height="100" alt="avatar" class="img-rounded" />
                     <strong> @Html.DisplayFor(modelItem => item.UserID)</strong>
                     <div>
 
