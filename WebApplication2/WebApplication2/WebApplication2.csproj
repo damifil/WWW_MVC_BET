@@ -103,6 +103,7 @@
     <Content Include="App_Data\Projekt_log.ldf">
       <DependentUpon>Projekt.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Global.asax" />
     <Content Include="CSS\tlo.css" />
     <Content Include="Models\DB\Model1.Context.tt">
@@ -283,9 +284,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
