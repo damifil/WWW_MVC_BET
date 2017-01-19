@@ -104,6 +104,30 @@ namespace WebApplication2.Controllers
 
             return RedirectToAction("Index", new { groupName = MyStaticValues.groupname });
         }
+
+
+
+
+        [HttpPost]
+        public ActionResult usun()
+        {
+
+            ProjektEntities db = new ProjektEntities();
+     
+            var remove = db.MEMBERSHIPS.Where(a => a.User_ID == User.Identity.Name).ToList();
+            foreach (var vp in remove)
+            {
+                if (vp.Group_Name == MyStaticValues.groupname)
+                { db.MEMBERSHIPS.Remove(vp); }
+                    }
+            db.SaveChanges();
+
+            return RedirectToAction("zarzadzaj");
+        }
+
+
+
+
     }
 
 }

@@ -214,6 +214,29 @@ namespace WebApplication2.Models.EntityManager
             }
         }
 
+        public void ChangeDescription(ProfileView user, string login)
+        {
+            using (ProjektEntities db = new ProjektEntities())
+            {
+                using (var dbContextTransaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        USER us = db.USER.Find(login);
+                        us.Description = user.description;
+
+                        db.SaveChanges();
+                        dbContextTransaction.Commit();
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
+            }
+        }
+
+
         public void DeleteUser(UserSettingView user, string login)
         {
             using (ProjektEntities db = new ProjektEntities())

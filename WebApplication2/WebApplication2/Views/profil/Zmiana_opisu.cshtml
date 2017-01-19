@@ -44,22 +44,22 @@
             </div>
             -->
             
-                @using (Html.BeginForm("Zmiana_opisu", "Profil", FormMethod.Post))
+               @using (Html.BeginForm("Zmiana_opisu", "Profil", FormMethod.Post))
             {
-                    @Html.AntiForgeryToken()
+              @Html.AntiForgeryToken()
+    
+                <div>
+                    <!--tutaj powinien byc aktualny opis wyswietlany jaki uzytkownik mai uzytkownik do niego moze nowy wpisac-->
 
-                    <div>
-                        <!--tutaj powinien byc aktualny opis wyswietlany jaki uzytkownik mai uzytkownik do niego moze nowy wpisac-->
-
-                        @Html.TextAreaFor(model => model.description, new { @id = "describ_user", @rows = 10, @cols = 40, @placeholder = Html.DisplayFor(n => n.description) })
-                    </div>
-                    <div>
-                        <!--przycisk do zatwierdzenia zmian w opise-->
-                        <input id="Button_describe" type="submit" value="zmien" class="btn btn-default" />
-                    </div>
-
-                }
-         
+                    @Html.TextAreaFor(model => model.description, new { @id = "describ_user", @rows = 10, @cols = 40, @placeholder = Html.DisplayFor(n => n.description) })
+                </div>
+                <div>
+                    <!--przycisk do zatwierdzenia zmian w opise-->
+                    <input id="Button_describe" type="submit" value="zmien" class="btn btn-default" />
+                </div>
+           
+            }
+                
             <!------------------------------------------------------------------------------------------->
 
             <div class="table-responsive" style="background-color:white">

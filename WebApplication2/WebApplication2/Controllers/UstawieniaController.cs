@@ -89,15 +89,15 @@ namespace WebApplication2.Controllers
         public ActionResult Zmiana_opisu(UserSettingView userSettingView)
         {
             UserManager userManager = new UserManager();
-            userSettingView.userDescriptionView.description = userManager.GetDescription(User.Identity.Name);
+        
             if (userManager.GetImage(User.Identity.Name) == null)
                 return View(userSettingView);
             userSettingView.imageView.imageData = userManager.GetImage(User.Identity.Name);
             userSettingView.emailView.email = userManager.GetEmail(User.Identity.Name);
 
+            System.Diagnostics.Debug.WriteLine("coś tam " + userSettingView.userDescriptionView.description);
             if (ModelState.IsValid)
-            {
-                
+            {                
                 userManager.ChangeDescription(userSettingView, User.Identity.Name);
                 ViewBag.Status = "Opis został zmieniony.";
             }
