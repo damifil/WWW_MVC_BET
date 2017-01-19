@@ -48,6 +48,31 @@ namespace WebApplication2.Controllers
 
                 ViewBag.Wyscig1 = xd;
 
+                var ab = from b in db.BETS
+                         join xa in db.RACES
+                         on b.Race_ID equals xa.Race_ID
+                         join da in db.SEASONS
+                         on xa.Season_ID equals da.Season_ID
+                         where b.User_ID == login && b.ScorePos1 != null
+                         group da by da.Year into avc
+                         select avc.FirstOrDefault();
+
+
+
+                mod.MenuLevel1 = ab.ToList().Select(m => new SelectListItem
+                {
+                    Value = m.Season_ID.ToString(),
+                    Text = m.Year
+                }).ToList();
+
+
+                mod.MenuLevel1.Insert(0, new SelectListItem
+                {
+                    Value = "-1",
+                    Text = "Wybierz cos"
+                });
+
+                mod.MenuLevel2 = new List<SelectListItem>();
 
                 mod.betRaces = new List<RacesView>();
 
@@ -60,6 +85,16 @@ namespace WebApplication2.Controllers
             return View(mod);
         }
 
+        [HttpGet]
+        public ActionResult filterCatLevel2(int id)
+        {
+            var db = new ProjektEntities();
+            return Json(db.RACES.Where(c => c.Season_ID == id).ToList().Select(c => new SelectListItem
+            {
+                Value = c.Track,
+                Text = c.Track
+            }).ToList(), JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult dodaj()
         {
@@ -96,7 +131,7 @@ namespace WebApplication2.Controllers
                 }).ToList();
 
                 ViewBag.Wyscig1 = xd;
-               
+
                 mod.betRaces = new List<RacesView>();
 
                 var allRace = from r in db.RACES
@@ -114,7 +149,7 @@ namespace WebApplication2.Controllers
             BetSetGetView mod = new BetSetGetView();
             if (ModelState.IsValid)
             {
-                
+
                 using (var db = new ProjektEntities())
                 {
                     var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
@@ -146,7 +181,7 @@ namespace WebApplication2.Controllers
                         Value = c.Track
                     }).ToList();
                     ViewBag.Wyscig1 = xd;
-                    
+
 
                     mod.betRaces = new List<RacesView>();
 
@@ -155,12 +190,12 @@ namespace WebApplication2.Controllers
                     foreach (var item in allRace)
                         mod.betRaces.Add(new RacesView { raceTrack = item.Track, raceDate = item.Date });
 
-                    int raceID  = 1;
+                    int raceID = 1;
                     string date = Request.Form["date_picker"];
                     date = date.Replace("/", "-");
                     var searchRaceID = from r in db.RACES
-                                  where r.Date.Contains(date)
-                                  select new { r.Race_ID , };
+                                       where r.Date.Contains(date)
+                                       select new { r.Race_ID, };
                     foreach (var item in searchRaceID)
                         raceID = item.Race_ID;
 
@@ -274,7 +309,7 @@ namespace WebApplication2.Controllers
 
 
                 var ras = from rac in db.RACES
-                          where rac.Track == wybor.betGetView.selectedTrack
+                          where rac.Track == wybor.CategoryLevel2
                           from b in db.BETS
                           where (b.User_ID == login) && (b.Race_ID == rac.Race_ID)
                           select new { b.Pos_1, b.Pos_2, b.Pos_3, b.Time_1, b.ScorePos1, b.ScorePos2, b.ScorePos3, b.ScoreTime1, b.ScoreSum };
@@ -296,7 +331,7 @@ namespace WebApplication2.Controllers
                 var races = from rac in db.RACES
                             join dr in db.DRIVERS
                             on rac.Pos_1 equals dr.Driver_ID
-                            where rac.Track == wybor.betGetView.selectedTrack
+                            where rac.Track == wybor.CategoryLevel2
                             select new { dr.Driver_Name };
                 foreach (var ds in races)
                 {
@@ -304,7 +339,7 @@ namespace WebApplication2.Controllers
                 }
 
                 var races1 = from rac in db.RACES
-                             where rac.Track == wybor.betGetView.selectedTrack
+                             where rac.Track == wybor.CategoryLevel2
                              join dr in db.DRIVERS
                             on rac.Pos_2 equals dr.Driver_ID
 
@@ -319,7 +354,7 @@ namespace WebApplication2.Controllers
                 var races2 = from rac in db.RACES
                              join dr in db.DRIVERS
                              on rac.Pos_3 equals dr.Driver_ID
-                             where rac.Track == wybor.betGetView.selectedTrack
+                             where rac.Track == wybor.CategoryLevel2
                              select new { dr.Driver_Name };
                 foreach (var ds in races2)
                 {
@@ -329,7 +364,7 @@ namespace WebApplication2.Controllers
                 var races3 = from rac in db.RACES
                              join dr in db.DRIVERS
                              on rac.Time_1 equals dr.Driver_ID
-                             where rac.Track == wybor.betGetView.selectedTrack
+                             where rac.Track == wybor.CategoryLevel2
                              select new { dr.Driver_Name };
                 foreach (var ds in races3)
                 {

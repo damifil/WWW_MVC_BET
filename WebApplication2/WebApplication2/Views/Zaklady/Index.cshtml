@@ -2,6 +2,32 @@
 @{
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-3.1.1.js")"></script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#menuLevel1').change(function () {
+                var categoryIdLevel1 = $('#menuLevel1 option:selected').val();
+                $.ajax({
+                    type: 'GET',
+                    data: {id: categoryIdLevel1},
+                    url: '@Url.Action("filterCatLevel2", "Zaklady")',
+                    success: function (result) {
+                        var s = '';
+                        for (var i = 0; i < result.length; i++) {
+                            s += '<option value="' + result[i].Value + '">' + result[i].Text + '</option>';
+
+                        }
+                        $('#menuLevel2').html(s);
+                    }
+                })
+            });
+        });
+</script>
+
+
+
 <div class="container_page_zaklady">
     <form action="/Zaklady/dodaj" method="post">
         <div class="bet_fixed">
@@ -55,7 +81,7 @@
 
                         <div class="form-group">
 
-                         
+
                             <p>
                                 @Html.DropDownListFor(model => model.betSetView.Driver_Time1, ViewBag.KategoriaList as IEnumerable<SelectListItem>, "Wybierz")
                                 @Html.ValidationMessageFor(model => model.betSetView.Driver_Time1, "", new { @class = "text-danger" })
@@ -77,14 +103,17 @@
 <div class="table" id="table_race">
     <div>
         <h1>Twoje zakłady</h1>
-        <form action="/Zaklady/wyswietl" method="post">
-            <p>
+        @using (Html.BeginForm("wyswietl", "Zaklady", FormMethod.Post))
+        {
+           
+            @Html.DropDownListFor(model => model.CategoryLevel1, Model.MenuLevel1, new { id = "menuLevel1" })
 
-                @Html.DropDownListFor(model => model.betGetView.selectedTrack, ViewBag.Wyscig1 as IEnumerable<SelectListItem>, "Wybierz", new { @onchange = "this.form.submit();" })
-                @Html.ValidationMessageFor(model => model.betGetView.selectedTrack, "", new { @class = "text-danger" })
-            </p>
+            
+            @Html.DropDownListFor(model => model.CategoryLevel2, Model.MenuLevel2, new { id = "menuLevel2" })
 
-        </form>
+            <input type="submit" value="Save" />
+        }
+
         <table id="tabela_js_show" class="table table-striped" style="width:100%;">
             <thead>
                 <tr>
