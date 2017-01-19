@@ -277,6 +277,7 @@
     <Content Include="Views\grupy\zarzadzaj.cshtml" />
     <Content Include="Views\wiadomosci\wyslij.cshtml" />
     <Content Include="Views\Zaklady\dodaj.cshtml" />
+    <Content Include="Views\profil\Zmiana_opisu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
