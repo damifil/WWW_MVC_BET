@@ -105,13 +105,9 @@
         <h1>Twoje zakłady</h1>
         @using (Html.BeginForm("wyswietl", "Zaklady", FormMethod.Post))
         {
-           
             @Html.DropDownListFor(model => model.CategoryLevel1, Model.MenuLevel1, new { id = "menuLevel1" })
 
-            
-            @Html.DropDownListFor(model => model.CategoryLevel2, Model.MenuLevel2, new { id = "menuLevel2" })
-
-            <input type="submit" value="Save" />
+            @Html.DropDownListFor(model => model.CategoryLevel2, Model.MenuLevel2, new { id = "menuLevel2" ,@onchange = "this.form.submit();" })
         }
 
         <table id="tabela_js_show" class="table table-striped" style="width:100%;">

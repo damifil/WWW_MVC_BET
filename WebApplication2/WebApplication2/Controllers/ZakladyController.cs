@@ -40,15 +40,8 @@ namespace WebApplication2.Controllers
                          where b.User_ID == login && b.ScorePos1 != null
                          select new { xa.Track };
 
-                var xd = be.ToList().Select(c => new SelectListItem
-                {
-                    Text = c.Track,
-                    Value = c.Track
-                }).ToList();
 
-                ViewBag.Wyscig1 = xd;
-
-                var ab = from b in db.BETS
+                var selectYear = from b in db.BETS
                          join xa in db.RACES
                          on b.Race_ID equals xa.Race_ID
                          join da in db.SEASONS
@@ -57,9 +50,7 @@ namespace WebApplication2.Controllers
                          group da by da.Year into avc
                          select avc.FirstOrDefault();
 
-
-
-                mod.MenuLevel1 = ab.ToList().Select(m => new SelectListItem
+                mod.MenuLevel1 = selectYear.ToList().Select(m => new SelectListItem
                 {
                     Value = m.Season_ID.ToString(),
                     Text = m.Year
@@ -69,10 +60,11 @@ namespace WebApplication2.Controllers
                 mod.MenuLevel1.Insert(0, new SelectListItem
                 {
                     Value = "-1",
-                    Text = "Wybierz cos"
+                    Text = "Rok"
                 });
 
                 mod.MenuLevel2 = new List<SelectListItem>();
+
 
                 mod.betRaces = new List<RacesView>();
 
@@ -89,11 +81,26 @@ namespace WebApplication2.Controllers
         public ActionResult filterCatLevel2(int id)
         {
             var db = new ProjektEntities();
-            return Json(db.RACES.Where(c => c.Season_ID == id).ToList().Select(c => new SelectListItem
+            var temp = from r in db.RACES
+                     where r.Season_ID == id
+                     join b in db.BETS
+                     on r.Race_ID equals b.Race_ID
+                     where b.User_ID == User.Identity.Name && b.ScorePos1 != null
+                     select r;
+
+            var selectTrack = temp.ToList().Select(c => new SelectListItem
             {
                 Value = c.Track,
                 Text = c.Track
-            }).ToList(), JsonRequestBehavior.AllowGet);
+            }).ToList();
+
+            selectTrack.Insert(0, new SelectListItem
+            {
+                Value = "-1",
+                Text = "Wyścig"
+            });
+
+            return Json(selectTrack, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult dodaj()
@@ -117,21 +124,34 @@ namespace WebApplication2.Controllers
 
                 ViewBag.KategoriaList = x;
 
-                string login = User.Identity.Name;
-                var be = from b in db.BETS
-                         join xa in db.RACES
-                         on b.Race_ID equals xa.Race_ID
-                         where b.User_ID == login && b.ScorePos1 != null
-                         select new { xa.Track };
+                var selectYear = from b in db.BETS
+                                 join xa in db.RACES
+                                 on b.Race_ID equals xa.Race_ID
+                                 join da in db.SEASONS
+                                 on xa.Season_ID equals da.Season_ID
+                                 where b.User_ID == User.Identity.Name && b.ScorePos1 != null
+                                 group da by da.Year into avc
+                                 select avc.FirstOrDefault();
 
-                var xd = be.ToList().Select(c => new SelectListItem
+
+
+                mod.MenuLevel1 = selectYear.ToList().Select(m => new SelectListItem
                 {
-                    Text = c.Track,
-                    Value = c.Track
+                    Value = m.Season_ID.ToString(),
+                    Text = m.Year
                 }).ToList();
 
-                ViewBag.Wyscig1 = xd;
 
+                mod.MenuLevel1.Insert(0, new SelectListItem
+                {
+                    Value = "-1",
+                    Text = "Rok"
+                });
+
+                mod.MenuLevel2 = new List<SelectListItem>();
+
+                string login = User.Identity.Name;
+               
                 mod.betRaces = new List<RacesView>();
 
                 var allRace = from r in db.RACES
@@ -168,20 +188,33 @@ namespace WebApplication2.Controllers
 
                     ViewBag.KategoriaList = x;
 
-                    string login = User.Identity.Name;
-                    var be = from b in db.BETS
-                             join xa in db.RACES
-                             on b.Race_ID equals xa.Race_ID
-                             where b.User_ID == login && b.ScorePos1 != null
-                             select new { xa.Track };
+                    var selectYear = from b in db.BETS
+                                     join xa in db.RACES
+                                     on b.Race_ID equals xa.Race_ID
+                                     join da in db.SEASONS
+                                     on xa.Season_ID equals da.Season_ID
+                                     where b.User_ID == User.Identity.Name && b.ScorePos1 != null
+                                     group da by da.Year into avc
+                                     select avc.FirstOrDefault();
 
-                    var xd = be.ToList().Select(c => new SelectListItem
+
+
+                    mod.MenuLevel1 = selectYear.ToList().Select(m => new SelectListItem
                     {
-                        Text = c.Track,
-                        Value = c.Track
+                        Value = m.Season_ID.ToString(),
+                        Text = m.Year
                     }).ToList();
-                    ViewBag.Wyscig1 = xd;
 
+
+                    mod.MenuLevel1.Insert(0, new SelectListItem
+                    {
+                        Value = "-1",
+                        Text = "Rok"
+                    });
+
+                    mod.MenuLevel2 = new List<SelectListItem>();
+                 
+                    string login = User.Identity.Name;
 
                     mod.betRaces = new List<RacesView>();
 
@@ -226,6 +259,7 @@ namespace WebApplication2.Controllers
             {
                 using (ProjektEntities db = new ProjektEntities())
                 {
+                    BetSetGetView mod = new BetSetGetView();
                     string login = User.Identity.Name;
                     var be = from b in db.BETS
                              join xa in db.RACES
@@ -240,6 +274,30 @@ namespace WebApplication2.Controllers
                     }).ToList();
 
                     ViewBag.Wyscig1 = x;
+
+                    var selectYear = from b in db.BETS
+                                     join xa in db.RACES
+                                     on b.Race_ID equals xa.Race_ID
+                                     join da in db.SEASONS
+                                     on xa.Season_ID equals da.Season_ID
+                                     where b.User_ID == login && b.ScorePos1 != null
+                                     group da by da.Year into avc
+                                     select avc.FirstOrDefault();
+
+                    mod.MenuLevel1 = selectYear.ToList().Select(m => new SelectListItem
+                    {
+                        Value = m.Season_ID.ToString(),
+                        Text = m.Year
+                    }).ToList();
+
+
+                    mod.MenuLevel1.Insert(0, new SelectListItem
+                    {
+                        Value = "-1",
+                        Text = "Rok"
+                    });
+
+                    mod.MenuLevel2 = new List<SelectListItem>();
 
                     var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
 
@@ -256,16 +314,16 @@ namespace WebApplication2.Controllers
                     }).ToList();
 
                     ViewBag.KategoriaList = xd;
-                    BetSetGetView mod = new BetSetGetView();
+                   
                     mod.betRaces = new List<RacesView>();
 
+                    mod.betRaces = new List<RacesView>();
                     var allRace = from r in db.RACES
                                   select new { r.Track, r.Date };
                     foreach (var item in allRace)
                         mod.betRaces.Add(new RacesView { raceTrack = item.Track, raceDate = item.Date });
-
                 }
-
+            
             }
             return View("Index");
         }
@@ -277,20 +335,33 @@ namespace WebApplication2.Controllers
             using (ProjektEntities db = new ProjektEntities())
             {
                 string login = User.Identity.Name;
-                var be = from b in db.BETS
-                         join xa in db.RACES
-                         on b.Race_ID equals xa.Race_ID
-                         where b.User_ID == login && b.ScorePos1 != null
-                         select new { xa.Track };
+               
+                var selectYear = from b in db.BETS
+                                 join xa in db.RACES
+                                 on b.Race_ID equals xa.Race_ID
+                                 join da in db.SEASONS
+                                 on xa.Season_ID equals da.Season_ID
+                                 where b.User_ID == login && b.ScorePos1 != null
+                                 group da by da.Year into avc
+                                 select avc.FirstOrDefault();
 
-                var x = be.ToList().Select(c => new SelectListItem
+
+
+                wybor.MenuLevel1 = selectYear.ToList().Select(m => new SelectListItem
                 {
-                    Text = c.Track,
-                    Value = c.Track
+                    Value = m.Season_ID.ToString(),
+                    Text = m.Year
                 }).ToList();
 
 
-                ViewBag.Wyscig1 = x;
+                wybor.MenuLevel1.Insert(0, new SelectListItem
+                {
+                    Value = "-1",
+                    Text = "Rok"
+                });
+
+                wybor.MenuLevel2 = new List<SelectListItem>();
+
                 var season = db.SEASONS.OrderByDescending(m => m.Year).Select(r => r.Season_ID).First();
 
                 var driver = from b in db.DRIVERS
@@ -370,13 +441,11 @@ namespace WebApplication2.Controllers
                 {
                     wybor.betGetView.raceTime1 = ds.Driver_Name;
                 }
-
                 wybor.betRaces = new List<RacesView>();
                 var allRace = from r in db.RACES
                               select new { r.Track, r.Date };
                 foreach (var item in allRace)
                     wybor.betRaces.Add(new RacesView { raceTrack = item.Track, raceDate = item.Date });
-
             }
 
             return View(wybor);
