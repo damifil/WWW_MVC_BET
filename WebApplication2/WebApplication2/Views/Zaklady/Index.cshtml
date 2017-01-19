@@ -29,7 +29,7 @@
 
 
 <div class="container_page_zaklady">
-    <form action="/Zaklady/dodaj" method="post">
+    <form action="/Zaklady/dodaj" method="post"  style="width: 100%">
         <div class="bet_fixed">
             <div class="choice_race">
                 <h2>Wybierz wyścig do zakładu</h2>
@@ -197,7 +197,8 @@
 
     $('#date_picker').datepicker({
         format: 'yyyy/mm/dd',
-
+       
+        startDate: '-1d',
         beforeShowDay: function (date) {
 
             var len = SelectedDates.length;
