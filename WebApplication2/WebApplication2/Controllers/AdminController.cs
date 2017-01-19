@@ -104,7 +104,7 @@ namespace WebApplication2.Controllers
             {
                 if (rACES.Pos_1 != rACES.Pos_2 && rACES.Pos_1 != rACES.Pos_3 && rACES.Pos_2 != rACES.Pos_3)
                 {
-                    
+                    //////////////////////////////////// zapis danych do tabeli RACES
                     var bet = from b in db.BETS
                               join r in db.RACES
                               on b.Race_ID equals r.Race_ID
@@ -112,9 +112,9 @@ namespace WebApplication2.Controllers
                               select new { b.Pos_1, b.Pos_2, b.Pos_3, b.Bet_ID, b.User_ID };
 
                     var dri1 = from r in db.RACES
-                              from dr in db.DRIVERS
-                              where r.Pos_1 == dr.Driver_ID && r.Race_ID == rACES.Race_ID
-                              select new { dr.Driver_Name };
+                               from dr in db.DRIVERS
+                               where r.Pos_1 == dr.Driver_ID && r.Race_ID == rACES.Race_ID
+                               select new { dr.Driver_Name };
                     string pos1 = "";
                     foreach (var a in dri1)
                         pos1 = a.Driver_Name;
@@ -126,8 +126,8 @@ namespace WebApplication2.Controllers
                     string pos2 = "";
                     foreach (var a in dri2)
                         pos2 = a.Driver_Name;
-                    
-                                   
+
+
                     var dri3 = from r in db.RACES
                                from dr in db.DRIVERS
                                where r.Pos_3 == dr.Driver_ID && r.Race_ID == rACES.Race_ID
@@ -140,13 +140,13 @@ namespace WebApplication2.Controllers
                                from dr in db.DRIVERS
                                where r.Time_1 == dr.Driver_ID && r.Race_ID == rACES.Race_ID
                                select new { dr.Driver_Name };
-                    string time1 ="";
+                    string time1 = "";
                     foreach (var a in dri4)
                         time1 = a.Driver_Name;
-                    
-                        foreach (var x in bet)
-                        {
-                            BETS bets = db.BETS.Find(x.Bet_ID);
+
+                    foreach (var x in bet)
+                    {
+                        BETS bets = db.BETS.Find(x.Bet_ID);
                         if (bets.Pos_1 == pos1)
                             bets.ScorePos1 = 5;
                         else
@@ -166,11 +166,30 @@ namespace WebApplication2.Controllers
                             bets.ScoreTime1 = 5;
                         else
                             bets.ScoreTime1 = 0;
-
+                        /////////////////////////////////////////// zapis punktow do tabeli BETS
                         bets.ScoreSum = bets.ScorePos1 + bets.ScorePos2 + bets.ScorePos3 + bets.ScoreTime1;
-                            db.Entry(bets).State = EntityState.Modified;
-                          }
+                        db.Entry(bets).State = EntityState.Modified;
+
+                    }
                     db.Entry(rACES).State = EntityState.Modified;
+                    var us = from u in db.USER
+                             select u;
+
+                    foreach (var item in us)
+                    {
+                        item.Total_score = 0;
+                        var bets1 = from be in db.BETS
+                                    where be.User_ID == item.User_ID
+                                    select new { be.ScoreSum };
+
+                        foreach (var points in bets1)
+                        {
+                            item.Total_score += points.ScoreSum;
+                        }
+
+                        db.Entry(item).State = EntityState.Modified;
+                    }
+
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -357,7 +376,7 @@ namespace WebApplication2.Controllers
             return View(dRIVERS);
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edytuj_zawodnika([Bind(Include = "Driver_ID,Driver_Name")] DRIVERS dRIVERS)
@@ -420,7 +439,7 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Stworz_firme([Bind(Include = "Team_ID,Team_Name")] TEAMS tEAMS)
@@ -448,7 +467,7 @@ namespace WebApplication2.Controllers
             }
             return View(tEAMS);
         }
-      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edytuj_firme([Bind(Include = "Team_ID,Team_Name")] TEAMS tEAMS)
