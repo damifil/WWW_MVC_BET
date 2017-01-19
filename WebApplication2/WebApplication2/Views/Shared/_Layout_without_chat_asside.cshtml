@@ -67,14 +67,24 @@
                                             @Html.ActionLink("stworz/dolacz do grupy", "zarzadzaj", "grupy", FormMethod.Post)
                                         </li>
                                         <li><strong>Twoje grupy:</strong></li>
+                                        @{
 
-                                        <li @(pageName == "nie wiem co" ? "class=active" : "")>
-                                            @Html.ActionLink("nazwa_grupy", "index", "grupy", new { @id = "nazwa_grupy_1" }, FormMethod.Post)
-                                        </li>
+                                            WebApplication2.Models.DB.ProjektEntities db = new WebApplication2.Models.DB.ProjektEntities();
 
-                                        <li @(pageName == "nie wiem co" ? "class=active" : "")>
-                                            @Html.ActionLink("nazwa_grupy2", "index", "grupy", new { @id = "nazwa_grupy_2" }, FormMethod.Post)
-                                        </li>
+
+                                            var GroupList = from i in db.MEMBERSHIPS
+                                                            where i.User_ID == User.Identity.Name
+                                                            select new { i.Group_Name };
+
+                                            //Inicjacja statystyk grup
+                                            foreach (var item in GroupList)
+                                            {
+                                                <li @(pageName == "nie wiem co" ? "class=active" : "")>
+                                                    <a href="@Url.Action("Index", "Grupy", new { groupName = item.Group_Name }, null)">@item.Group_Name</a>
+                                                </li>
+                                            }
+
+                                        }
                                     </ul>
                                     </li>
 

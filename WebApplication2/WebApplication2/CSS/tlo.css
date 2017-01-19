@@ -9,7 +9,7 @@
 
 .mainContainer,
 .czat_menu {
-    margin-top: 120px;
+    margin-top: 150px;
 }
 
 #tabela_js_show
@@ -132,11 +132,11 @@ div.topHeader {
 }
 
 .mainContainer_home {
-    margin-top: 160px;
+    margin-top: 200px;
 }
 @media(min-width: 450px) {
    .mainContainer_home {
-       margin-top: 80px;
+       margin-top: 100px;
     }
 
 
@@ -346,7 +346,7 @@ padding:5px;
 
 .asside_friends_search
 {
-    margin-top:130px;
+    margin-top:160px;
     max-height:502px;
     background-color:rgba(118,183,191,.5);
     width:100%;
@@ -425,6 +425,7 @@ article {
 
 .message_container{
         display: flex;
+        width:100%;
 }
 
 .container_page_zaklady,.collapse_group
@@ -437,7 +438,7 @@ article {
 
   .logo-full-bg {
     background-color: #273D40;
-    height: 70px;
+    height: 100px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -446,7 +447,7 @@ article {
 
 .logo-full-bg_home {
     background-color: #273D40;
-    height: 150px;
+    height: 180px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -455,7 +456,7 @@ article {
 }
 @media(min-width: 450px) {
    .logo-full-bg_home {
-       height: 70px;
+       height: 120px;
     }
 
 
@@ -466,7 +467,7 @@ article {
     border-radius: 4px;
     border: 1px solid white;
     height: 52px;
-    top: 70px;
+    top: 100px;
     position: fixed;
     width: 100%;
     z-index: 1;
@@ -479,7 +480,7 @@ article {
         display: block;
         position: fixed;
         height: 100%;
-        top: 122px;
+        top: 152px;
         background-color: rgba(118,183,191,.3);
         right: calc((100% - 960px) / 2);
         width: calc( 960px / 4);
