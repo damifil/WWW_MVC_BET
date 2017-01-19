@@ -1,6 +1,7 @@
 ﻿@model WebApplication2.Models.ViewModel.LoginRegisterView
 @{
     Layout = null;
+    if(User.Identity.Name!="") {Response.Redirect(@Url.Action( "index", "profil"));}
 }
 
 <!DOCTYPE html>

@@ -2,6 +2,7 @@
 
 @{
     var pageName = ViewContext.RouteData.Values["controller"].ToString();
+    if(User.Identity.Name=="") {Response.Redirect(@Url.Action( "index", "Home"));}
 }
 
 
