@@ -29,7 +29,11 @@
             </div>
         </div>
         <div class="col-md-5 col-sm-5">
-            <input id="friend_button" type="button" value="zapros/usun" class="btn btn-default" />
+            @if (@ViewBag.user != User.Identity.Name)
+            {
+            <input id="Button_id_user_message" type="button" value="Zaproś" class="btn btn-default"
+                   onclick="location.href='@Url.Action("Zapros", "Znajomi", new { userID = ViewBag.user })'" />
+            }
             <h2>O mnie</h2>
 
             <!---------------------------------------------------------------------------->
@@ -45,8 +49,8 @@
 
             </div>
             -->
-
-            @using (Html.BeginForm("Zmiana_opisu", "Profil", FormMethod.Post))
+            @if(@ViewBag.user == User.Identity.Name){
+            using (Html.BeginForm("Zmiana_opisu", "Profil", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
 
@@ -60,8 +64,14 @@
                         <input id="Button_describe" type="submit" value="zmien" class="btn btn-default" />
                     </div>
 
+                }
             }
-
+            else
+            {
+                <div>
+                   @Html.TextAreaFor(model => model.description, new { @id = "describ_user", @rows = 10, @cols = 40, @placeholder = Html.DisplayFor(n => n.description) })
+                </div>
+            }
             <!------------------------------------------------------------------------------------------->
 
             <div class="table-responsive" style="background-color:white">

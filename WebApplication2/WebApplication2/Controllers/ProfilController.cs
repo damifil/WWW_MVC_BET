@@ -60,7 +60,7 @@ namespace WebApplication2.Controllers
 
             profileView.imageData = userManager.GetImage(MyStaticValues.userName);
             profileView.date_join = userManager.GetDateJoin(MyStaticValues.userName);
-
+            ViewBag.user = MyStaticValues.userName;
             //Pobranie statystyk globalnych
             var GlobalStats = from i in db.USER
                               orderby i.Total_score descending
