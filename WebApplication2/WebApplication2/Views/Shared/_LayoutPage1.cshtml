@@ -115,6 +115,28 @@
                                 <li @(pageName == "Ustawienia" ? " class=active" : "")>
                                     @Html.ActionLink("Ustawienia", "index", "Ustawienia")
                                 </li>
+                                
+                                
+
+                                                                @{
+
+                                                                    var admin = from i in db.USER
+                                                                                where i.Is_Admin == true
+                                                                                select new { i.User_ID };
+
+                                                                    //Inicjacja statystyk grup
+                                                                    foreach (var item in admin)
+                                                                    {
+                                                                        if (item.User_ID == User.Identity.Name)
+                                                                        {
+                                                                        <li @(pageName == "admin" ? "class=active" : "")>
+                                                                            @Html.ActionLink("Admin", "Panel", "admin")
+                                                                        </li>
+                                                                            }
+                                                                        }
+
+                                                                    }
+                               
                             </ul>
                         </div>
                     </div>

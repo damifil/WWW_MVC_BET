@@ -25,7 +25,7 @@
         <div class="container">
             <form class="row">
                 <div class="col-md-8 col-sm-8 col-xs-8">
-                    <img src="@Url.Content(" ~/Content/Images/logo.png")" alt="LOGO" height="100" width="200" />
+                    <img src="@Url.Content("~/Content/Images/logo.png")" alt="LOGO" height="100" width="200" />
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4">
                     Witaj, @(User.Identity.Name)!
@@ -109,6 +109,26 @@
                                 <li @(pageName == "Ustawienia" ? " class=active" : "")>
                                     @Html.ActionLink("Ustawienia", "index", "Ustawienia")
                                 </li>
+
+                                @{
+
+                                    var admin = from i in db.USER
+                                                where i.Is_Admin == true
+                                                select new { i.User_ID };
+
+                                    //Inicjacja statystyk grup
+                                    foreach (var item in admin)
+                                    {
+                                        if (item.User_ID == User.Identity.Name)
+                                        {
+                                            <li @(pageName == "admin" ? "class=active" : "")>
+                                                @Html.ActionLink("Admin", "Panel", "admin")
+                                            </li>
+                                        }
+                                    }
+
+                                }
+
                             </ul>
                         </div>
                     </div>
