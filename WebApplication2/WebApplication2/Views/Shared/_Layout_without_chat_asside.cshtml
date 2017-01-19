@@ -28,6 +28,7 @@
                     <h1 style="color:white;">logo</h1>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4">
+                    Witaj, @(User.Identity.Name)!
                     <input type="button" value="Wyloguj" class="logout_buttton" onclick="location.href='@Url.Action("SignOut", "Home")'" />
                 </div>
             </form>
