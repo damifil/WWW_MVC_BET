@@ -9,7 +9,7 @@ using WebApplication2.Models.ViewModel;
 
 namespace WebApplication2.Controllers
 {
-   
+
     public class ProfilController : Controller
     {
         public static class MyStaticValues
@@ -32,7 +32,7 @@ namespace WebApplication2.Controllers
             profileView.description = userManager.GetDescription(userID);
             profileView.imageData = userManager.GetImage(userID);
             profileView.date_join = userManager.GetDateJoin(userID);
-
+            ViewBag.user = userID;
             //Pobranie statystyk globalnych
             var GlobalStats = from i in db.USER
                               orderby i.Total_score descending
@@ -55,9 +55,9 @@ namespace WebApplication2.Controllers
             UserManager userManager = new UserManager();
             ProjektEntities db = new ProjektEntities();
 
-          
+
             profileView.login = MyStaticValues.userName;
-           
+
             profileView.imageData = userManager.GetImage(MyStaticValues.userName);
             profileView.date_join = userManager.GetDateJoin(MyStaticValues.userName);
 

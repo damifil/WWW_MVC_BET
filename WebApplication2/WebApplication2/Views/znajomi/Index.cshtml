@@ -14,13 +14,14 @@
             <div class="container_user_picture">
                 <!--adres do profilu uzytkownika-->
 
-                <a href="~/profil/index#id">
+                <input id="send_Button" type="button" value="napisz" class="btn btn-default"
+                       onclick="location.href='@Url.Action("Index", "Profil", new { userID = item.UserID }, null)'" />
 
-                    <img src="data:image/png;base64, @Convert.ToBase64String(item.imageData)" width="100" height="100" alt="avatar" class="img-rounded" />
-                </a>
+                <img src="data:image/png;base64, @Convert.ToBase64String(item.imageData)" width="100" height="100" alt="avatar" class="img-rounded" />
+
                 <p>@Html.DisplayFor(modelItem => item.UserID)</p>
-                <input id="Button_id_uzytkownika" class="btn btn-default" type="button" value="napisz" onclick="location.href='@Url.Action("Index", "Wiadomosci", new { userID = item.UserID }, null)'"/>
-               
+                <input id="Button_id_uzytkownika" class="btn btn-default" type="button" value="napisz" onclick="location.href='@Url.Action("Index", "Wiadomosci", new { userID = item.UserID }, null)'" />
+
 
             </div>
         }
@@ -60,17 +61,14 @@
 
 
 
-                        <input id="Button_id_user_message" type="button" value="napisz" class="btn btn-default" 
-                                onclick="location.href='@Url.Action("Index", "Wiadomosci", new { userID = item.UserID }, null)'"
-                             /> 
+                        <input id="Button_id_user_message" type="button" value="napisz" class="btn btn-default"
+                               onclick="location.href='@Url.Action("Index", "Wiadomosci", new { userID = item.UserID }, null)'" />
 
-                        <input id="Button_id_user_message" type="button" value="zapros" class="btn btn-default" 
-                              onclick="location.href='@Url.Action("Zapros", new { userID = item.UserID })'"
-
-                            /> 
+                        <input id="Button_id_user_message" type="button" value="zapros" class="btn btn-default"
+                               onclick="location.href='@Url.Action("Zapros", new { userID = item.UserID })'" />
 
 
-                      
+
 
 
                     </div>
