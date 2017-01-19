@@ -35,18 +35,19 @@
                 <h2>Wybierz wyścig do zakładu</h2>
                 <label class="control-label" for="date">Data wyścigu</label>
                 <input class="form-control" id="date_picker" name="date_picker" placeholder="MM/DD/YYY" type="text" />
+                <!-- Wyswietla napis o dodaniu zakladu-->
+                <span class="alert-success">@ViewBag.Status</span>
+                <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             </div>
-
+            
             <div>
                 <div class="form-inline">
                     <div class="choice_race_bet">
 
                         <h2>Obstaw</h2>
 
-                        <!-- Wyswietla napis o dodaniu zakladu-->
-                        <span class="alert-success">@ViewBag.Status</span>
-                        <!-- Wyswietla napis, ze dane sie nie zgadzaja-->
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        
 
                         <div class="form-group">
                             <p>1 miejsce</p>
